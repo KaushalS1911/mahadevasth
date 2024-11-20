@@ -216,6 +216,8 @@ import CspHeadDocumentView from '../../sections/csp-head/view/csp-head-document-
 import SingleCspHead from '../../sections/csp-head/view/single-head-csp';
 import FieldReport from '../../pages/dashboard/field-report';
 import InventoryList from '../../pages/dashboard/inventory/inventory-list';
+import ArticleListPage from '../../pages/article/article-list-view';
+import ArticleCreatePage from '../../pages/article/article-create-view';
 
 // ----------------------------------------------------------------------
 
@@ -336,6 +338,13 @@ export const dashboardRoutes = [
           // { path: 'new', element: <UserCreatePage /> },
           { path: ':id/view', element: <HeadOfficeOrderView /> },
           // { path: 'account', element: <UserAccountPage /> },
+        ],
+      },{
+        path: 'article',
+        children: [
+          { element: <ArticleListPage />, index: true },
+          { path: 'list', element: <ArticleListPage /> },
+          { path: 'new', element: <ArticleCreatePage /> },
         ],
       },
       {

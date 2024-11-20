@@ -53,13 +53,13 @@ export default function JwtLoginView() {
 //   }
 // },[session])
   const LoginSchema = Yup.object().shape({
-    phone_number: Yup.string().required('Phone number is required'),
+    counsellor_code: Yup.string().required('Counsellor Code is required'),
     password: Yup.string().required('Password is required'),
     role: Yup.string().required('Role is required'),
   });
 
   const defaultValues = {
-    phone_number: '',
+    counsellor_code: '',
     password: '',
     role: '',
   };
@@ -80,8 +80,7 @@ export default function JwtLoginView() {
     setLoading(true);
     console.log("dadada : ",data)
     try {
-      // await login?.({ ...data, category: society === 'society' ? subSociety : data.category });
-      localStorage.setItem('login_type', 'other-login');
+      login(data)
       setLoading(false)
     } catch (error) {
       console.error(error);
@@ -131,7 +130,7 @@ export default function JwtLoginView() {
                 <FormProvider onSubmit={onSubmit} methods={methods}>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                      <RHFTextField name="phone_number" label="Phone Number"/>
+                      <RHFTextField name="counsellor_code" label="Counsellor Code"/>
                     </Grid>
                     <Grid item xs={12} sx={{ my: '10px' }}>
                       <RHFTextField name="password" label="Password" type="password"/>

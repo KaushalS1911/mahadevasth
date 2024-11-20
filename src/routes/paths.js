@@ -340,6 +340,11 @@ export const paths = {
       //   edit: `${ROOTS.DASHBOARD}/head-office/${MOCK_ID}/edit`,
       // },
     },
+    article: {
+      root: `${ROOTS.DASHBOARD}/article`,
+      new: `${ROOTS.DASHBOARD}/article/new`,
+      list: `${ROOTS.DASHBOARD}/article/list`,
+    },
     product: {
       root: `${ROOTS.DASHBOARD}/product`,
       new: `${ROOTS.DASHBOARD}/product/new`,

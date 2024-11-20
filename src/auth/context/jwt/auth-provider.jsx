@@ -108,7 +108,7 @@ export function AuthProvider({ children }) {
   // LOGIN
   const login = useCallback(async (data) => {
     axios
-      .post(`http://ec2-54-173-125-80.compute-1.amazonaws.com:8080/nccf/csp_login`, data)
+      .post(`https://interactapiverse.com/mahadevasth/shape/counsellor/login`, data)
       .then((response) => {
         sessionStorage.setItem("res",JSON.stringify(response))
         if (response?.data?.status === '200') {

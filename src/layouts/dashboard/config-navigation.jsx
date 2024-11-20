@@ -97,6 +97,11 @@ export function useNavData() {
       icon: ICONS.dashboard,
     },
     {
+      title: t('Article'),
+      path: paths.dashboard.article,
+      icon: ICONS.user,
+    },
+    {
       title: t('Basic Info'),
       path: paths.dashboard.basic_info,
       icon: ICONS.user,
@@ -151,7 +156,11 @@ export function useNavData() {
       path: paths.dashboard.root,
       icon: ICONS.dashboard,
     },
-
+    {
+      title: t('Article'),
+      path: paths.dashboard.article.list,
+      icon: ICONS.user,
+    }
     // {
     //   title: t('Intents'),
     //   path: paths.dashboard.orders,
@@ -168,41 +177,41 @@ export function useNavData() {
     //
     //   ],
     // },
-    {
-      title: t('Basic Info'),
-      path: paths.dashboard.basic_info,
-      icon: ICONS.user,
-    },
-    {
-      title: t('Document'),
-      path: paths.dashboard.document.root,
-      icon: ICONS.chat,
-      children: [
-        // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
-        {
-          title: t('Upload Evidence'),
-          path: paths.dashboard.document.upload_evidence,
-        },
-      ],
-    },
+    // {
+    //   title: t('Basic Info'),
+    //   path: paths.dashboard.basic_info,
+    //   icon: ICONS.user,
+    // },
+    // {
+    //   title: t('Document'),
+    //   path: paths.dashboard.document.root,
+    //   icon: ICONS.chat,
+    //   children: [
+    //     // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
+    //     { title: t('Document List'), path: paths.dashboard.document.document_list },
+    //     { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+    //     {
+    //       title: t('Upload Evidence'),
+    //       path: paths.dashboard.document.upload_evidence,
+    //     },
+    //   ],
+    // },
 
     // INVOICE
-    {
-      title: t('payment'),
-      path: paths.dashboard.invoice.root,
-      icon: ICONS.invoice,
-      children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
-        // {
-        //   title: t('details'),
-        //   path: paths.dashboard.invoice.demo.details,
-        // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
-        // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
-      ],
-    },
+    // {
+    //   title: t('payment'),
+    //   path: paths.dashboard.invoice.root,
+    //   icon: ICONS.invoice,
+    //   children: [
+    //     { title: t('list'), path: paths.dashboard.invoice.root },
+    //     // {
+    //     //   title: t('details'),
+    //     //   path: paths.dashboard.invoice.demo.details,
+    //     // },
+    //     { title: t('create'), path: paths.dashboard.invoice.new },
+    //     // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
+    //   ],
+    // },
     // {
     //   title: t('Head Office'),
     //   path: paths.dashboard.headOffice.root,
