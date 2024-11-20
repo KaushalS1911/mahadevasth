@@ -9,7 +9,7 @@ import { SplashScreen } from 'src/components/loading-screen';
 
 // ----------------------------------------------------------------------
 
-export const HomePage = lazy(() => import('src/pages/home'));
+export const HomePage = lazy(() => import('src/pages/auth/jwt/login'));
 const Page500 = lazy(() => import('src/pages/500'));
 const Page403 = lazy(() => import('src/pages/403'));
 const Page404 = lazy(() => import('src/pages/404'));

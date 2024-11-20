@@ -71,12 +71,12 @@ const defaultFilters = {
 };
 
 const HIDE_COLUMNS = {
-  category: false,
+  category: true,
 };
 
 const HIDE_COLUMNS_TOGGLABLE = ['category', 'actions'];
 
-function ArticleListView(props) {
+function ArticleListView() {
   const { enqueueSnackbar } = useSnackbar();
 const {articles} = useGetArticles()
   const confirmRows = useBoolean();
@@ -161,21 +161,26 @@ const {articles} = useGetArticles()
     {
       field: 'category',
       headerName: 'Category',
-      flex: 1,
-      minWidth: 236,
-      hideable: false,
+      width: 372,
+      // hideable: false,
+    },
+    {
+      field: 'image',
+      headerName: 'Image',
+      width: 372,
+      // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
     {
       field: 'article',
       headerName: 'Article',
-      width: 200,
+      width: 372,
       // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
     {
       field: 'tags',
       headerName: 'Tags',
-      width: 190,
+      width: 372,
       // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
@@ -200,7 +205,7 @@ const {articles} = useGetArticles()
         <CustomBreadcrumbs
           heading="Article List"
           links={[
-            { name: 'Dashboard', href: paths.dashboard.root },
+            // { name: 'Dashboard', href: paths.dashboard.root },
             {
               name: 'Article',
               href: paths.dashboard.article.list,

@@ -8,6 +8,8 @@ import { setSession } from './utils';
 import { AUTH_API } from '../../../config-global';
 import { useSnackbar } from '../../../components/snackbar/index.js';
 import { enqueueSnackbar } from 'notistack';
+import {paths} from "../../../routes/paths";
+import {useRouter} from "../../../routes/hooks";
 
 // ----------------------------------------------------------------------
 /**
@@ -56,6 +58,7 @@ const VENDOR_KEY = 'vendor';
 
 export function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const router = useRouter();
 
   const initialize = useCallback(async () => {
     try {
@@ -112,7 +115,7 @@ export function AuthProvider({ children }) {
       .then((response) => {
         sessionStorage.setItem("res",JSON.stringify(response))
         if (response?.data?.status === '200') {
-          const res = response?.data?.data[0];
+          const res = response?.data?.data;
           setSession(res);
           enqueueSnackbar('Login success');
           dispatch({
@@ -128,6 +131,7 @@ export function AuthProvider({ children }) {
               },
             },
           });
+          router.push(paths.dashboard.article.list)
         } else {
           enqueueSnackbar('Invalid credentials', { variant: 'error' });
           console.log('err');

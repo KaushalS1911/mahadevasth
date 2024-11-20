@@ -17,6 +17,7 @@ const AmplifyVerifyPage = lazy(() => import('src/pages/auth/amplify/verify'));
 const AmplifyNewPasswordPage = lazy(() => import('src/pages/auth/amplify/new-password'));
 const AmplifyForgotPasswordPage = lazy(() => import('src/pages/auth/amplify/forgot-password'));
 
+
 // JWT
 const JwtLoginPage = lazy(() => import('src/pages/auth/jwt/login'));
 const JwtRegisterPage = lazy(() => import('src/pages/auth/jwt/register'));

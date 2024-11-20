@@ -78,7 +78,6 @@ export default function JwtLoginView() {
   } = methods;
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    console.log("dadada : ",data)
     try {
       login(data)
       setLoading(false)

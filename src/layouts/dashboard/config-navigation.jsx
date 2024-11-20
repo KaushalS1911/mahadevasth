@@ -51,11 +51,11 @@ export function useNavData() {
   const { t } = useTranslate();
   const { vendor } = useAuthContext();
   const societyItems = vendor?.mil_dis_sub_roles === "own_distribution_own_mill" ? [
-    {
-      title: t('Dashboard'),
-      path: paths.dashboard.root,
-      icon: ICONS.dashboard,
-    },
+    // {
+    //   title: t('Dashboard'),
+    //   path: paths.dashboard.root,
+    //   icon: ICONS.dashboard,
+    // },
     {
       title: t('Basic Info'),
       path: paths.dashboard.basic_info,
@@ -91,11 +91,11 @@ export function useNavData() {
       ],
     },
   ]:[
-    {
-      title: t('Dashboard'),
-      path: paths.dashboard.root,
-      icon: ICONS.dashboard,
-    },
+    // {
+    //   title: t('Dashboard'),
+    //   path: paths.dashboard.root,
+    //   icon: ICONS.dashboard,
+    // },
     {
       title: t('Article'),
       path: paths.dashboard.article,
@@ -151,11 +151,11 @@ export function useNavData() {
   ];
 
   const otherItems = [
-    {
-      title: t('Dashboard'),
-      path: paths.dashboard.root,
-      icon: ICONS.dashboard,
-    },
+    // {
+    //   title: t('Dashboard'),
+    //   path: paths.dashboard.root,
+    //   icon: ICONS.dashboard,
+    // },
     {
       title: t('Article'),
       path: paths.dashboard.article.list,

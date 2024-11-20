@@ -21,10 +21,10 @@ export default function ArticleCreateView() {
       <CustomBreadcrumbs
         heading={`Create a new article`}
         links={[
-          {
-            name: 'Dashboard',
-            href: paths.dashboard.root,
-          },
+          // {
+          //   name: 'Dashboard',
+          //   href: paths.dashboard.root,
+          // },
 
           {
             name: `New Article`,

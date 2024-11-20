@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>NCCF CSP Portal</title>
+        <title>Mahadevasth</title>
       </Helmet>
 
       <HomeView />

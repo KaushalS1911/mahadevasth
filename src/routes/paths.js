@@ -296,6 +296,7 @@ export const paths = {
     basic_info: `${ROOTS.DASHBOARD}/basic-info`,
     field_report:`${ROOTS.DASHBOARD}/field-report`,
     distributor_info: `${ROOTS.DASHBOARD}/distributor-info`,
+    updatePassword: `${ROOTS.DASHBOARD}/update-password`,
     inventory: `${ROOTS.DASHBOARD}/inventory`,
     // upload_document: `${ROOTS.DASHBOARD}/upload-document`,
     // document_list: `${ROOTS.DASHBOARD}/document-list`,

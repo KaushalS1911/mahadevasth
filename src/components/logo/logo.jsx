@@ -26,7 +26,7 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
         ref={ref}
         component="div"
         sx={{
-          width: 48,
+          width: 144,
           marginInline: '0 !important',
           display: 'inline-flex',
           ...sx,

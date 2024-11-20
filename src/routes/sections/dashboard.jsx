@@ -227,6 +227,7 @@ const UploadListView = lazy(() => import('src/pages/dashboard/upload-document'))
 const UploadDocument = lazy(() => import('src/pages/dashboard/addUploadDocument'));
 const UploadEvidencePage = lazy(() => import('src/pages/dashboard/upload-evidence'));
 const OrdersPage = lazy(() => import('src/pages/dashboard/orders'));
+const UpdatePassword = lazy(() => import('../../sections/update-password/update-password'));
 
 // OVERVIEW
 const IndexPage = lazy(() => import('src/pages/dashboard/app'));
@@ -301,6 +302,7 @@ export const dashboardRoutes = [
     ),
     children: [
       { element: <IndexPage />, index: true },
+      { path: 'update-password', element: <UpdatePassword /> },
       // { path: 'basic-info', element: <BasicInfoPage /> },
       { path: 'basic-info', element: <MainBasicInfo /> },
       { path: 'field-report', element: <FieldReport /> },
