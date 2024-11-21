@@ -45,6 +45,7 @@ import MillerTableFiltersResult from '../article-table-filters-result';
 import ArticleTableFiltersResult from '../article-table-filters-result';
 import ArticleTableToolbar from '../article-table-toolbar';
 import { useGetArticles } from '../../../api/article';
+import { Box, Chip } from '@mui/material';
 // import BranchTableFiltersResult from '../branch-table-filters-result';
 
 // import ProductTableFiltersResult from '../product-table-filters-result';
@@ -63,9 +64,9 @@ const PUBLISH_OPTIONS = [
 const defaultFilters = {
   name: '',
   type_of_firm: [],
-  state:[],
-  branch:[],
-  district:[],
+  state: [],
+  branch: [],
+  district: [],
   status: 'all',
 
 };
@@ -78,23 +79,24 @@ const HIDE_COLUMNS_TOGGLABLE = ['category', 'actions'];
 
 function ArticleListView() {
   const { enqueueSnackbar } = useSnackbar();
-const {articles} = useGetArticles()
+  const { articles, articleLoading ,mutate} = useGetArticles();
   const confirmRows = useBoolean();
-  const {vendor} = useAuthContext()
+  const { vendor } = useAuthContext();
   const router = useRouter();
 
   const settings = useSettingsContext();
 
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState(articles || []);
 
   const [filters, setFilters] = useState(defaultFilters);
 
   const [selectedRowIds, setSelectedRowIds] = useState([]);
-  const [stateOptions, setStateOptions] = useState([]);
-  const [branchOptions, setBranchOptions] = useState([]);
-  const [districtOptions, setDistrictOptions] = useState([]);
   const [columnVisibilityModel, setColumnVisibilityModel] = useState(HIDE_COLUMNS);
-
+  useEffect(() => {
+    if (articles?.length > 0) {
+      setTableData(articles);
+    }
+  }, [articles]);
   const dataFiltered = applyFilter({
     inputData: tableData,
     filters,
@@ -116,84 +118,135 @@ const {articles} = useGetArticles()
 
   const handleDeleteRow = useCallback(
     (id) => {
-      const deleteRow = tableData.filter((row) => row.id !== id);
+      axios.delete(`https://interactapiverse.com/mahadevasth/shape/articles/${id}`).then((res) => {
+        if (res?.data?.status == '200') {
+          enqueueSnackbar('Article added successfully');
+          mutate()
+        }
+      })
 
       enqueueSnackbar('Delete success!');
-
-      setTableData(deleteRow);
     },
-    [enqueueSnackbar, tableData]
+    [enqueueSnackbar, tableData],
   );
-  const STATUS_OPTIONS = [{ value: 'all', label: 'All' },{value:'miller',label: 'Miller'},{value:"disributor",label:"Distributor"},{value: "society_cooperative",label: "Society"},{value: "miller_distributor",label: "Miller & Distributor"}]
-  const handleDeleteRows = useCallback(() => {
-    const deleteRows = tableData.filter((row) => !selectedRowIds.includes(row.id));
-
-    enqueueSnackbar('Delete success!');
-
-    setTableData(deleteRows);
-  }, [enqueueSnackbar, selectedRowIds, tableData]);
 
   const handleEditRow = useCallback(
     (id) => {
-      // router.push(paths.dashboard.product.edit(id));
+      router.push(paths.dashboard.article.edit(id));
     },
     [router]
   );
-  const handleViewRow = useCallback(
-    (code) => {
-      router.push(paths.dashboard.miller.miller_document_view(code));
-    },
-    [router],
-  );
-  const handleDistributor = (code) => {
-    router.push(paths.dashboard.miller.miller_view(code));
-
-  };
-  // const handleViewRow = useCallback(
-  //   (id) => {
-  //     // router.push(paths.dashboard.product.details(id));
-  //   },
-  //   [router]
-  // );
 
   const columns = [
+    {
+      field: 'id',
+      headerName: '#',
+      minWidth: 44,
+      align: 'center',
+      headerAlign: 'center',
+      // renderCell: (params) => <Box>,
+    },
 
     {
       field: 'category',
       headerName: 'Category',
-      flex:1,
-      minWidth: 372,
+      flex: 1,
+      minWidth: 160,
       // hideable: false,
     },
-    // {
-    //   field: 'image',
-    //   headerName: 'Image',
-    //   flex:1,
-    //   minWidth: 372,
-    //   // renderCell: (params) => <RenderCellCreatedAt params={params} />,
-    // },
+
     {
       field: 'article',
       headerName: 'Article',
-      flex:1,
-      minWidth: 372,
+      flex: 1,
+      minWidth: 472,
       // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
     {
       field: 'tags',
       headerName: 'Tags',
-      flex:1,
+      flex: 1,
       minWidth: 372,
-      // renderCell: (params) => <RenderCellCreatedAt params={params} />,
+      renderCell: (params) => {
+        const pa = params?.row?.tags;
+        // if (!pa) return null;
+
+        let parsedTags;
+        try {
+          parsedTags = typeof pa === 'string' ? JSON.parse(pa) : pa;
+        } catch (error) {
+          console.error('Error parsing tags:', error);
+          return null;
+        }
+
+        return (
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 1,
+            }}
+          >
+            {parsedTags?.map((option, index) => (
+              <Box
+                key={index}
+                sx={{
+                  padding: '4px 8px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '4px',
+                }}
+              >
+                {option}
+              </Box>
+            ))}
+          </Box>
+        );
+      },
     },
+    {
+      type: 'actions',
+      field: 'actions',
+      headerName: ' ',
+      align: 'right',
+      headerAlign: 'right',
+      width: 100,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      getActions: (params) => [
+
+        <GridActionsCellItem
+          showInMenu
+          icon={<Iconify icon="solar:pen-bold" />}
+          label="Edit"
+          onClick={() => handleEditRow(params.row.id)}
+        />,
+        <GridActionsCellItem
+          showInMenu
+          icon={<Iconify icon="solar:trash-bin-trash-bold" />}
+          label="Delete"
+          onClick={() => handleDeleteRow(params.row.id)}
+        />,
+        // <GridActionsCellItem
+        //   showInMenu
+        //   icon={<Iconify icon="solar:trash-bin-trash-bold" />}
+        //   label="Delete"
+        //   onClick={() => {
+        //     handleDeleteRow(params.row.id);
+        //   }}
+        //   sx={{ color: 'error.main' }}
+        // />,
+      ],
+    },
+
 
   ];
   const handleFilterStatus = useCallback(
     (event, newValue) => {
       handleFilters('status', newValue);
     },
-    [handleFilters]
+    [handleFilters],
   );
   const getTogglableColumns = () =>
     columns
@@ -207,7 +260,7 @@ const {articles} = useGetArticles()
 
       >
         <CustomBreadcrumbs
-          heading="Article List"
+          heading='Article List'
           links={[
             // { name: 'Dashboard', href: paths.dashboard.root },
             {
@@ -220,8 +273,8 @@ const {articles} = useGetArticles()
             <Button
               component={RouterLink}
               href={paths.dashboard.article.new}
-              variant="contained"
-              startIcon={<Iconify icon="mingcute:add-line" />}
+              variant='contained'
+              startIcon={<Iconify icon='mingcute:add-line' />}
             >
               New Article
             </Button>
@@ -244,11 +297,10 @@ const {articles} = useGetArticles()
         >
 
           <DataGrid
-            // checkboxSelection
             disableRowSelectionOnClick
             rows={dataFiltered}
             columns={columns}
-            // loading={cspLoading}
+            loading={articleLoading}
             getRowHeight={() => 'auto'}
             pageSizeOptions={[5, 10, 25]}
             initialState={{
@@ -256,33 +308,24 @@ const {articles} = useGetArticles()
                 paginationModel: { pageSize: 5 },
               },
             }}
-            // onRowSelectionModelChange={(newSelectionModel) => {
-            //   setSelectedRowIds(newSelectionModel);
-            // }}
             columnVisibilityModel={columnVisibilityModel}
             onColumnVisibilityModelChange={(newModel) => setColumnVisibilityModel(newModel)}
             slots={{
               toolbar: () => (
                 <>
-                  <GridToolbarContainer >
-                    {/*<ProductTableToolbar*/}
-                    {/*  filters={filters}*/}
-                    {/*  onFilters={handleFilters}*/}
-                    {/*  stockOptions={PRODUCT_STOCK_OPTIONS}*/}
-                    {/*  publishOptions={PUBLISH_OPTIONS}*/}
-                    {/*/>*/}
+                  <GridToolbarContainer>
                     <Stack
                       spacing={1}
                       flexGrow={1}
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="flex-end"
+                      direction='row'
+                      alignItems='center'
+                      justifyContent='flex-end'
                     >
                       {!!selectedRowIds.length && (
                         <Button
-                          size="small"
-                          color="error"
-                          startIcon={<Iconify icon="solar:trash-bin-trash-bold" />}
+                          size='small'
+                          color='error'
+                          startIcon={<Iconify icon='solar:trash-bin-trash-bold' />}
                           onClick={confirmRows.onTrue}
                         >
                           Delete ({selectedRowIds.length})
@@ -293,7 +336,7 @@ const {articles} = useGetArticles()
                       <GridToolbarFilterButton />
                       <GridToolbarExport />
                     </Stack>
-                    <ArticleTableToolbar filters={filters} onFilters={handleFilters} roleOptions={_roles} stateOptions={stateOptions} branchOptions={branchOptions} districtOptions={districtOptions} />
+                    <ArticleTableToolbar filters={filters} onFilters={handleFilters} roleOptions={_roles} />
                     {canReset && (
                       <ArticleTableFiltersResult
                         filters={filters}
@@ -303,28 +346,21 @@ const {articles} = useGetArticles()
                         sx={{ p: 2.5, pt: 0 }}
                       />
                     )}
-                    {/*<GridToolbarQuickFilter />*/}
-                    {/**/}
 
                   </GridToolbarContainer>
-
-                  {/*{canReset && (*/}
-                  {/*  <ProductTableFiltersResult*/}
-                  {/*    filters={filters}*/}
-                  {/*    onFilters={handleFilters}*/}
-                  {/*    onResetFilters={handleResetFilters}*/}
-                  {/*    results={dataFiltered.length}*/}
-                  {/*    sx={{ p: 2.5, pt: 0 }}*/}
-                  {/*  />*/}
-                  {/*)}*/}
                 </>
               ),
-              noRowsOverlay: () => <EmptyContent title="No Data" />,
-              noResultsOverlay: () => <EmptyContent title="No results found" />,
+              noRowsOverlay: () => <EmptyContent title='No Data' />,
+              noResultsOverlay: () => <EmptyContent title='No results found' />,
             }}
             slotProps={{
               columnsPanel: {
                 getTogglableColumns,
+              },
+            }}
+            sx={{
+              '& .MuiDataGrid-cell': {
+                py: '13px',
               },
             }}
           />
@@ -334,7 +370,7 @@ const {articles} = useGetArticles()
       <ConfirmDialog
         open={confirmRows.value}
         onClose={confirmRows.onFalse}
-        title="Delete"
+        title='Delete'
         content={
           <>
             Are you sure want to delete <strong> {selectedRowIds.length} </strong> items?
@@ -342,8 +378,8 @@ const {articles} = useGetArticles()
         }
         action={
           <Button
-            variant="contained"
-            color="error"
+            variant='contained'
+            color='error'
             onClick={() => {
               handleDeleteRows();
               confirmRows.onFalse();
@@ -356,14 +392,14 @@ const {articles} = useGetArticles()
     </>
   );
 }
-function applyFilter({ inputData, comparator, filters }) {
-  const { name, status, type_of_firm ,state,branch,district} = filters;
 
+function applyFilter({ inputData, comparator, filters }) {
+  const { name, status, type_of_firm, state, branch, district } = filters;
 
 
   if (name) {
     inputData = inputData.filter(
-      (user) => user.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      (user) => user.name.toLowerCase().indexOf(name.toLowerCase()) !== -1,
     );
   }
 
@@ -373,14 +409,18 @@ function applyFilter({ inputData, comparator, filters }) {
 
   if (type_of_firm.length) {
     inputData = inputData.filter((user) => type_of_firm.includes(user.type_of_firm));
-  } if (state.length) {
+  }
+  if (state.length) {
     inputData = inputData.filter((user) => state.includes(user.state));
-  } if (branch.length) {
+  }
+  if (branch.length) {
     inputData = inputData.filter((user) => branch.includes(user.branch));
-  } if (district.length) {
+  }
+  if (district.length) {
     inputData = inputData.filter((user) => district.includes(user.district));
   }
 
   return inputData;
 }
-export default ArticleListView ;
+
+export default ArticleListView;

@@ -21,9 +21,7 @@ export default function ArticleTableToolbar({
                                              filters,
                                              onFilters,
                                              //
-                                             stateOptions,
-                                             branchOptions,
-                                             districtOptions,
+
                                              roleOptions,
                                            }) {
 

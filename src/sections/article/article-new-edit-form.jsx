@@ -23,30 +23,31 @@ import { DocumentListView } from '../upload/view';
 import { LoadingScreen } from '../../components/loading-screen';
 import { Upload } from '../../components/upload';
 import { Chip } from '@mui/material';
+import { useGetSingleArticles } from '../../api/article';
 // ----------------------------------------------------------------------
 
-export default function ArticleNewEditForm({ miller }) {
+export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
   const [keywords, setKeywords] = useState([]);
   const router = useRouter();
-  const { vendor } = useAuthContext();
   const [loading, setLoading] = useState(false);
+
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
     category: Yup.string().required('category is required'),
     article: Yup.string().required('Article is required'),
-    tags: Yup.array().required('Tags is required'),
+    tags: Yup.array().required('Tags is required').max(5 ,"You can only add up to 5 tags."),
   });
 
-  const defaultValues = useMemo(
-    () => ({
-      category: miller?.category || '',
-      article: miller?.article || '',
-      tags: miller?.tags || '',
-    })
-      [miller],
-  );
+  const defaultValues = useMemo(() => {
+    return {
+      category: singleArticle?.category || '',
+      article: singleArticle?.article || '',
+      tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
+    };
+  }, [singleArticle]);
+
 
   const methods = useForm({
     resolver: yupResolver(NewProductSchema),
@@ -59,14 +60,21 @@ export default function ArticleNewEditForm({ miller }) {
     setLoading(true);
     try {
       const res = JSON.parse(sessionStorage.getItem('res'));
-      console.log(data,"fafafafaafaf");
       const payload = {
         article: data.article,
         category: data.category,
         tags: data.tags,
         counsellor_code: res.data.data.counsellor_code,
       };
-      axios
+     singleArticle?.id ? axios
+       .put(`https://interactapiverse.com/mahadevasth/shape/articles/${singleArticle?.id}`, payload)
+       .then((res) => {
+         if (res?.data?.status == '200') {
+           enqueueSnackbar('Article added successfully');
+           setLoading(false);
+           router.push(paths.dashboard.article.list);
+         }
+       }) : axios
         .post(`https://interactapiverse.com/mahadevasth/shape/articles/upload`, payload)
         .then((res) => {
           if (res?.data?.status == '200') {
@@ -138,31 +146,32 @@ export default function ArticleNewEditForm({ miller }) {
                 getOptionLabel={(option) => option}
               />
 
-            <RHFAutocomplete
-              name="tags"
-              label="Tags"
-              placeholder="Add tags and press Enter"
-              multiple
-              freeSolo
-              options={keywords.map((option) => option)}
-              getOptionLabel={(option) => option}
-              renderTags={(selected, getTagProps) =>
-                selected.map((option, index) => (
-                  <Chip
-                    {...getTagProps({ index })}
-                    key={option}
-                    label={option}
-                    size="small"
-                    color="info"
-                    variant="soft"
-                  />
-                ))
-              }
-            />
+              <RHFAutocomplete
+                name="tags"
+                label="Tags"
+                placeholder="Add tags and press Enter"
+                multiple
+                freeSolo
+                options={keywords.map((option) => option)}
+                getOptionLabel={(option) => option}
+                renderTags={(selected = [], getTagProps) =>
+                  Array.isArray(selected)
+                    ? selected.map((option, index) => (
+                      <Chip
+                        {...getTagProps({ index })}
+                        key={option}
+                        label={option}
+                        size="small"
+                        color="info"
+                        variant="soft"
+                      />
+                    ))
+                    : null
+                }
+              />
             </Box>
 
-            <RHFTextField name='article' multiline
-                          rows={4} label='Article' />
+            <RHFTextField name='article' multiline rows={4} label='Article' />
             {/*<Typography variant='subtitle2'>Upload Your Image</Typography>*/}
 
             {/*<Upload*/}

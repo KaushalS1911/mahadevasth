@@ -75,13 +75,8 @@ export function AuthProvider({ children }) {
           type: 'INITIAL',
           payload: {
             vendor: {
-              category: vendor?.category,
-              csp_code: vendor?.csp_code,
-              mil_dis_sub_roles: vendor?.mil_dis_sub_roles,
-              name: vendor?.name,
-              phone_number: vendor?.phone_number,
-              branch: vendor?.branch,
-              nccf_branch_status: vendor?.nccf_branch_status
+              counsellor_code: vendor?.counsellor_code,
+              status: vendor?.status,
             },
           },
         });
@@ -122,12 +117,8 @@ export function AuthProvider({ children }) {
             type: 'LOGIN',
             payload: {
               vendor: {
-                category: res?.category,
-                csp_code: res?.csp_code,
-                mil_dis_sub_roles: res?.mil_dis_sub_roles,
-                name: res?.name,
-                phone_number: res?.phone_number,
-                nccf_branch_status: res?.nccf_branch_status,
+                counsellor_code: res?.counsellor_code,
+                status: res?.status,
               },
             },
           });

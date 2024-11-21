@@ -218,6 +218,8 @@ import FieldReport from '../../pages/dashboard/field-report';
 import InventoryList from '../../pages/dashboard/inventory/inventory-list';
 import ArticleListPage from '../../pages/article/article-list-view';
 import ArticleCreatePage from '../../pages/article/article-create-view';
+import ArticleEditView from '../../sections/article/view/article-edit-view';
+import ArticleCreateView from '../../sections/article/view/article-create-view';
 
 // ----------------------------------------------------------------------
 
@@ -346,7 +348,8 @@ export const dashboardRoutes = [
         children: [
           { element: <ArticleListPage />, index: true },
           { path: 'list', element: <ArticleListPage /> },
-          { path: 'new', element: <ArticleCreatePage /> },
+          { path: 'new', element: <ArticleCreateView /> },
+          { path: ':id/edit', element: <ArticleEditView /> },
         ],
       },
       {

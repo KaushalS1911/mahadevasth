@@ -99,7 +99,7 @@ export function useNavData() {
     {
       title: t('Article'),
       path: paths.dashboard.article,
-      icon: ICONS.user,
+      icon: <Iconify icon="material-symbols:article" />,
     },
     {
       title: t('Basic Info'),
@@ -159,7 +159,7 @@ export function useNavData() {
     {
       title: t('Article'),
       path: paths.dashboard.article.list,
-      icon: ICONS.user,
+      icon: <Iconify icon="material-symbols:article" sx={{ width: 1, height: 1 }} />,
     }
     // {
     //   title: t('Intents'),

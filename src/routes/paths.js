@@ -345,6 +345,7 @@ export const paths = {
       root: `${ROOTS.DASHBOARD}/article`,
       new: `${ROOTS.DASHBOARD}/article/new`,
       list: `${ROOTS.DASHBOARD}/article/list`,
+      edit: (id) => `${ROOTS.DASHBOARD}/article/${id}/edit`,
     },
     product: {
       root: `${ROOTS.DASHBOARD}/product`,

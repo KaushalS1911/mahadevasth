@@ -7,12 +7,15 @@ import { useGetSingleArticles } from '../../../api/article';
 
 // ----------------------------------------------------------------------
 
-export default function ArticleCreateView() {
+export default function ArticleEditView() {
   const settings = useSettingsContext();
+  const { id } = useParams();
+  const {singleArticle} = useGetSingleArticles(id)
+  console.log("singleArticle",singleArticle);
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading={`Create a new article`}
+        heading={`Edit article`}
         links={[
           // {
           //   name: 'Dashboard',
@@ -20,7 +23,7 @@ export default function ArticleCreateView() {
           // },
 
           {
-            name: `New Article`,
+            name: `Edit Article`,
           },
         ]}
         sx={{
@@ -28,7 +31,7 @@ export default function ArticleCreateView() {
         }}
       />
 
-      <ArticleNewEditForm />
+      {singleArticle && <ArticleNewEditForm singleArticle={singleArticle} />}
     </Container>
   );
 }
