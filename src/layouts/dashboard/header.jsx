@@ -56,7 +56,7 @@ export default function Header({ onOpenNav }) {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push(rout);
+      router.push('/admin');
     } catch (error) {
       console.error(error);
       enqueueSnackbar('Unable to logout!', { variant: 'error' });

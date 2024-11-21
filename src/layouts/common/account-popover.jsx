@@ -50,7 +50,7 @@ export default function AccountPopover() {
     try {
       popover.onClose();
       sessionStorage.clear();
-      router.push('/');
+      router.push('/admin');
       router.reload();
     } catch (error) {
       console.error(error);

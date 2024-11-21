@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useMemo, useEffect, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -19,17 +19,15 @@ import { paths } from '../../routes/paths';
 import { useRouter } from '../../routes/hooks';
 import { useAuthContext } from '../../auth/hooks';
 import { useResponsive } from '../../hooks/use-responsive';
-import { DocumentListView } from '../upload/view';
 import { LoadingScreen } from '../../components/loading-screen';
 import { Upload } from '../../components/upload';
 import { Chip } from '@mui/material';
-import { useGetSingleArticles } from '../../api/article';
 // ----------------------------------------------------------------------
 
 export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
-  const [keywords, setKeywords] = useState([]);
+  const {vendor} = useAuthContext()
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -59,12 +57,11 @@ export default function ArticleNewEditForm({ singleArticle }) {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      const res = JSON.parse(sessionStorage.getItem('res'));
       const payload = {
         article: data.article,
         category: data.category,
         tags: data.tags,
-        counsellor_code: res.data.data.counsellor_code,
+        counsellor_code: vendor?.counsellor_code,
       };
      singleArticle?.id ? axios
        .put(`https://interactapiverse.com/mahadevasth/shape/articles/${singleArticle?.id}`, payload)
@@ -84,7 +81,6 @@ export default function ArticleNewEditForm({ singleArticle }) {
           }
         });
     } catch (err) {
-      console.log(err);
       enqueueSnackbar('Something went wrong', { variant: 'error' });
       setLoading(false);
     }
@@ -152,7 +148,7 @@ export default function ArticleNewEditForm({ singleArticle }) {
                 placeholder="Add tags and press Enter"
                 multiple
                 freeSolo
-                options={keywords.map((option) => option)}
+                options={[]}
                 getOptionLabel={(option) => option}
                 renderTags={(selected = [], getTagProps) =>
                   Array.isArray(selected)
