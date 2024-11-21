@@ -59,10 +59,11 @@ export default function ArticleNewEditForm({ miller }) {
     setLoading(true);
     try {
       const res = JSON.parse(sessionStorage.getItem('res'));
+      console.log(data,"fafafafaafaf");
       const payload = {
         article: data.article,
         category: data.category,
-        tags: data.tags.split(','),
+        tags: data.tags,
         counsellor_code: res.data.data.counsellor_code,
       };
       axios
