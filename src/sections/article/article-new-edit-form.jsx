@@ -70,7 +70,7 @@ export default function ArticleNewEditForm({ singleArticle }) {
        .put(`https://interactapiverse.com/mahadevasth/shape/articles/${singleArticle?.id}`, payload)
        .then((res) => {
          if (res?.data?.status == '200') {
-           enqueueSnackbar('Article added successfully');
+           enqueueSnackbar('Article updated successfully');
            setLoading(false);
            router.push(paths.dashboard.article.list);
          }

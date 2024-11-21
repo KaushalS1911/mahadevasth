@@ -10,7 +10,6 @@ import {
   GridToolbarExport,
   GridActionsCellItem,
   GridToolbarContainer,
-  GridToolbarQuickFilter,
   GridToolbarFilterButton,
   GridToolbarColumnsButton,
 } from '@mui/x-data-grid';
@@ -21,8 +20,7 @@ import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
-import { useGetProducts } from 'src/api/product';
-import { _roles, PRODUCT_STOCK_OPTIONS } from 'src/_mock';
+import { _roles } from 'src/_mock';
 
 import Iconify from 'src/components/iconify';
 import { useSnackbar } from 'src/components/snackbar';
@@ -30,36 +28,13 @@ import EmptyContent from 'src/components/empty-content';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
-import { useGetBranchOrder } from '../../../api/branch-order';
-// import BranchTableToolbar from '../branch-table-toolbar';
-import Tabs from '@mui/material/Tabs';
-import { alpha } from '@mui/material/styles';
-import Tab from '@mui/material/Tab';
-import Label from '../../../components/label';
-import { useGetCSP } from '../../../api/branch-csp';
-import TableCell from '@mui/material/TableCell';
 import axios from 'axios';
 import { useAuthContext } from '../../../auth/hooks';
-import MillerTableToolbar from '../article-table-toolbar';
-import MillerTableFiltersResult from '../article-table-filters-result';
 import ArticleTableFiltersResult from '../article-table-filters-result';
 import ArticleTableToolbar from '../article-table-toolbar';
 import { useGetArticles } from '../../../api/article';
-import { Box, Chip } from '@mui/material';
-// import BranchTableFiltersResult from '../branch-table-filters-result';
+import { Box } from '@mui/material';
 
-// import ProductTableFiltersResult from '../product-table-filters-result';
-// import {
-//   RenderCellStock,
-//   RenderCellPrice,
-//   RenderCellPublish,
-//   RenderCellProduct,
-//   RenderCellCreatedAt,
-// } from '../product-table-row';
-const PUBLISH_OPTIONS = [
-  { value: 'published', label: 'Published' },
-  { value: 'draft', label: 'Draft' },
-];
 
 const defaultFilters = {
   name: '',
@@ -121,7 +96,7 @@ function ArticleListView() {
     (id) => {
       axios.delete(`https://interactapiverse.com/mahadevasth/shape/articles/${id}`).then((res) => {
         if (res?.data?.status == '200') {
-          enqueueSnackbar('Article added successfully');
+          enqueueSnackbar('Article deleted successfully');
           mutate()
         }
       }).catch((err) => enqueueSnackbar('Something want wrong!',{variant:'error'}))
@@ -144,7 +119,6 @@ function ArticleListView() {
       minWidth: 44,
       align: 'center',
       headerAlign: 'center',
-      // renderCell: (params) => <Box>,
     },
 
     {
@@ -152,7 +126,6 @@ function ArticleListView() {
       headerName: 'Category',
       flex: 1,
       minWidth: 160,
-      // hideable: false,
     },
 
     {
@@ -160,7 +133,6 @@ function ArticleListView() {
       headerName: 'Article',
       flex: 1,
       minWidth: 472,
-      // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
     {
@@ -170,7 +142,6 @@ function ArticleListView() {
       minWidth: 372,
       renderCell: (params) => {
         const pa = params?.row?.tags;
-        // if (!pa) return null;
 
         let parsedTags;
         try {
@@ -230,16 +201,8 @@ function ArticleListView() {
             confirmRows.onTrue()
             setDeleteId(params?.row?.id);
           }}
+          sx={{ color: 'error.main' }}
         />,
-        // <GridActionsCellItem
-        //   showInMenu
-        //   icon={<Iconify icon="solar:trash-bin-trash-bold" />}
-        //   label="Delete"
-        //   onClick={() => {
-        //     handleDeleteRow(params.row.id);
-        //   }}
-        //   sx={{ color: 'error.main' }}
-        // />,
       ],
     },
 
