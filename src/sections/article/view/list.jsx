@@ -120,12 +120,10 @@ function ArticleListView() {
     (id) => {
       axios.delete(`https://interactapiverse.com/mahadevasth/shape/articles/${id}`).then((res) => {
         if (res?.data?.status == '200') {
-          enqueueSnackbar('Article added successfully');
+          enqueueSnackbar('Article deleted successfully');
           mutate()
         }
       })
-
-      enqueueSnackbar('Delete success!');
     },
     [enqueueSnackbar, tableData],
   );
