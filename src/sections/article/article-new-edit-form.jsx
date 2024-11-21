@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import React, {useMemo, useEffect, useState, useCallback} from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useMemo, useEffect, useState, useCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -11,32 +11,32 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-import {useSnackbar} from 'src/components/snackbar';
-import FormProvider, {RHFTextField, RHFAutocomplete} from 'src/components/hook-form';
+import { useSnackbar } from 'src/components/snackbar';
+import FormProvider, { RHFTextField, RHFAutocomplete } from 'src/components/hook-form';
 
 import axios from 'axios';
-import {paths} from '../../routes/paths';
-import {useRouter} from '../../routes/hooks';
-import {useAuthContext} from '../../auth/hooks';
-import {useResponsive} from '../../hooks/use-responsive';
-import {DocumentListView} from '../upload/view';
-import {LoadingScreen} from '../../components/loading-screen';
-import {Upload} from '../../components/upload';
-import {Chip} from '@mui/material';
+import { paths } from '../../routes/paths';
+import { useRouter } from '../../routes/hooks';
+import { useAuthContext } from '../../auth/hooks';
+import { useResponsive } from '../../hooks/use-responsive';
+import { DocumentListView } from '../upload/view';
+import { LoadingScreen } from '../../components/loading-screen';
+import { Upload } from '../../components/upload';
+import { Chip } from '@mui/material';
 // ----------------------------------------------------------------------
 
-export default function ArticleNewEditForm({miller}) {
-  const {enqueueSnackbar} = useSnackbar();
+export default function ArticleNewEditForm({ miller }) {
+  const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
   const [keywords, setKeywords] = useState([]);
   const router = useRouter();
-  const {vendor} = useAuthContext();
+  const { vendor } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
     category: Yup.string().required('category is required'),
     article: Yup.string().required('Article is required'),
-    tags: Yup.string().required('Tags is required'),
+    tags: Yup.array().min(2, 'Must have at least 2 tags'),
   });
 
   const defaultValues = useMemo(
@@ -53,18 +53,18 @@ export default function ArticleNewEditForm({miller}) {
     defaultValues,
   });
 
-  const {reset, watch, setValue, handleSubmit, formState: {isSubmitting}} = methods;
+  const { reset, watch, setValue, handleSubmit, formState: { isSubmitting } } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      const res = JSON.parse(sessionStorage.getItem('res'))
+      const res = JSON.parse(sessionStorage.getItem('res'));
       const payload = {
         article: data.article,
         category: data.category,
         tags: data.tags.split(','),
-        counsellor_code: res.data.data.counsellor_code
-      }
+        counsellor_code: res.data.data.counsellor_code,
+      };
       axios
         .post(`https://interactapiverse.com/mahadevasth/shape/articles/upload`, payload)
         .then((res) => {
@@ -76,7 +76,7 @@ export default function ArticleNewEditForm({miller}) {
         });
     } catch (err) {
       console.log(err);
-      enqueueSnackbar('Something went wrong', {variant: 'error'});
+      enqueueSnackbar('Something went wrong', { variant: 'error' });
       setLoading(false);
     }
   });
@@ -103,25 +103,22 @@ export default function ArticleNewEditForm({miller}) {
     setFiles([]);
   };
 
-  const handleDeleteChip = (chipToDelete) => {
-    setKeywords((keywords) => keywords.filter((chip) => chip !== chipToDelete));
-  };
   const renderProperties = (
     <>
       {mdUp && (
         <Grid md={4}>
-          <Typography variant='h6' sx={{mb: 0.5}}>
+          <Typography variant='h6' sx={{ mb: 0.5 }}>
             Article
             Details
           </Typography>
-          <Typography variant='body2' sx={{color: 'text.secondary'}}>
+          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
             Category,article,tags,image...
           </Typography>
         </Grid>
       )}
       <Grid xs={12} md={8}>
         <Card>
-          <Stack spacing={3} sx={{p: 3}}>
+          <Stack spacing={3} sx={{ p: 3 }}>
             <Box
               columnGap={2}
               rowGap={3}
@@ -136,39 +133,35 @@ export default function ArticleNewEditForm({miller}) {
                 label='Category'
                 placeholder='Choose Category'
                 fullWidth
-                options={['Mental Health']}
+                options={['Mental Health',"Therapy"]}
                 getOptionLabel={(option) => option}
               />
 
-              <RHFTextField name='article' multiline
-                            rows={4} label='Article'/>
-
-              <RHFTextField name='tags' label='Tags' onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  if (watch("tags") && !keywords.includes(watch("tags"))) {
-                    setKeywords([...keywords, values.keywords]);
-                    setValue("tags", '')
-                  }
-
-                  event.preventDefault();
-                }
-              }}
-                            placeholder='Add tags and press Enter'
-                            InputProps={{
-                              startAdornment: (
-                                <Stack direction='row' spacing={1} sx={{marginRight: 1}}>
-                                  {keywords.map((chip, index) => (
-                                    <Chip
-                                      key={index}
-                                      label={chip}
-                                      onDelete={() => handleDeleteChip(chip)}
-                                    />
-                                  ))}
-                                </Stack>
-                              ),
-                            }}
-              />
+            <RHFAutocomplete
+              name="tags"
+              label="Tags"
+              placeholder="Add tags and press Enter"
+              multiple
+              freeSolo
+              options={keywords.map((option) => option)}
+              getOptionLabel={(option) => option}
+              renderTags={(selected, getTagProps) =>
+                selected.map((option, index) => (
+                  <Chip
+                    {...getTagProps({ index })}
+                    key={option}
+                    label={option}
+                    size="small"
+                    color="info"
+                    variant="soft"
+                  />
+                ))
+              }
+            />
             </Box>
+
+            <RHFTextField name='article' multiline
+                          rows={4} label='Article' />
             {/*<Typography variant='subtitle2'>Upload Your Image</Typography>*/}
 
             {/*<Upload*/}
@@ -205,13 +198,13 @@ export default function ArticleNewEditForm({miller}) {
         >
 
 
-          <LoadingScreen sx={{margin: 'auto'}}/>
+          <LoadingScreen sx={{ margin: 'auto' }} />
         </Box>
       ) : (<FormProvider methods={methods} onSubmit={onSubmit}>
         <Grid container spacing={3}>
           {renderProperties}
           <Grid xs={12}>
-            <Box sx={{display: 'flex', justifyContent: 'end'}}>
+            <Box sx={{ display: 'flex', justifyContent: 'end' }}>
               <Button variant='contained' type='submit'>Submit</Button>
             </Box>
           </Grid>

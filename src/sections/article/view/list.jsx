@@ -161,26 +161,30 @@ const {articles} = useGetArticles()
     {
       field: 'category',
       headerName: 'Category',
-      width: 372,
+      flex:1,
+      minWidth: 372,
       // hideable: false,
     },
-    {
-      field: 'image',
-      headerName: 'Image',
-      width: 372,
-      // renderCell: (params) => <RenderCellCreatedAt params={params} />,
-    },
+    // {
+    //   field: 'image',
+    //   headerName: 'Image',
+    //   flex:1,
+    //   minWidth: 372,
+    //   // renderCell: (params) => <RenderCellCreatedAt params={params} />,
+    // },
     {
       field: 'article',
       headerName: 'Article',
-      width: 372,
+      flex:1,
+      minWidth: 372,
       // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
     {
       field: 'tags',
       headerName: 'Tags',
-      width: 372,
+      flex:1,
+      minWidth: 372,
       // renderCell: (params) => <RenderCellCreatedAt params={params} />,
     },
 
