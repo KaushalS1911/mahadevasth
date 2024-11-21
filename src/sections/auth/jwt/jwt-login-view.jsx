@@ -122,7 +122,7 @@ export default function JwtLoginView() {
                   display="flex"
                   justifyContent="center"
                   mb={3}
-                  sx={{ height: '130px', mb: '60px' }}
+                  sx={{ height: '100%', mb: '60px' }}
                 >
                   <img src={logo} alt="BootstrapBrain Logo"/>
                 </Box>

@@ -15,7 +15,7 @@ export default function Header() {
     <AppBar position="fixed" color="default" sx={{ py: 0, zIndex: 1300 }}>
       <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 3, lg: 0 }, display: 'flex' }}>
         <Box px={2}>
-          <Box sx={{height: {xl:"85px",xs: "80px"}}}>
+          <Box sx={{height: {xl:"64px",xs: "54px"}}}>
             <img src={img} style={{ height: '100%' }} alt="logo" />
           </Box>
         </Box>
