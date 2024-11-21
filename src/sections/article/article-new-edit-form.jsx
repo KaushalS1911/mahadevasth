@@ -36,7 +36,7 @@ export default function ArticleNewEditForm({ miller }) {
   const NewProductSchema = Yup.object().shape({
     category: Yup.string().required('category is required'),
     article: Yup.string().required('Article is required'),
-    tags: Yup.array().min(2, 'Must have at least 2 tags'),
+    tags: Yup.array().required('Tags is required'),
   });
 
   const defaultValues = useMemo(
