@@ -87,6 +87,7 @@ function ArticleListView() {
   const settings = useSettingsContext();
 
   const [tableData, setTableData] = useState(articles || []);
+  const [deleteId,setDeleteId] = useState(null)
 
   const [filters, setFilters] = useState(defaultFilters);
 
@@ -123,9 +124,8 @@ function ArticleListView() {
           enqueueSnackbar('Article added successfully');
           mutate()
         }
-      })
+      }).catch((err) => enqueueSnackbar('Something want wrong!',{variant:'error'}))
 
-      enqueueSnackbar('Delete success!');
     },
     [enqueueSnackbar, tableData],
   );
@@ -226,7 +226,10 @@ function ArticleListView() {
           showInMenu
           icon={<Iconify icon="solar:trash-bin-trash-bold" />}
           label="Delete"
-          onClick={() => handleDeleteRow(params.row.id)}
+          onClick={() => {
+            confirmRows.onTrue()
+            setDeleteId(params?.row?.id);
+          }}
         />,
         // <GridActionsCellItem
         //   showInMenu
@@ -373,7 +376,7 @@ function ArticleListView() {
         title='Delete'
         content={
           <>
-            Are you sure want to delete <strong> {selectedRowIds.length} </strong> items?
+            Are you sure want to delete article?
           </>
         }
         action={
@@ -381,7 +384,7 @@ function ArticleListView() {
             variant='contained'
             color='error'
             onClick={() => {
-              handleDeleteRows();
+              handleDeleteRow(deleteId);
               confirmRows.onFalse();
             }}
           >
