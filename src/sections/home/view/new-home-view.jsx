@@ -18,8 +18,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import footerImage from '../../../assets/home/people-on-hill.webp';
 import clouds from '../../../assets/home/clouds.webp';
 import startFromTheHomePage from '../../../assets/home/Person_at_desk_worrying_about_bills_5fb2799564.webp';
-import GetExpertAdvice
-  from '../../../assets/home/Hand_holding_a_tablet_showing_a_Good_Thinking_page_d8283b4667 (1).webp';
+import GetExpertAdvice from '../../../assets/home/Hand_holding_a_tablet_showing_a_Good_Thinking_page_d8283b4667.webp';
 import takeselfassessment from '../../../assets/home/Person_using_laptop_to_do_self_assessment_60457968d2.webp';
 import findtherighthelpforyou from '../../../assets/home/Phone_with_text_boxes_coming_out_from_it_b133244e7b.webp';
 import assessments1 from '../../../assets/home/Person_meditating_next_to_dog_924ce099c4.webp';
