@@ -12,7 +12,7 @@ import {
   List,
   ListItemIcon,
   ListItemText,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
 import footerImage from '../../../assets/home/people-on-hill.webp';
@@ -22,7 +22,6 @@ import GetExpertAdvice
   from '../../../assets/home/Hand_holding_a_tablet_showing_a_Good_Thinking_page_d8283b4667 (1).webp';
 import takeselfassessment from '../../../assets/home/Person_using_laptop_to_do_self_assessment_60457968d2.webp';
 import findtherighthelpforyou from '../../../assets/home/Phone_with_text_boxes_coming_out_from_it_b133244e7b.webp';
-import heroImage from '../../../assets/home/Person_sitting_on_sofa_with_london_skyline_in_window_c9f23641f7 (1).webp';
 import assessments1 from '../../../assets/home/Person_meditating_next_to_dog_924ce099c4.webp';
 import assessments2 from '../../../assets/home/Person_sleeping_on_sofa_fdaab4ea73.webp';
 import assessments3 from '../../../assets/home/Low_mood_tile_Person_sat_on_armchair_making_phone_call_79b1155315.webp';
@@ -31,20 +30,20 @@ import img1 from 'src/assets/home/Person_on_beanbag_using_tablet_and_wearing_hea
 import img2 from 'src/assets/home/Multi_faith_image_9011784dec.webp';
 import img3 from 'src/assets/home/Parents_or_carers_and_child_798c433a8d.webp';
 import img4 from 'src/assets/home/Employees_553d7f4384.webp';
-import sliderimg1 from "../../../assets/home/Person_sitting_on_sofa_with_london_skyline_in_window_c9f23641f7 (1).webp"
+import sliderimg1 from '../../../assets/home/Person_sitting_on_sofa_with_london_skyline_in_window_c9f23641f7 (1).webp';
 import sliderimg2 from 'src/assets/home/Faith_home_page_aac3fc6171.webp';
 import sliderimg3 from 'src/assets/home/Employees_553d7f4384.webp';
 import sliderimg4 from 'src/assets/home/OG_Image_a7bd58e917.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-import {Navigation} from 'swiper/modules';
-import {useTheme} from "@mui/system";
+import { Navigation } from 'swiper/modules';
+import { useTheme } from '@mui/system';
 
 const NewHomeView = () => {
 
@@ -91,98 +90,98 @@ const NewHomeView = () => {
   ];
   const slides = [
     {
-      title: "Mental Health in London",
+      title: 'Mental Health in London',
       description:
-        "Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than half a million people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.",
+        'Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than half a million people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
       image: sliderimg1,
     },
     {
-      title: "Good Thinking marks 7 years",
+      title: 'Good Thinking marks 7 years',
       description:
-        "1 November marked 7 years since the launch of Good Thinking. Since going live in 2017, the service has supported over 800,000 Londoners to manage their mental health and wellbeing.",
+        '1 November marked 7 years since the launch of Good Thinking. Since going live in 2017, the service has supported over 800,000 Londoners to manage their mental health and wellbeing.',
       image: sliderimg2,
     },
     {
-      title: "Support your employees",
+      title: 'Support your employees',
       description:
-        "We know it can be time-consuming to find good quality free resources that support your employee wellbeing strategy. Good Thinking have created a toolkit to help employers create a safe and supportive workplace in these challenging times.",
+        'We know it can be time-consuming to find good quality free resources that support your employee wellbeing strategy. Good Thinking have created a toolkit to help employers create a safe and supportive workplace in these challenging times.',
       image: sliderimg3,
     },
     {
-      title: "Digital mental wellbeing for London",
+      title: 'Digital mental wellbeing for London',
       description:
-        "Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.",
+        'Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
       image: sliderimg4,
     },
   ];
   const theme = useTheme();
-  const isMdUp = useMediaQuery(theme.breakpoints.up("lg"));
+  const isMdUp = useMediaQuery(theme.breakpoints.up('lg'));
   return (
     <Box
       sx={{
-        backgroundColor: "#FAF7F2",
-        mt: {xs: "56px", sm: "64px"},
-        overflowX: "hidden",
+        backgroundColor: '#FAF7F2',
+        mt: { xs: '56px', sm: '64px' },
+        overflowX: 'hidden',
       }}
     >
-      <Container sx={{mt: 5}} maxWidth={'xl'}>
+      <Container sx={{ mt: 5 }} maxWidth={'xl'}>
         <Grid container>
-          <Swiper navigation={isMdUp} modules={[Navigation]} className="mySwiper">
+          <Swiper navigation={isMdUp} modules={[Navigation]} className='mySwiper'>
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <Grid
                   container
-                  alignItems="center"
-                  justifyContent="center"
-                  sx={{p: 4}}
+                  alignItems='center'
+                  justifyContent='center'
+                  sx={{ p: 4 }}
                 >
                   <Grid
                     item
                     xs={12}
                     md={6}
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    textAlign="left"
-                    data-aos="fade-right"
+                    display='flex'
+                    flexDirection='column'
+                    justifyContent='center'
+                    alignItems='center'
+                    textAlign='left'
+                    data-aos='fade-right'
                   >
                     <Typography
-                      variant="h1"
+                      variant='h1'
                       sx={{
                         fontWeight: 700,
                         lineHeight: 1.2,
-                        color: "#333",
+                        color: '#333',
                         mb: 2,
-                        pl: {lg: 10}
+                        pl: { lg: 10 },
                       }}
                     >
                       {slide.title}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: {xs: "1rem", sm: "24px"},
-                        lineHeight: "1.6",
+                        fontSize: { xs: '1rem', sm: '24px' },
+                        lineHeight: '1.6',
                         mb: 3,
-                        color: "#555",
-                        maxWidth: {md: "550px"},
+                        color: '#555',
+                        maxWidth: { md: '550px' },
                       }}
                     >
                       {slide.description}
                     </Typography>
                     <Button
-                      variant="contained"
+                      variant='contained'
                       sx={{
-                        backgroundColor: "#667C53",
-                        color: "#fff",
-                        width: {xs: "100%", sm: "210px"},
-                        mb:{ xs: 2, md: 0 },
-                        padding: "14px 16px",
-                        borderRadius: "56px",
-                        fontSize: "17px",
-                        textTransform: "capitalize",
-                        "&:hover": {
-                          backgroundColor: "#5A6D48",
+                        backgroundColor: '#667C53',
+                        color: '#fff',
+                        width: { xs: '100%', sm: '210px' },
+                        mb: { xs: 2, md: 0 },
+                        padding: '14px 16px',
+                        borderRadius: '56px',
+                        fontSize: '17px',
+                        textTransform: 'capitalize',
+                        '&:hover': {
+                          backgroundColor: '#5A6D48',
                         },
                       }}
                     >
@@ -193,21 +192,21 @@ const NewHomeView = () => {
                     item
                     xs={12}
                     md={6}
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    data-aos="fade-left"
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    data-aos='fade-left'
                   >
                     <Box
                       sx={{
                         borderRadius: 4,
-                        width: "500px",
+                        width: '500px',
                       }}
                     >
                       <img
                         src={slide.image}
-                        alt="Mental Health Illustration"
-                        style={{height: "auto", width: "100%", borderRadius: "8px"}}
+                        alt='Mental Health Illustration'
+                        style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
                       />
                     </Box>
                   </Grid>
@@ -308,8 +307,8 @@ const NewHomeView = () => {
           >
             <Box
               sx={{
-                width: {xs: '100%', md: '60%'},
-                marginBottom: {xs: 2, md: 0},
+                width: { xs: '100%', md: '60%' },
+                marginBottom: { xs: 2, md: 0 },
               }}
             >
               <Typography
@@ -318,7 +317,7 @@ const NewHomeView = () => {
                   fontWeight: 'bold',
                   color: '#3E2723',
                   marginBottom: 2,
-                  fontSize: {xs: '1.5rem', sm: '1.75rem', md: '2.5rem'},
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.5rem' },
                 }}
               >
                 Young people
@@ -327,7 +326,7 @@ const NewHomeView = () => {
                 variant='body1'
                 sx={{
                   color: '#5C4935',
-                  fontSize: {xs: '0.875rem', sm: '1rem', md: '1.125rem'},
+                  fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
                 }}
               >
                 We invite young people to guide and review our content – so you can be
@@ -340,7 +339,7 @@ const NewHomeView = () => {
               src={img1}
               alt='Young person illustration'
               sx={{
-                width: {xs: '100%', md: '35%'},
+                width: { xs: '100%', md: '35%' },
                 maxHeight: '200px',
                 objectFit: 'contain',
                 borderRadius: '12px',
@@ -349,7 +348,7 @@ const NewHomeView = () => {
           </Box>
 
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4} data-aos="fade-up">
+            <Grid item xs={12} md={4} data-aos='fade-up'>
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -393,7 +392,7 @@ const NewHomeView = () => {
                 />
               </Card>
             </Grid>
-            <Grid item xs={12} md={4} data-aos="fade-up">
+            <Grid item xs={12} md={4} data-aos='fade-up'>
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -438,7 +437,7 @@ const NewHomeView = () => {
               </Card>
             </Grid>
 
-            <Grid item xs={12} md={4} data-aos="fade-up">
+            <Grid item xs={12} md={4} data-aos='fade-up'>
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -490,7 +489,7 @@ const NewHomeView = () => {
             textAlign: 'center',
           }}
         >
-          <Typography variant="h3" fontWeight="bold" color="#2a2926" gutterBottom data-aos="fade-down">
+          <Typography variant='h3' fontWeight='bold' color='#2a2926' gutterBottom data-aos='fade-down'>
             How to use the Good Thinking service
           </Typography>
           <Typography
@@ -502,55 +501,39 @@ const NewHomeView = () => {
             In this short guide, we’ll take you through the various Good Thinking
             resources and suggest five ways you can access them.
           </Typography>
-          <Stack direction='row' justifyContent='center' spacing={2} sx={{ mb: 4 }}>
-            <Button
-              onClick={() => handleTabClick('home')}
-              variant={activeTab === 'home' ? 'contained' : 'outlined'}
-              sx={{
-                borderRadius: '20px',
-                backgroundColor: activeTab === 'home' ? '#56723f' : 'white',
-                color: activeTab === 'home' ? 'white' : '#2a2926',
-                '&:hover': { backgroundColor: activeTab === 'home' ? '#3e582b' : '#f5f5f5' },
-              }}
-            >
-              Start from the home page
-            </Button>
-            <Button
-              onClick={() => handleTabClick('expertAdvice')}
-              variant={activeTab === 'expertAdvice' ? 'contained' : 'outlined'}
-              sx={{
-                borderRadius: '20px',
-                backgroundColor: activeTab === 'expertAdvice' ? '#56723f' : 'white',
-                color: activeTab === 'expertAdvice' ? 'white' : '#2a2926',
-                '&:hover': { backgroundColor: activeTab === 'expertAdvice' ? '#3e582b' : '#f5f5f5' },
-              }}
-            >
-              Get expert advice
-            </Button>
-            <Button
-              onClick={() => handleTabClick('selfAssessment')}
-              variant={activeTab === 'selfAssessment' ? 'contained' : 'outlined'}
-              sx={{
-                borderRadius: '20px',
-                backgroundColor: activeTab === 'selfAssessment' ? '#56723f' : 'white',
-                color: activeTab === 'selfAssessment' ? 'white' : '#2a2926',
-                '&:hover': { backgroundColor: activeTab === 'selfAssessment' ? '#3e582b' : '#f5f5f5' },
-              }}
-            >
-              Take a self-assessment
-            </Button>
-            <Button
-              onClick={() => handleTabClick('Findtherighthelpforyou')}
-              variant={activeTab === 'Findtherighthelpforyou' ? 'contained' : 'outlined'}
-              sx={{
-                borderRadius: '20px',
-                backgroundColor: activeTab === 'Findtherighthelpforyou' ? '#56723f' : 'white',
-                color: activeTab === 'Findtherighthelpforyou' ? 'white' : '#2a2926',
-                '&:hover': { backgroundColor: activeTab === 'Findtherighthelpforyou' ? '#3e582b' : '#f5f5f5' },
-              }}
-            >
-              Find the right help for you
-            </Button>
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }} // Column for small screens, row for larger screens
+            justifyContent='center'
+            spacing={2}
+            sx={{
+              mb: 4,
+              alignItems: 'center', // Center align in column layout
+            }}
+          >
+            {[
+              { id: 'home', label: 'Start from the home page' },
+              { id: 'expertAdvice', label: 'Get expert advice' },
+              { id: 'selfAssessment', label: 'Take a self-assessment' },
+              { id: 'Findtherighthelpforyou', label: 'Find the right help for you' },
+            ].map((tab) => (
+              <Button
+                key={tab.id}
+                onClick={() => handleTabClick(tab.id)}
+                variant={activeTab === tab.id ? 'contained' : 'outlined'}
+                sx={{
+                  borderRadius: '20px',
+                  width: { xs: '100%', sm: 'auto' }, // Full width on small screens
+                  backgroundColor: activeTab === tab.id ? '#56723f' : 'white',
+                  color: activeTab === tab.id ? 'white' : '#2a2926',
+                  fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
+                  '&:hover': {
+                    backgroundColor: activeTab === tab.id ? '#3e582b' : '#f5f5f5',
+                  },
+                }}
+              >
+                {tab.label}
+              </Button>
+            ))}
           </Stack>
           {activeTab === 'home' && (
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -611,7 +594,7 @@ const NewHomeView = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
               <Box data-aos='fade-right'>
                 <Box>
-                  <Typography variant='h5' fontWeight='bold' color='#2a2926'>
+                  <Typography variant='h4' fontWeight='bold' color='#2a2926'>
                     Get expert advice from Good Thinking
                   </Typography>
                   <Typography variant='body1' color='#6c6c6c' sx={{ mt: 2, maxWidth: 600, mx: 'auto' }}>
@@ -637,11 +620,15 @@ const NewHomeView = () => {
                   <Grid item xs={12} md={6} mt={3}>
                     <Typography
                       variant='h4'
-                      sx={{ fontWeight: 'bold', mb: 2 }}
+                      sx={{
+                        fontWeight: 'bold',
+                        mb: 2,
+                        fontSize: { xs: 'h5.fontSize', sm: 'h4.fontSize' }, // Responsive typography
+                      }}
                     >
                       Use the Good Thinking self-assessment tool
                     </Typography>
-                    <Typography sx={{ mb: 3 }}>
+                    <Typography sx={{ mb: 3, fontSize: { xs: 'body2.fontSize', sm: 'body1.fontSize' } }}>
                       Our in-depth, clinically validated self-assessments are a thorough
                       assessment of both your mental and physical wellbeing. They may
                       seem quite ‘medical’ because they are based on the types of
@@ -664,29 +651,39 @@ const NewHomeView = () => {
                     <Button
                       variant='contained'
                       size='large'
-                      sx={{ backgroundColor: '#4CAF50', color: '#fff', mt: 2 }}
+                      sx={{
+                        backgroundColor: '#3e582b',
+                        color: '#fff',
+                        mt: 2,
+                        width: { xs: '100%', sm: 'auto' }, // Full width on small screens
+                      }}
                     >
                       Take a self-assessment
                     </Button>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Box data-aos='fade-left' width={450}>
+                    <Box data-aos='fade-left' width='100%' sx={{ display: 'flex', justifyContent: 'center' }}>
                       <Box
                         component='img'
                         src={takeselfassessment}
                         alt='Illustration of people under a tree'
-                        sx={{ mt: 4, maxWidth: '100%', height: 'auto' }}
+                        sx={{
+                          mt: 4,
+                          maxWidth: '100%',
+                          height: 'auto',
+                          maxHeight: { xs: 300, sm: 'auto' }, // Control max height for small screens
+                        }}
                       />
                     </Box>
                   </Grid>
                 </Grid>
               </Box>
-            </Box>)}
+            </Box>
+          )}
           {activeTab === 'Findtherighthelpforyou' && (
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
               <Grid container spacing={4} alignItems='center'>
-                {/* Text Content */}
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={12} md={6}>
                   <Box data-aos='fade-right'>
                     <Typography variant='h4' fontWeight='bold' gutterBottom>
                       Find the right help for you
@@ -698,33 +695,47 @@ const NewHomeView = () => {
                     </Typography>
                     <Button
                       variant='contained'
-                      color='success'
                       size='large'
-                      sx={{ borderRadius: 8, textTransform: 'none', mt: 2 }}
+                      sx={{
+                        borderRadius: 8,
+                        textTransform: 'none',
+                        mt: 2,
+                        backgroundColor: '#3e582b',
+                        width: '100%', // Make the button take full width on smaller screens
+                        maxWidth: 300, // Limit max width to maintain visual balance
+                      }}
                     >
                       Find the right help for you
                     </Button>
                   </Box>
-                </Grid> <Grid item xs={12} md={6}>
-                <Box data-aos='fade-left' width={450}>
-                  <Box
-                    component='img'
-                    src={findtherighthelpforyou}
-                    alt='Illustration of people under a tree'
-                    sx={{ mt: 4, maxWidth: '100%', height: 'auto' }}
-                  />
-                </Box>
+                </Grid>
+
+                <Grid item xs={12} sm={12} md={6}>
+                  <Box data-aos='fade-left' sx={{ width: '100%' }}>
+                    <Box
+                      component='img'
+                      src={findtherighthelpforyou}
+                      alt='Illustration of people under a tree'
+                      sx={{
+                        mt: 4,
+                        maxWidth: '100%',
+                        height: 'auto',
+                        objectFit: 'cover', // Ensure the image covers the area well
+                      }}
+                    />
+                  </Box>
+                </Grid>
               </Grid>
-              </Grid>
-            </Box>)}
+            </Box>
+          )}
         </Box>
-        <Box sx={{p: 4, textAlign: "center"}}>
-          <Typography variant="h3" sx={{fontWeight: "bold", mb: 4,}}>
+        <Box sx={{ p: 4, textAlign: 'center' }}>
+          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4 }}>
             Choose self-assessment
           </Typography>
           <Grid container spacing={4}>
             {assessments.map((assessment, index) => (
-              <Grid item xs={12} sm={6} md={6} key={index} data-aos="fade-up">
+              <Grid item xs={12} sm={6} md={6} key={index} data-aos='fade-up'>
                 <Card
                   sx={{
                     borderRadius: '16px',
@@ -737,8 +748,8 @@ const NewHomeView = () => {
                     padding: 3,
                   }}
                 > <Typography
-                  variant="overline"
-                  sx={{display: "block", color: "#6C757D", fontSize: 14, mb: 1}}
+                  variant='overline'
+                  sx={{ display: 'block', color: '#6C757D', fontSize: 14, mb: 1 }}
                 >
                   SELF-ASSESSMENT
                 </Typography>
@@ -753,12 +764,12 @@ const NewHomeView = () => {
                       mb: 2,
                     }}
                   />
-                  <CardContent sx={{textAlign: "center"}}>
+                  <CardContent sx={{ textAlign: 'center' }}>
 
-                    <Typography sx={{fontWeight: "bold", mb: 2, fontSize: 20}}>
+                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: 20 }}>
                       {assessment.title}
                     </Typography>
-                    <Typography variant="body2" sx={{fontSize: 15}} color="text.secondary">
+                    <Typography variant='body2' sx={{ fontSize: 15 }} color='text.secondary'>
                       {assessment.description}
                     </Typography>
                   </CardContent>
@@ -782,24 +793,24 @@ const NewHomeView = () => {
         }}
       >
         {/* Cloud Decorations */}
-        <Box data-aos="fade-down"
-             component="img"
+        <Box data-aos='fade-down'
+             component='img'
              src={clouds}
-             alt="clouds"
+             alt='clouds'
              sx={{
-               position: "absolute",
+               position: 'absolute',
                top: 0,
                left: 0,
-               width: "100%",
-               height: "auto",
+               width: '100%',
+               height: 'auto',
                opacity: 0.1,
-               py: 2
+               py: 2,
              }}
         />
-        <Typography variant="h3" fontWeight="bold" gutterBottom data-aos="fade-up">
+        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'>
           Subscribe to our newsletter
         </Typography>
-        <Typography data-aos="fade-up" variant="body1" color="textSecondary" sx={{mb: 3}}>
+        <Typography data-aos='fade-up' variant='body1' color='textSecondary' sx={{ mb: 3 }}>
           Stay tuned and subscribe to our newsletter. Get the latest tips and
           resources for Londoners.
         </Typography>
