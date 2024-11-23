@@ -141,14 +141,14 @@ const NewHomeView = () => {
                     display='flex'
                     flexDirection='column'
                     justifyContent='center'
-                    alignItems='center'
+                    alignItems='left'
                     textAlign='left'
                     data-aos='fade-right'
                   >
                     <Typography
-                      variant='h1'
                       sx={{
                         fontWeight: 700,
+                        fontSize: { xs: '2rem', sm: '3rem' },
                         lineHeight: 1.2,
                         color: '#333',
                         mb: 2,
@@ -159,33 +159,36 @@ const NewHomeView = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: { xs: '1rem', sm: '24px' },
+                        fontSize: { xs: '1.1rem', sm: '1.4rem' },
                         lineHeight: '1.6',
                         mb: 3,
                         color: '#555',
-                        maxWidth: { md: '550px' },
+                        maxWidth: { md: '650px' },
+                        pl: { lg: 10 },
                       }}
                     >
                       {slide.description}
                     </Typography>
-                    <Button
-                      variant='contained'
-                      sx={{
-                        backgroundColor: '#667C53',
-                        color: '#fff',
-                        width: { xs: '100%', sm: '210px' },
-                        mb: { xs: 2, md: 0 },
-                        padding: '14px 16px',
-                        borderRadius: '56px',
-                        fontSize: '17px',
-                        textTransform: 'capitalize',
-                        '&:hover': {
-                          backgroundColor: '#5A6D48',
-                        },
-                      }}
-                    >
-                      Read more
-                    </Button>
+                    <Box sx={{ pl: { lg: 10 } }}>
+                      <Button
+                        variant='contained'
+                        sx={{
+                          backgroundColor: '#667C53',
+                          color: '#fff',
+                          width: { xs: '100%', sm: '210px' },
+                          mb: { xs: 2, md: 0 },
+                          padding: '14px 16px',
+                          borderRadius: '56px',
+                          fontSize: '17px',
+                          textTransform: 'capitalize',
+                          '&:hover': {
+                            backgroundColor: '#5A6D48',
+                          },
+                        }}
+                      >
+                        Read more
+                      </Button>
+                    </Box>
                   </Grid>
                   <Grid
                     item
@@ -280,7 +283,7 @@ const NewHomeView = () => {
               data-aos='fade-left'
               sx={{
                 color: '#5C4935',
-                fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
+                fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },
                 lineHeight: 1.8,
                 width: { xs: '100%', md: '50%' },
               }}
@@ -316,7 +319,7 @@ const NewHomeView = () => {
                   fontWeight: 'bold',
                   color: '#3E2723',
                   marginBottom: 2,
-                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.5rem' },
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.6rem' },
                 }}
               >
                 Young people
@@ -325,7 +328,7 @@ const NewHomeView = () => {
                 variant='body1'
                 sx={{
                   color: '#5C4935',
-                  fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
+                  fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },
                 }}
               >
                 We invite young people to guide and review our content – so you can be
@@ -371,7 +374,7 @@ const NewHomeView = () => {
                     fontWeight: 'bold',
                     color: '#3E2723',
                     marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' },
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
                   }}
                 >
                   Faith & belief communities
@@ -415,7 +418,7 @@ const NewHomeView = () => {
                     fontWeight: 'bold',
                     color: '#3E2723',
                     marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' },
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
                   }}
                 >
                   Parents & carers
@@ -460,7 +463,7 @@ const NewHomeView = () => {
                     fontWeight: 'bold',
                     color: '#3E2723',
                     marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' },
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2' },
                   }}
                 >
                   Employers & employees
@@ -488,14 +491,14 @@ const NewHomeView = () => {
             textAlign: 'center',
           }}
         >
-          <Typography variant='h3' fontWeight='bold' color='#2a2926' gutterBottom data-aos='fade-down'>
+          <Typography   sx={{fontSize: { xs: '2rem', sm: '2.6rem' }}} fontWeight='bold' color='#2a2926' gutterBottom data-aos='fade-down'>
             How to use the Good Thinking service
           </Typography>
           <Typography
             data-aos='fade-up'
             variant='subtitle1'
             color='#6c6c6c'
-            sx={{ mb: 4, maxWidth: '600px', mx: 'auto' }}
+            sx={{ mb: 4, maxWidth: '600px', mx: 'auto',fontSize: { xs: '1.2rem', sm: '1.4rem' }, }}
           >
             In this short guide, we’ll take you through the various Good Thinking
             resources and suggest five ways you can access them.
@@ -520,11 +523,13 @@ const NewHomeView = () => {
                 onClick={() => handleTabClick(tab.id)}
                 variant={activeTab === tab.id ? 'contained' : 'outlined'}
                 sx={{
-                  borderRadius: '20px',
-                  width: { xs: '100%', sm: 'auto' }, // Full width on small screens
-                  backgroundColor: activeTab === tab.id ? '#56723f' : 'white',
+                  borderRadius: '30px',
+                  width: { xs: '100%', sm: 'auto' },
+                  py:1.5,
+                  backgroundColor: activeTab === tab.id ? '#56723f' : '',
+                  border:'1px solid black',
                   color: activeTab === tab.id ? 'white' : '#2a2926',
-                  fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
+                  fontSize: { xs: '14px', sm: '16px' },
                   '&:hover': {
                     backgroundColor: activeTab === tab.id ? '#3e582b' : '#f5f5f5',
                   },
@@ -563,18 +568,18 @@ const NewHomeView = () => {
                             position: 'absolute',
                             left: 0,
                             color: 'orange',
-                            fontSize: '35px',
+                            fontSize: '3rem',
                           },
                         },
                       }}
                     >
                       <ListItem>
-                        <Typography variant='h4' fontWeight='bold' color='#2a2926'>
+                        <Typography  fontWeight='bold' color='#2a2926'  sx={{fontSize: { xs: '1.5rem', sm: '2rem' }}}>
                           {item.title}
                         </Typography>
                       </ListItem>
                     </List>
-                    <Typography variant='body1' color='#6c6c6c' sx={{ pl: 3, textAlign: 'start' }}>
+                    <Typography  color='#6c6c6c' sx={{ pl: 3, textAlign: 'start' ,fontSize: { xs: '1.1rem', sm: '1.4rem' }}}>
                       {item.description}
                     </Typography>
                   </Box>
@@ -582,21 +587,27 @@ const NewHomeView = () => {
               </Box>
               <Box data-aos='fade-left' width={450}>
                 <Box
-                  component='img'
-                  src={startFromTheHomePage}
-                  alt='Illustration of people under a tree'
-                  sx={{ mt: 4, maxWidth: '100%', height: 'auto' }}
-                />
+                  sx={{
+                    borderRadius: 4,
+                    width: '450px',
+                  }}
+                >
+                  <img
+                    src={startFromTheHomePage}
+                    alt='Mental Health Illustration'
+                    style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                  />
+                </Box>
               </Box>
             </Box>)}
           {activeTab === 'expertAdvice' && (
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
               <Box data-aos='fade-right'>
                 <Box>
-                  <Typography variant='h4' fontWeight='bold' color='#2a2926'>
+                  <Typography variant='h4' fontWeight='bold' color='#2a2926' sx={{fontSize: { xs: '1.5rem', sm: '2rem' }}}>
                     Get expert advice from Good Thinking
                   </Typography>
-                  <Typography variant='body1' color='#6c6c6c' sx={{ mt: 2, maxWidth: 600, mx: 'auto' }}>
+                  <Typography  color='#6c6c6c' sx={{maxWidth: 680, mx: 'auto',fontSize: { xs: '1.1rem', sm: '1.4rem' } }}>
                     The Good Thinking team has created a broad range of advice in collaboration
                     with clinical and subject-area experts, designed to support Londoners with
                     everyday mental health challenges. Explore our guides for tips and resources.
@@ -605,11 +616,17 @@ const NewHomeView = () => {
               </Box>
               <Box data-aos='fade-left' width={450}>
                 <Box
-                  component='img'
-                  src={GetExpertAdvice}
-                  alt='Illustration of people under a tree'
-                  sx={{ mt: 4, maxWidth: '100%', height: 'auto' }}
-                />
+                  sx={{
+                    borderRadius: 4,
+                    width: '450px',
+                  }}
+                >
+                  <img
+                    src={GetExpertAdvice}
+                    alt='Mental Health Illustration'
+                    style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                  />
+                </Box>
               </Box>
             </Box>)}
           {activeTab === 'selfAssessment' && (
@@ -622,12 +639,12 @@ const NewHomeView = () => {
                       sx={{
                         fontWeight: 'bold',
                         mb: 2,
-                        fontSize: { xs: 'h5.fontSize', sm: 'h4.fontSize' }, // Responsive typography
+                        fontSize: { xs: '1.5rem', sm: '2rem' } // Responsive typography
                       }}
                     >
                       Use the Good Thinking self-assessment tool
                     </Typography>
-                    <Typography sx={{ mb: 3, fontSize: { xs: 'body2.fontSize', sm: 'body1.fontSize' } }}>
+                    <Typography sx={{fontSize: { xs: '1.2rem', sm: '1.4rem' }}}>
                       Our in-depth, clinically validated self-assessments are a thorough
                       assessment of both your mental and physical wellbeing. They may
                       seem quite ‘medical’ because they are based on the types of
@@ -641,9 +658,9 @@ const NewHomeView = () => {
                       ].map((text, index) => (
                         <ListItem key={index} sx={{ alignItems: 'flex-start' }}>
                           <ListItemIcon>
-                            <CircleIcon sx={{ color: '#FF9800', fontSize: 12, mt: 0.5 }} />
+                            <CircleIcon sx={{ color: '#FF9800', fontSize: { xs: '1rem', sm: '1.1rem' }, mt: 0.5 }} />
                           </ListItemIcon>
-                          <ListItemText primary={text} />
+                          {text}
                         </ListItem>
                       ))}
                     </List>
@@ -651,6 +668,7 @@ const NewHomeView = () => {
                       variant='contained'
                       size='large'
                       sx={{
+                        borderRadius:'30px',
                         backgroundColor: '#3e582b',
                         color: '#fff',
                         mt: 2,
@@ -663,16 +681,17 @@ const NewHomeView = () => {
                   <Grid item xs={12} md={6}>
                     <Box data-aos='fade-left' width='100%' sx={{ display: 'flex', justifyContent: 'center' }}>
                       <Box
-                        component='img'
-                        src={takeselfassessment}
-                        alt='Illustration of people under a tree'
                         sx={{
-                          mt: 4,
-                          maxWidth: '100%',
-                          height: 'auto',
-                          maxHeight: { xs: 300, sm: 'auto' }, // Control max height for small screens
+                          borderRadius: 4,
+                          width: '450px',
                         }}
-                      />
+                      >
+                        <img
+                          src={takeselfassessment}
+                          alt='Mental Health Illustration'
+                          style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                        />
+                      </Box>
                     </Box>
                   </Grid>
                 </Grid>
@@ -684,10 +703,10 @@ const NewHomeView = () => {
               <Grid container spacing={4} alignItems='center'>
                 <Grid item xs={12} sm={12} md={6}>
                   <Box data-aos='fade-right'>
-                    <Typography variant='h4' fontWeight='bold' gutterBottom>
+                    <Typography sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} fontWeight='bold' gutterBottom>
                       Find the right help for you
                     </Typography>
-                    <Typography variant='body1' color='textSecondary' paragraph>
+                    <Typography  color='textSecondary' paragraph  sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' }}}>
                       Tell us what you're looking for help with and who you're looking for
                       help for and you’ll then receive personalised recommendations for
                       apps and other resources to meet your needs.
@@ -698,10 +717,10 @@ const NewHomeView = () => {
                       sx={{
                         borderRadius: 8,
                         textTransform: 'none',
+                        backgroundColor: '#3E582B',
                         mt: 2,
-                        backgroundColor: '#3e582b',
-                        width: '100%', // Make the button take full width on smaller screens
-                        maxWidth: 300, // Limit max width to maintain visual balance
+                        '&:hover': { backgroundColor: '#6F8A6E' },                        width: '100%',
+                        maxWidth: 300,
                       }}
                     >
                       Find the right help for you
@@ -712,16 +731,16 @@ const NewHomeView = () => {
                 <Grid item xs={12} sm={12} md={6}>
                   <Box data-aos='fade-left' sx={{ width: '100%' }}>
                     <Box
-                      component='img'
-                      src={findtherighthelpforyou}
-                      alt='Illustration of people under a tree'
                       sx={{
-                        mt: 4,
-                        maxWidth: '100%',
-                        height: 'auto',
-                        objectFit: 'cover', // Ensure the image covers the area well
+                        width: '450px',
                       }}
-                    />
+                    >
+                      <img
+                        src={findtherighthelpforyou}
+                        alt='Mental Health Illustration'
+                        style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                      />
+                    </Box>
                   </Box>
                 </Grid>
               </Grid>
@@ -729,7 +748,7 @@ const NewHomeView = () => {
           )}
         </Box>
         <Box sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4 }}>
+          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4,fontSize: { xs: '2rem', sm: '3rem' }, }}>
             Choose self-assessment
           </Typography>
           <Grid container spacing={4}>
@@ -746,12 +765,22 @@ const NewHomeView = () => {
                     alignItems: 'center',
                     padding: 3,
                   }}
-                > <Typography
-                  variant='overline'
-                  sx={{ display: 'block', color: '#6C757D', fontSize: 14, mb: 1 }}
                 >
-                  SELF-ASSESSMENT
-                </Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                    <Typography
+                      variant="overline"
+                      sx={{
+                        display: 'block',
+                        color: '#6C757D',
+                        fontSize: 14,
+                        mb: 1,
+                        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        p: 1,
+                      }}
+                    >
+                      SELF-ASSESSMENT
+                    </Typography>
+                  </Box>
                   <Box
                     component='img'
                     src={assessment.image}
@@ -765,10 +794,10 @@ const NewHomeView = () => {
                   />
                   <CardContent sx={{ textAlign: 'center' }}>
 
-                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: 20 }}>
+                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.5rem', sm: '2rem' }}}>
                       {assessment.title}
                     </Typography>
-                    <Typography variant='body2' sx={{ fontSize: 15 }} color='text.secondary'>
+                    <Typography variant='body2' sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' } }} color='text.secondary'>
                       {assessment.description}
                     </Typography>
                   </CardContent>
@@ -806,10 +835,10 @@ const NewHomeView = () => {
                py: 2,
              }}
         />
-        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'>
+        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'  sx={{fontSize: { xs: '2rem', sm: '2.6rem' }}}>
           Subscribe to our newsletter
         </Typography>
-        <Typography data-aos='fade-up' variant='body1' color='textSecondary' sx={{ mb: 3 }}>
+        <Typography data-aos='fade-up' variant='body1' color='textSecondary'   sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' },mb: 3,px:2}}>
           Stay tuned and subscribe to our newsletter. Get the latest tips and
           resources for Londoners.
         </Typography>
@@ -817,9 +846,9 @@ const NewHomeView = () => {
           variant='contained'
           color='success'
           sx={{
-            backgroundColor: '#6F8A6E', // Olive green
+            backgroundColor: '#5A735A',
             color: '#fff',
-            '&:hover': { backgroundColor: '#5A735A' },
+            '&:hover': { backgroundColor: '#6F8A6E' },
             borderRadius: '20px',
             px: 4,
             py: 1.5,
@@ -827,7 +856,6 @@ const NewHomeView = () => {
         >
           Subscribe
         </Button>
-        {/* Illustration at the bottom */}
         <Box
           component='img'
           src={footerImage}
