@@ -175,14 +175,14 @@
 //     ],
 //   },
 // ];
-import { lazy, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import {lazy, Suspense} from 'react';
+import {Outlet} from 'react-router-dom';
 
-import { AuthGuard } from 'src/auth/guard';
+import {AuthGuard} from 'src/auth/guard';
 import DashboardLayout from 'src/layouts/dashboard';
 
-import { LoadingScreen } from 'src/components/loading-screen';
-import { OverviewFileView } from 'src/sections/overview/file/view';
+import {LoadingScreen} from 'src/components/loading-screen';
+import {OverviewFileView} from 'src/sections/overview/file/view';
 import MillerCreatePage from 'src/pages/dashboard/add-miller/new';
 import HeadOfficeListPage from '../../pages/dashboard/head-office/list';
 import HeadOfficeOrderView from '../../pages/dashboard/head-office/OredrView';
@@ -220,6 +220,12 @@ import ArticleListPage from '../../pages/article/article-list-view';
 import ArticleCreatePage from '../../pages/article/article-create-view';
 import ArticleEditView from '../../sections/article/view/article-edit-view';
 import ArticleCreateView from '../../sections/article/view/article-create-view';
+import VideoCreateView from "../../sections/video/view/video-create-view";
+import VideoEditView from "../../sections/video/view/video-edit-view";
+import AudioCreateView from "../../sections/audio/view/audio-create-view";
+import AudioEditView from "../../sections/audio/view/audio-edit-view";
+import VideoListPage from "../../pages/video/video-list-view";
+import AudioListPage from "../../pages/audio/audio-list-view";
 
 // ----------------------------------------------------------------------
 
@@ -296,30 +302,30 @@ export const dashboardRoutes = [
     element: (
       <AuthGuard>
         <DashboardLayout>
-          <Suspense fallback={<LoadingScreen />}>
-            <Outlet />
+          <Suspense fallback={<LoadingScreen/>}>
+            <Outlet/>
           </Suspense>
         </DashboardLayout>
       </AuthGuard>
     ),
     children: [
-      { element: <IndexPage />, index: true },
-      { path: 'update-password', element: <UpdatePassword /> },
+      {element: <IndexPage/>, index: true},
+      {path: 'update-password', element: <UpdatePassword/>},
       // { path: 'basic-info', element: <BasicInfoPage /> },
-      { path: 'basic-info', element: <MainBasicInfo /> },
-      { path: 'field-report', element: <FieldReport /> },
-      { path: 'distributor-info', element: <DistributorInfo /> },
+      {path: 'basic-info', element: <MainBasicInfo/>},
+      {path: 'field-report', element: <FieldReport/>},
+      {path: 'distributor-info', element: <DistributorInfo/>},
       // { path: 'upload-document', element: <UploadDocument /> },
       // { path: 'document', element: <UploadListView /> },
       // { path: 'orders', element: <BranchOrderListView /> },
-      { path: 'orders', element: <OrderListPage /> },
-      { path: 'inventory', element: <InventoryList /> },
-      { path: 'add-miller', element: <MillerCreatePage /> },
-      { path: 'ecommerce', element: <OverviewEcommercePage /> },
-      { path: 'analytics', element: <OverviewAnalyticsPage /> },
-      { path: 'banking', element: <OverviewBankingPage /> },
-      { path: 'booking', element: <OverviewBookingPage /> },
-      { path: 'file', element: <OverviewFilePage /> },
+      {path: 'orders', element: <OrderListPage/>},
+      {path: 'inventory', element: <InventoryList/>},
+      {path: 'add-miller', element: <MillerCreatePage/>},
+      {path: 'ecommerce', element: <OverviewEcommercePage/>},
+      {path: 'analytics', element: <OverviewAnalyticsPage/>},
+      {path: 'banking', element: <OverviewBankingPage/>},
+      {path: 'booking', element: <OverviewBookingPage/>},
+      {path: 'file', element: <OverviewFilePage/>},
       // {
       //   path: 'head-office',
       //   children: [
@@ -335,100 +341,119 @@ export const dashboardRoutes = [
       {
         path: 'head-office',
         children: [
-          { element: <HeadOfficeListPage />, index: true },
+          {element: <HeadOfficeListPage/>, index: true},
           // { path: 'profile', element: <UserProfilePage /> },
           // { path: 'cards', element: <UserCardsPage /> },
-          { path: 'list', element: <HeadOfficeListPage /> },
+          {path: 'list', element: <HeadOfficeListPage/>},
           // { path: 'new', element: <UserCreatePage /> },
-          { path: ':id/view', element: <HeadOfficeOrderView /> },
+          {path: ':id/view', element: <HeadOfficeOrderView/>},
           // { path: 'account', element: <UserAccountPage /> },
         ],
-      },{
+      },
+      {
         path: 'article',
         children: [
-          { element: <ArticleListPage />, index: true },
-          { path: 'list', element: <ArticleListPage /> },
-          { path: 'new', element: <ArticleCreateView /> },
-          { path: ':id/edit', element: <ArticleEditView /> },
+          {element: <ArticleListPage/>, index: true},
+          {path: 'list', element: <ArticleListPage/>},
+          {path: 'new', element: <ArticleCreateView/>},
+          {path: ':id/edit', element: <ArticleEditView/>},
+        ],
+      },
+      {
+        path: 'video',
+        children: [
+          {element: <VideoListPage/>, index: true},
+          {path: 'list', element: <VideoListPage/>},
+          {path: 'new', element: <VideoCreateView/>},
+          {path: ':id/edit', element: <VideoEditView/>},
+        ],
+      },
+      {
+        path: 'audio',
+        children: [
+          {element: <AudioListPage/>, index: true},
+          {path: 'list', element: <AudioListPage/>},
+          {path: 'new', element: <AudioCreateView/>},
+          {path: ':id/edit', element: <AudioEditView/>},
         ],
       },
       {
         path: 'product',
         children: [
-          { element: <ProductListPage />, index: true },
-          { path: 'list', element: <ProductListPage /> },
-          { path: ':id', element: <ProductDetailsPage /> },
-          { path: 'new', element: <ProductCreatePage /> },
-          { path: ':id/edit', element: <ProductEditPage /> },
+          {element: <ProductListPage/>, index: true},
+          {path: 'list', element: <ProductListPage/>},
+          {path: ':id', element: <ProductDetailsPage/>},
+          {path: 'new', element: <ProductCreatePage/>},
+          {path: ':id/edit', element: <ProductEditPage/>},
         ],
       },
       {
         path: 'document',
         children: [
-          { element: <UploadListView />, index: true },
-          { path: 'document-overview', element: <OverviewFileView /> },
-          { path: 'document-list', element: <UploadListView /> },
-          { path: 'document-upload', element: <UploadDocument /> },
-          { path: 'document-view', element: <ProductDetailsPage /> },
-          { path: 'upload-evidence', element: <UploadEvidencePage /> },
+          {element: <UploadListView/>, index: true},
+          {path: 'document-overview', element: <OverviewFileView/>},
+          {path: 'document-list', element: <UploadListView/>},
+          {path: 'document-upload', element: <UploadDocument/>},
+          {path: 'document-view', element: <ProductDetailsPage/>},
+          {path: 'upload-evidence', element: <UploadEvidencePage/>},
         ],
       },
       {
         path: 'distributor',
         children: [
-          { element: <UploadListView />, index: true },
+          {element: <UploadListView/>, index: true},
           // { path: 'distributor-list', element: <DistributorList /> },
-          { path: 'distributor-list', element: <DistributorListView /> },
-                    { path: 'add-distributor', element: <DistributorCreatePage /> },
-          { path: 'document-upload', element: <UploadDistributorDocument /> },
-          { path: 'distributor-view/:id', element: <SingleDistributorView /> },
-          { path: 'distributor-document-view/:id', element: <DistributorDocumentView /> },
+          {path: 'distributor-list', element: <DistributorListView/>},
+          {path: 'add-distributor', element: <DistributorCreatePage/>},
+          {path: 'document-upload', element: <UploadDistributorDocument/>},
+          {path: 'distributor-view/:id', element: <SingleDistributorView/>},
+          {path: 'distributor-document-view/:id', element: <DistributorDocumentView/>},
         ],
       },
       {
         path: 'csp',
         children: [
-          { element: <UploadListView />, index: true },
+          {element: <UploadListView/>, index: true},
           // { path: 'csp-list', element: <CspListView  /> },
-          { path: 'csp-list', element: <CspListView  /> },
+          {path: 'csp-list', element: <CspListView/>},
           // { path: '/nccf/branch/${tital}/csp/list', element: <CspListView  /> },
           // { path: 'csp-view/:id', element: <SingleCspView /> },
-          { path: 'csp-view/:id', element: <SingleCsp /> },
-          { path: 'csp-document-view/:id', element: <CspDocumentView /> },
+          {path: 'csp-view/:id', element: <SingleCsp/>},
+          {path: 'csp-document-view/:id', element: <CspDocumentView/>},
         ],
       },
       {
         path: 'head-csp',
         children: [
-          { element: <UploadListView />, index: true },
+          {element: <UploadListView/>, index: true},
           // { path: 'csp-list', element: <CspListView  /> },
-          { path: 'csp-list', element: <CspHeadListView  /> },
+          {path: 'csp-list', element: <CspHeadListView/>},
           // { path: '/nccf/branch/${tital}/csp/list', element: <CspListView  /> },
           // { path: 'csp-view/:id', element: <SingleCspView /> },
-          { path: 'csp-view/:id', element: <SingleCspHead /> },
-          { path: 'csp-document-view/:id', element: <CspHeadDocumentView /> },
+          {path: 'csp-view/:id', element: <SingleCspHead/>},
+          {path: 'csp-document-view/:id', element: <CspHeadDocumentView/>},
         ],
       },
       {
         path: 'miller',
         children: [
-          { element: <UploadListView />, index: true },
+          {element: <UploadListView/>, index: true},
           // { path: 'miller-list', element: <MillerList /> },
-          { path: 'miller-list', element: <MillerListView /> },
-          { path: 'add-miller', element: <MillerCreatePage /> },
-          { path: 'document-upload', element: <UploadMillerDocument /> },
-          { path: 'miller-view/:id', element: <SingleMillerView /> },
-          { path: 'miller-document-view/:id', element: <MillerDocumentView /> },
+          {path: 'miller-list', element: <MillerListView/>},
+          {path: 'add-miller', element: <MillerCreatePage/>},
+          {path: 'document-upload', element: <UploadMillerDocument/>},
+          {path: 'miller-view/:id', element: <SingleMillerView/>},
+          {path: 'miller-document-view/:id', element: <MillerDocumentView/>},
         ],
       },
 
       {
         path: 'states-overview',
         children: [
-          { element: <ProductListPage />, index: true },
-          { path: 'branch', element: <BranchDashboardView /> },
-          { path: 'vendor-type', element: <ProductListPage /> },
-          { path: 'order', element: <BranchListPage /> },
+          {element: <ProductListPage/>, index: true},
+          {path: 'branch', element: <BranchDashboardView/>},
+          {path: 'vendor-type', element: <ProductListPage/>},
+          {path: 'order', element: <BranchListPage/>},
           // { path: 'document-upload', element: <UploadDocument /> },
           // { path: 'document-view', element: <ProductDetailsPage /> },
           // { path: 'upload-evidence', element: <UploadEvidencePage /> },
@@ -437,50 +462,50 @@ export const dashboardRoutes = [
       {
         path: 'invoice',
         children: [
-          { element: <InvoiceListPage />, index: true },
-          { path: 'list', element: <InvoiceListPage /> },
-          { path: ':id', element: <InvoiceDetailsPage /> },
-          { path: ':id/edit', element: <InvoiceEditPage /> },
-          { path: 'new', element: <InvoiceCreatePage /> },
+          {element: <InvoiceListPage/>, index: true},
+          {path: 'list', element: <InvoiceListPage/>},
+          {path: ':id', element: <InvoiceDetailsPage/>},
+          {path: ':id/edit', element: <InvoiceEditPage/>},
+          {path: 'new', element: <InvoiceCreatePage/>},
         ],
       },
       {
         path: 'post',
         children: [
-          { element: <BlogPostsPage />, index: true },
-          { path: 'list', element: <BlogPostsPage /> },
-          { path: ':title', element: <BlogPostPage /> },
-          { path: ':title/edit', element: <BlogEditPostPage /> },
-          { path: 'new', element: <BlogNewPostPage /> },
+          {element: <BlogPostsPage/>, index: true},
+          {path: 'list', element: <BlogPostsPage/>},
+          {path: ':title', element: <BlogPostPage/>},
+          {path: ':title/edit', element: <BlogEditPostPage/>},
+          {path: 'new', element: <BlogNewPostPage/>},
         ],
       },
       {
         path: 'job',
         children: [
-          { element: <JobListPage />, index: true },
-          { path: 'list', element: <JobListPage /> },
-          { path: ':id', element: <JobDetailsPage /> },
-          { path: 'new', element: <JobCreatePage /> },
-          { path: ':id/edit', element: <JobEditPage /> },
+          {element: <JobListPage/>, index: true},
+          {path: 'list', element: <JobListPage/>},
+          {path: ':id', element: <JobDetailsPage/>},
+          {path: 'new', element: <JobCreatePage/>},
+          {path: ':id/edit', element: <JobEditPage/>},
         ],
       },
       {
         path: 'tour',
         children: [
-          { element: <TourListPage />, index: true },
-          { path: 'list', element: <TourListPage /> },
-          { path: ':id', element: <TourDetailsPage /> },
-          { path: 'new', element: <TourCreatePage /> },
-          { path: ':id/edit', element: <TourEditPage /> },
+          {element: <TourListPage/>, index: true},
+          {path: 'list', element: <TourListPage/>},
+          {path: ':id', element: <TourDetailsPage/>},
+          {path: 'new', element: <TourCreatePage/>},
+          {path: ':id/edit', element: <TourEditPage/>},
         ],
       },
-      { path: 'file-manager', element: <FileManagerPage /> },
-      { path: 'mail', element: <MailPage /> },
-      { path: 'chat', element: <ChatPage /> },
-      { path: 'calendar', element: <CalendarPage /> },
-      { path: 'kanban', element: <KanbanPage /> },
-      { path: 'permission', element: <PermissionDeniedPage /> },
-      { path: 'blank', element: <BlankPage /> },
+      {path: 'file-manager', element: <FileManagerPage/>},
+      {path: 'mail', element: <MailPage/>},
+      {path: 'chat', element: <ChatPage/>},
+      {path: 'calendar', element: <CalendarPage/>},
+      {path: 'kanban', element: <KanbanPage/>},
+      {path: 'permission', element: <PermissionDeniedPage/>},
+      {path: 'blank', element: <BlankPage/>},
     ],
   },
 ];
