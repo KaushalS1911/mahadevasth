@@ -12,6 +12,7 @@ import {
   List,
   ListItemIcon,
   ListItemText,
+  useMediaQuery
 } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
 import footerImage from '../../../assets/home/people-on-hill.webp';
@@ -30,8 +31,20 @@ import img1 from 'src/assets/home/Person_on_beanbag_using_tablet_and_wearing_hea
 import img2 from 'src/assets/home/Multi_faith_image_9011784dec.webp';
 import img3 from 'src/assets/home/Parents_or_carers_and_child_798c433a8d.webp';
 import img4 from 'src/assets/home/Employees_553d7f4384.webp';
+import sliderimg1 from "../../../assets/home/Person_sitting_on_sofa_with_london_skyline_in_window_c9f23641f7 (1).webp"
+import sliderimg2 from 'src/assets/home/Faith_home_page_aac3fc6171.webp';
+import sliderimg3 from 'src/assets/home/Employees_553d7f4384.webp';
+import sliderimg4 from 'src/assets/home/OG_Image_a7bd58e917.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {Swiper, SwiperSlide} from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+
+import {Navigation} from 'swiper/modules';
+import {useTheme} from "@mui/system";
 
 const NewHomeView = () => {
 
@@ -76,96 +89,164 @@ const NewHomeView = () => {
       image: assessments4,
     },
   ];
-
+  const slides = [
+    {
+      title: "Mental Health in London",
+      description:
+        "Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than half a million people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.",
+      image: sliderimg1,
+    },
+    {
+      title: "Good Thinking marks 7 years",
+      description:
+        "1 November marked 7 years since the launch of Good Thinking. Since going live in 2017, the service has supported over 800,000 Londoners to manage their mental health and wellbeing.",
+      image: sliderimg2,
+    },
+    {
+      title: "Support your employees",
+      description:
+        "We know it can be time-consuming to find good quality free resources that support your employee wellbeing strategy. Good Thinking have created a toolkit to help employers create a safe and supportive workplace in these challenging times.",
+      image: sliderimg3,
+    },
+    {
+      title: "Digital mental wellbeing for London",
+      description:
+        "Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.",
+      image: sliderimg4,
+    },
+  ];
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Box
       sx={{
-        backgroundColor: '#FAF7F2',
-        mt: { xs: '56px', sm: '64px' },
-        overflowX: 'hidden', // Prevent horizontal overflow
+        backgroundColor: "#FAF7F2",
+        mt: {xs: "56px", sm: "64px"},
+        overflowX: "hidden",
       }}
     >
-      <Container sx={{ mt: 5 }} maxWidth={'xl'}>
-        <Grid container spacing={4} alignItems='center'>
-          {/* Text Section */}
-          <Grid item xs={12} md={6} data-aos='fade-right'>
-            <Typography
-              variant='h3'
-              sx={{
-                fontWeight: 700,
-                fontSize: { xs: '1.8rem', sm: '2rem', md: '3rem' },
-                lineHeight: 1.2,
-                color: '#333',
-                textAlign: { xs: 'center', md: 'left' }, // Center text on smaller screens
-                mb: 2,
-              }}
-            >
-              Mental Health <br /> in London
-            </Typography>
-            <Typography
-              variant='body1'
-              sx={{
-                fontSize: { xs: '1rem', sm: '1.1rem' },
-                lineHeight: '1.6',
-                mb: 4,
-                color: '#555',
-                maxWidth: { md: '450px' },
-                mx: { xs: 'auto', md: 'unset' },
-                textAlign: { xs: 'center', md: 'left' }, // Center text on smaller screens
-              }}
-            >
-              Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for
-              them. Since its launch in 2017, more than half a million people have used our digital service to tackle
-              anxiety, stress, low mood, sleep problems, and other concerns.
-            </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: { xs: 'center', md: 'flex-start' }, // Center button on smaller screens
-              }}
-            >
-              <Button
-                variant='contained'
-                sx={{
-                  backgroundColor: '#667C53',
-                  color: '#fff',
-                  width: { xs: '100%', sm: '210px' },
-                  padding: '14px 16px',
-                  borderRadius: '56px',
-                  fontSize: '17px',
-                  textTransform: 'capitalize',
-                  '&:hover': {
-                    backgroundColor: '#5A6D48',
-                  },
-                }}
-              >
-                Read more
-              </Button>
-            </Box>
-          </Grid>
+      <Container sx={{mt: 5}} maxWidth={'xl'}>
+        <Grid container>
+          <Swiper navigation={isMdUp} modules={[Navigation]} className="mySwiper">
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <Grid
+                  container
+                  alignItems="center"
+                  justifyContent="center"
+                  sx={{p: 4}}
+                >
+                  <Grid
+                    item
+                    xs={12}
+                    md={6}
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                    textAlign="left"
+                    data-aos="fade-right"
+                  >
+                    <Typography
+                      variant="h1"
+                      sx={{
+                        fontWeight: 700,
+                        lineHeight: 1.2,
+                        color: "#333",
+                        mb: 2,
+                        pl: {lg: 10}
+                      }}
+                    >
+                      {slide.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: {xs: "1rem", sm: "24px"},
+                        lineHeight: "1.6",
+                        mb: 3,
+                        color: "#555",
+                        maxWidth: {md: "550px"},
+                      }}
+                    >
+                      {slide.description}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "#667C53",
+                        color: "#fff",
+                        width: {xs: "100%", sm: "210px"},
+                        mb:{ xs: 2, md: 0 },
+                        padding: "14px 16px",
+                        borderRadius: "56px",
+                        fontSize: "17px",
+                        textTransform: "capitalize",
+                        "&:hover": {
+                          backgroundColor: "#5A6D48",
+                        },
+                      }}
+                    >
+                      Read more
+                    </Button>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    md={6}
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    data-aos="fade-left"
+                  >
+                    <Box
+                      sx={{
+                        borderRadius: 4,
+                        width: "500px",
+                      }}
+                    >
+                      <img
+                        src={slide.image}
+                        alt="Mental Health Illustration"
+                        style={{height: "auto", width: "100%", borderRadius: "8px"}}
+                      />
+                    </Box>
+                  </Grid>
+                </Grid>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <style jsx>{`
+            .swiper-button-prev,
+            .swiper-button-next {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: #F6EBD1;
+              color: #695042;
+              border-radius: 50%;
+              padding: 20px;
+              z-index: 10;
+            }
 
-          {/* Illustration Section */}
-          <Grid
-            data-aos='fade-left'
-            item
-            xs={12}
-            md={6}
-            display='flex'
-            justifyContent='center'
-            sx={{ mt: { xs: 4, md: 0 } }}
-          >
-            <Box
-              component='img'
-              src={heroImage}
-              alt='Mental Health Illustration'
-              sx={{
-                maxWidth: '100%',
-                borderRadius: 4,
-                width: { xs: '90%', sm: '80%', md: '400px' },
-                height: 'auto',
-              }}
-            />
-          </Grid>
+            .swiper-button-prev {
+              left: 0%;
+            }
+
+            .swiper-button-next {
+              right: 0%;
+            }
+
+            .swiper-button-prev:hover,
+            .swiper-button-next:hover {
+              border: 1px solid orange;
+            }
+
+            .swiper-button-next::after,
+            .swiper-button-prev::after {
+              font-size: 20px;
+              font-weight: bold;
+            }
+          `}</style>
         </Grid>
         <Box
           sx={{
@@ -227,8 +308,8 @@ const NewHomeView = () => {
           >
             <Box
               sx={{
-                width: { xs: '100%', md: '60%' },
-                marginBottom: { xs: 2, md: 0 },
+                width: {xs: '100%', md: '60%'},
+                marginBottom: {xs: 2, md: 0},
               }}
             >
               <Typography
@@ -237,7 +318,7 @@ const NewHomeView = () => {
                   fontWeight: 'bold',
                   color: '#3E2723',
                   marginBottom: 2,
-                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.5rem' },
+                  fontSize: {xs: '1.5rem', sm: '1.75rem', md: '2.5rem'},
                 }}
               >
                 Young people
@@ -246,7 +327,7 @@ const NewHomeView = () => {
                 variant='body1'
                 sx={{
                   color: '#5C4935',
-                  fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
+                  fontSize: {xs: '0.875rem', sm: '1rem', md: '1.125rem'},
                 }}
               >
                 We invite young people to guide and review our content – so you can be
@@ -259,7 +340,7 @@ const NewHomeView = () => {
               src={img1}
               alt='Young person illustration'
               sx={{
-                width: { xs: '100%', md: '35%' },
+                width: {xs: '100%', md: '35%'},
                 maxHeight: '200px',
                 objectFit: 'contain',
                 borderRadius: '12px',
@@ -268,7 +349,7 @@ const NewHomeView = () => {
           </Box>
 
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4} data-aos='fade-up'>
+            <Grid item xs={12} md={4} data-aos="fade-up">
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -312,7 +393,7 @@ const NewHomeView = () => {
                 />
               </Card>
             </Grid>
-            <Grid item xs={12} md={4} data-aos='fade-up'>
+            <Grid item xs={12} md={4} data-aos="fade-up">
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -357,7 +438,7 @@ const NewHomeView = () => {
               </Card>
             </Grid>
 
-            <Grid item xs={12} md={4} data-aos='fade-up'>
+            <Grid item xs={12} md={4} data-aos="fade-up">
               <Card
                 sx={{
                   backgroundColor: '#F6EDD6',
@@ -409,7 +490,7 @@ const NewHomeView = () => {
             textAlign: 'center',
           }}
         >
-          <Typography variant='h3' fontWeight='bold' color='#2a2926' gutterBottom data-aos='fade-down'>
+          <Typography variant="h3" fontWeight="bold" color="#2a2926" gutterBottom data-aos="fade-down">
             How to use the Good Thinking service
           </Typography>
           <Typography
@@ -637,13 +718,13 @@ const NewHomeView = () => {
               </Grid>
             </Box>)}
         </Box>
-        <Box sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4 }}>
+        <Box sx={{p: 4, textAlign: "center"}}>
+          <Typography variant="h3" sx={{fontWeight: "bold", mb: 4,}}>
             Choose self-assessment
           </Typography>
           <Grid container spacing={4}>
             {assessments.map((assessment, index) => (
-              <Grid item xs={12} sm={6} md={6} key={index} data-aos='fade-up'>
+              <Grid item xs={12} sm={6} md={6} key={index} data-aos="fade-up">
                 <Card
                   sx={{
                     borderRadius: '16px',
@@ -656,8 +737,8 @@ const NewHomeView = () => {
                     padding: 3,
                   }}
                 > <Typography
-                  variant='overline'
-                  sx={{ display: 'block', color: '#6C757D', fontSize: 14, mb: 1 }}
+                  variant="overline"
+                  sx={{display: "block", color: "#6C757D", fontSize: 14, mb: 1}}
                 >
                   SELF-ASSESSMENT
                 </Typography>
@@ -672,12 +753,12 @@ const NewHomeView = () => {
                       mb: 2,
                     }}
                   />
-                  <CardContent sx={{ textAlign: 'center' }}>
+                  <CardContent sx={{textAlign: "center"}}>
 
-                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: 20 }}>
+                    <Typography sx={{fontWeight: "bold", mb: 2, fontSize: 20}}>
                       {assessment.title}
                     </Typography>
-                    <Typography variant='body2' sx={{ fontSize: 15 }} color='text.secondary'>
+                    <Typography variant="body2" sx={{fontSize: 15}} color="text.secondary">
                       {assessment.description}
                     </Typography>
                   </CardContent>
@@ -701,24 +782,24 @@ const NewHomeView = () => {
         }}
       >
         {/* Cloud Decorations */}
-        <Box data-aos='fade-down'
-             component='img'
+        <Box data-aos="fade-down"
+             component="img"
              src={clouds}
-             alt='clouds'
+             alt="clouds"
              sx={{
-               position: 'absolute',
+               position: "absolute",
                top: 0,
                left: 0,
-               width: '100%',
-               height: 'auto',
+               width: "100%",
+               height: "auto",
                opacity: 0.1,
-               py: 2,
+               py: 2
              }}
         />
-        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'>
+        <Typography variant="h3" fontWeight="bold" gutterBottom data-aos="fade-up">
           Subscribe to our newsletter
         </Typography>
-        <Typography data-aos='fade-up' variant='body1' color='textSecondary' sx={{ mb: 3 }}>
+        <Typography data-aos="fade-up" variant="body1" color="textSecondary" sx={{mb: 3}}>
           Stay tuned and subscribe to our newsletter. Get the latest tips and
           resources for Londoners.
         </Typography>
