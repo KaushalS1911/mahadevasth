@@ -42,7 +42,7 @@
     "@react-pdf/renderer": "^3.1.14",
     "@supabase/supabase-js": "^2.39.0",
     "aos": "^2.3.4",
-    "apexcharts": "^3.44.2",
+    "apexcharts": "^4.0.0",
     "autosuggest-highlight": "^3.3.4",
     "aws-amplify": "^6.0.6",
     "axios": "^1.6.2",
