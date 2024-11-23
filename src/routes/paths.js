@@ -190,9 +190,9 @@
 //     },
 //   },
 // };
-import { paramCase } from 'src/utils/change-case';
+import {paramCase} from 'src/utils/change-case';
 
-import { _id, _postTitles } from 'src/_mock/assets';
+import {_id, _postTitles} from 'src/_mock/assets';
 
 // ----------------------------------------------------------------------
 
@@ -253,7 +253,7 @@ export const paths = {
     },
     jwt: {
       login: `/login`,
-      branch:`/admin`,
+      branch: `/admin`,
       headlogin: `/ho-login`,
       register: `/register`,
     },
@@ -294,7 +294,7 @@ export const paths = {
   dashboard: {
     root: ROOTS.DASHBOARD,
     basic_info: `${ROOTS.DASHBOARD}/basic-info`,
-    field_report:`${ROOTS.DASHBOARD}/field-report`,
+    field_report: `${ROOTS.DASHBOARD}/field-report`,
     distributor_info: `${ROOTS.DASHBOARD}/distributor-info`,
     updatePassword: `${ROOTS.DASHBOARD}/update-password`,
     inventory: `${ROOTS.DASHBOARD}/inventory`,
@@ -347,6 +347,18 @@ export const paths = {
       list: `${ROOTS.DASHBOARD}/article/list`,
       edit: (id) => `${ROOTS.DASHBOARD}/article/${id}/edit`,
     },
+    audio: {
+      root: `${ROOTS.DASHBOARD}/audio`,
+      new: `${ROOTS.DASHBOARD}/audio/new`,
+      list: `${ROOTS.DASHBOARD}/audio/list`,
+      edit: (id) => `${ROOTS.DASHBOARD}/audio/${id}/edit`,
+    },
+    video: {
+      root: `${ROOTS.DASHBOARD}/video`,
+      new: `${ROOTS.DASHBOARD}/video/new`,
+      list: `${ROOTS.DASHBOARD}/video/list`,
+      edit: (id) => `${ROOTS.DASHBOARD}/video/${id}/edit`,
+    },
     product: {
       root: `${ROOTS.DASHBOARD}/product`,
       new: `${ROOTS.DASHBOARD}/product/new`,
@@ -380,53 +392,53 @@ export const paths = {
     document: {
       root: `${ROOTS.DASHBOARD}/document`,
       document_overview: `${ROOTS.DASHBOARD}/document/document-overview`,
-     document_upload : `${ROOTS.DASHBOARD}/document/document-upload`,
-     document_list : `${ROOTS.DASHBOARD}/document/document-list`,
-     document_view : `${ROOTS.DASHBOARD}/document/document-view`,
-    upload_evidence: `${ROOTS.DASHBOARD}/document/upload-evidence`,
-        },
-    distributor:{
+      document_upload: `${ROOTS.DASHBOARD}/document/document-upload`,
+      document_list: `${ROOTS.DASHBOARD}/document/document-list`,
+      document_view: `${ROOTS.DASHBOARD}/document/document-view`,
+      upload_evidence: `${ROOTS.DASHBOARD}/document/upload-evidence`,
+    },
+    distributor: {
       root: `${ROOTS.DASHBOARD}/distributor`,
       distributor_list: `${ROOTS.DASHBOARD}/distributor/distributor-list`,
       add_distributor: `${ROOTS.DASHBOARD}/distributor/add-distributor`,
-     distributor_view :(title) =>  `${ROOTS.DASHBOARD}/distributor/distributor-view/${title}`,
-     distributor_document_view :(title) =>  `${ROOTS.DASHBOARD}/distributor/distributor-document-view/${title}`,
-     document_upload : `${ROOTS.DASHBOARD}/distributor/document-upload`,
+      distributor_view: (title) => `${ROOTS.DASHBOARD}/distributor/distributor-view/${title}`,
+      distributor_document_view: (title) => `${ROOTS.DASHBOARD}/distributor/distributor-document-view/${title}`,
+      document_upload: `${ROOTS.DASHBOARD}/distributor/document-upload`,
     },
-    miller:{
+    miller: {
       root: `${ROOTS.DASHBOARD}/miller`,
       miller_list: `${ROOTS.DASHBOARD}/miller/miller-list`,
-     miller_view :(title) =>  `${ROOTS.DASHBOARD}/miller/miller-view/${title}`,
-     miller_document_view :(title) =>  `${ROOTS.DASHBOARD}/miller/miller-document-view/${title}`,
+      miller_view: (title) => `${ROOTS.DASHBOARD}/miller/miller-view/${title}`,
+      miller_document_view: (title) => `${ROOTS.DASHBOARD}/miller/miller-document-view/${title}`,
       add_miller: `${ROOTS.DASHBOARD}/miller/add-miller`,
-     document_upload : `${ROOTS.DASHBOARD}/miller/document-upload`,
-          },
-    csp:{
+      document_upload: `${ROOTS.DASHBOARD}/miller/document-upload`,
+    },
+    csp: {
       root: `${ROOTS.DASHBOARD}/csp`,
       csp_list: `${ROOTS.DASHBOARD}/csp/csp-list`,
       // csp_list:(tital) =>  `${ROOTS.DASHBOARD}/nccf/branch/${tital}/csp/list`,
-     csp_view :(title) =>  `${ROOTS.DASHBOARD}/csp/csp-view/${title}`,
-     csp_document_view :(title) =>  `${ROOTS.DASHBOARD}/csp/csp-document-view/${title}`,
+      csp_view: (title) => `${ROOTS.DASHBOARD}/csp/csp-view/${title}`,
+      csp_document_view: (title) => `${ROOTS.DASHBOARD}/csp/csp-document-view/${title}`,
 
-          },
-    headCsp:{
+    },
+    headCsp: {
       root: `${ROOTS.DASHBOARD}/head-csp`,
       csp_list: `${ROOTS.DASHBOARD}/head-csp/csp-list`,
       // csp_list:(tital) =>  `${ROOTS.DASHBOARD}/nccf/branch/${tital}/csp/list`,
-     csp_view :(title) =>  `${ROOTS.DASHBOARD}/head-csp/csp-view/${title}`,
-     csp_document_view :(title) =>  `${ROOTS.DASHBOARD}/head-csp/csp-document-view/${title}`,
+      csp_view: (title) => `${ROOTS.DASHBOARD}/head-csp/csp-view/${title}`,
+      csp_document_view: (title) => `${ROOTS.DASHBOARD}/head-csp/csp-document-view/${title}`,
 
-          },
+    },
 
     statsOverview: {
-      root : `${ROOTS.DASHBOARD}/states-overview`,
+      root: `${ROOTS.DASHBOARD}/states-overview`,
       branch: `${ROOTS.DASHBOARD}/states-overview/branch`,
       vendor_type: `${ROOTS.DASHBOARD}/states-overview/vendor-type`,
       order: `${ROOTS.DASHBOARD}/states-overview/order`,
-    //  document_upload : `${ROOTS.DASHBOARD}/document/document-upload`,
-    //  document_list : `${ROOTS.DASHBOARD}/document/document-list`,
-    //  document_view : `${ROOTS.DASHBOARD}/document/document-view`,
-    // upload_evidence: `${ROOTS.DASHBOARD}/document/upload-evidence`,
+      //  document_upload : `${ROOTS.DASHBOARD}/document/document-upload`,
+      //  document_list : `${ROOTS.DASHBOARD}/document/document-list`,
+      //  document_view : `${ROOTS.DASHBOARD}/document/document-view`,
+      // upload_evidence: `${ROOTS.DASHBOARD}/document/upload-evidence`,
 
       // demo: {
       //   details: `${ROOTS.DASHBOARD}/head-office/${MOCK_ID}`,

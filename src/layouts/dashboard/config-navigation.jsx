@@ -1,17 +1,17 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 
-import { paths } from 'src/routes/paths';
+import {paths} from 'src/routes/paths';
 
-import { useTranslate } from 'src/locales';
+import {useTranslate} from 'src/locales';
 
 import SvgColor from 'src/components/svg-color';
-import { useAuthContext } from 'src/auth/hooks';
+import {useAuthContext} from 'src/auth/hooks';
 import Iconify from '../../components/iconify';
 
 // ----------------------------------------------------------------------
 
 const icon = (name) => (
-  <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }}/>
+  <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{width: 1, height: 1}}/>
   // OR
   // <Iconify icon="fluent:mail-24-filled" />
   // https://icon-sets.iconify.design/solar/
@@ -48,8 +48,8 @@ const ICONS = {
 // ----------------------------------------------------------------------
 
 export function useNavData() {
-  const { t } = useTranslate();
-  const { vendor } = useAuthContext();
+  const {t} = useTranslate();
+  const {vendor} = useAuthContext();
   const societyItems = vendor?.mil_dis_sub_roles === "own_distribution_own_mill" ? [
     // {
     //   title: t('Dashboard'),
@@ -67,8 +67,8 @@ export function useNavData() {
       icon: ICONS.chat,
       children: [
         // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+        {title: t('Document List'), path: paths.dashboard.document.document_list},
+        {title: t('Upload Document'), path: paths.dashboard.document.document_upload},
         {
           title: t('Upload Evidence'),
           path: paths.dashboard.document.upload_evidence,
@@ -81,16 +81,16 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
-  ]:[
+  ] : [
     // {
     //   title: t('Dashboard'),
     //   path: paths.dashboard.root,
@@ -99,7 +99,7 @@ export function useNavData() {
     {
       title: t('Article'),
       path: paths.dashboard.article,
-      icon: <Iconify icon="material-symbols:article" />,
+      icon: <Iconify icon="material-symbols:article"/>,
     },
     {
       title: t('Basic Info'),
@@ -112,9 +112,9 @@ export function useNavData() {
       path: paths.dashboard.miller.root,
       icon: ICONS.file,
       children: [
-        { title: t('Miller List'), path: paths.dashboard.miller.miller_list },
-        { title: t('Add Miller'), path: paths.dashboard.miller.add_miller },
-        { title: t('Upload Document'), path: paths.dashboard.miller.document_upload },
+        {title: t('Miller List'), path: paths.dashboard.miller.miller_list},
+        {title: t('Add Miller'), path: paths.dashboard.miller.add_miller},
+        {title: t('Upload Document'), path: paths.dashboard.miller.document_upload},
 
       ],
     },
@@ -125,8 +125,8 @@ export function useNavData() {
       icon: ICONS.chat,
       children: [
         // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+        {title: t('Document List'), path: paths.dashboard.document.document_list},
+        {title: t('Upload Document'), path: paths.dashboard.document.document_upload},
         {
           title: t('Upload Evidence'),
           path: paths.dashboard.document.upload_evidence,
@@ -139,12 +139,12 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
@@ -156,11 +156,21 @@ export function useNavData() {
     //   path: paths.dashboard.root,
     //   icon: ICONS.dashboard,
     // },
+
     {
       title: t('Article'),
       path: paths.dashboard.article.list,
-      icon: <Iconify icon="material-symbols:article" sx={{ width: 1, height: 1 }} />,
-    }
+      icon: <Iconify icon="material-symbols:article" sx={{width: 1, height: 1}}/>,
+    }, {
+      title: t('Audio'),
+      path: paths.dashboard.audio.list,
+      icon: <Iconify icon="ant-design:audio-filled"/>,
+    },
+    {
+      title: t('Video'),
+      path: paths.dashboard.video.list,
+      icon: <Iconify icon="mdi:video-outline"/>,
+    },
     // {
     //   title: t('Intents'),
     //   path: paths.dashboard.orders,
@@ -250,7 +260,7 @@ export function useNavData() {
     {
       title: t('Field Report'),
       path: paths.dashboard.field_report,
-      icon: <Iconify icon="tdesign:verify"  />,
+      icon: <Iconify icon="tdesign:verify"/>,
     },
     {
       title: t('Add Distributor Info'),
@@ -265,8 +275,8 @@ export function useNavData() {
       icon: ICONS.chat,
       children: [
         // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+        {title: t('Document List'), path: paths.dashboard.document.document_list},
+        {title: t('Upload Document'), path: paths.dashboard.document.document_upload},
         {
           title: t('Upload Evidence'),
           path: paths.dashboard.document.upload_evidence,
@@ -284,12 +294,12 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
@@ -314,7 +324,7 @@ export function useNavData() {
     {
       title: t('CSP'),
       path: paths.dashboard.csp.csp_list,
-      icon: <Iconify icon="ooui:user-group-rtl" sx={{ width: 1, height: 1 }}></Iconify>,
+      icon: <Iconify icon="ooui:user-group-rtl" sx={{width: 1, height: 1}}></Iconify>,
     },
     // {
     //   title: t('CSP'),
@@ -364,12 +374,12 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
@@ -389,18 +399,18 @@ export function useNavData() {
     {
       title: t('Field Report'),
       path: paths.dashboard.field_report,
-      icon: <Iconify icon="tdesign:verify"  />,
+      icon: <Iconify icon="tdesign:verify"/>,
     },
     {
       title: t('Distributor'),
       path: paths.dashboard.distributor.root,
       icon: ICONS.file,
       children: [
-            { title: t('Distributor List'), path: paths.dashboard.distributor.distributor_list },
-            { title: t('Add Distributor'), path: paths.dashboard.distributor.add_distributor },
-            { title: t('Upload Document'), path: paths.dashboard.distributor.document_upload },
+        {title: t('Distributor List'), path: paths.dashboard.distributor.distributor_list},
+        {title: t('Add Distributor'), path: paths.dashboard.distributor.add_distributor},
+        {title: t('Upload Document'), path: paths.dashboard.distributor.document_upload},
 
-          ],
+      ],
     },
     // {
     //   title: t('Intents'),
@@ -424,8 +434,8 @@ export function useNavData() {
       icon: ICONS.chat,
       children: [
         // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+        {title: t('Document List'), path: paths.dashboard.document.document_list},
+        {title: t('Upload Document'), path: paths.dashboard.document.document_upload},
         {
           title: t('Upload Evidence'),
           path: paths.dashboard.document.upload_evidence,
@@ -443,12 +453,12 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
@@ -469,18 +479,18 @@ export function useNavData() {
     {
       title: t('Field Report'),
       path: paths.dashboard.field_report,
-      icon: <Iconify icon="tdesign:verify"  />,
+      icon: <Iconify icon="tdesign:verify"/>,
     },
     {
       title: t('Miller'),
       path: paths.dashboard.miller.root,
       icon: ICONS.file,
       children: [
-            { title: t('Miller List'), path: paths.dashboard.miller.miller_list },
-            { title: t('Add Miller'), path: paths.dashboard.miller.add_miller },
-            { title: t('Upload Document'), path: paths.dashboard.miller.document_upload },
+        {title: t('Miller List'), path: paths.dashboard.miller.miller_list},
+        {title: t('Add Miller'), path: paths.dashboard.miller.add_miller},
+        {title: t('Upload Document'), path: paths.dashboard.miller.document_upload},
 
-          ],
+      ],
     },
     // {
     //   title: t('Intents'),
@@ -504,8 +514,8 @@ export function useNavData() {
       icon: ICONS.chat,
       children: [
         // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-        { title: t('Document List'), path: paths.dashboard.document.document_list },
-        { title: t('Upload Document'), path: paths.dashboard.document.document_upload },
+        {title: t('Document List'), path: paths.dashboard.document.document_list},
+        {title: t('Upload Document'), path: paths.dashboard.document.document_upload},
         {
           title: t('Upload Evidence'),
           path: paths.dashboard.document.upload_evidence,
@@ -524,12 +534,12 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
@@ -566,7 +576,7 @@ export function useNavData() {
     {
       title: t('CSP'),
       path: paths.dashboard.headCsp.csp_list,
-      icon: <Iconify icon="ooui:user-group-rtl" sx={{ width: 1, height: 1 }}></Iconify>,
+      icon: <Iconify icon="ooui:user-group-rtl" sx={{width: 1, height: 1}}></Iconify>,
     },
     {
       title: t('Documents'),
@@ -590,19 +600,19 @@ export function useNavData() {
       path: paths.dashboard.invoice.root,
       icon: ICONS.invoice,
       children: [
-        { title: t('list'), path: paths.dashboard.invoice.root },
+        {title: t('list'), path: paths.dashboard.invoice.root},
         // {
         //   title: t('details'),
         //   path: paths.dashboard.invoice.demo.details,
         // },
-        { title: t('create'), path: paths.dashboard.invoice.new },
+        {title: t('create'), path: paths.dashboard.invoice.new},
         // { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
       ],
     },
     {
       title: t('Inventory'),
       path: paths.dashboard.inventory,
-      icon: <Iconify icon="material-symbols:inventory-2-outline-rounded" />,
+      icon: <Iconify icon="material-symbols:inventory-2-outline-rounded"/>,
     },
   ];
   const data = useMemo(
@@ -613,7 +623,7 @@ export function useNavData() {
         // items: vendor?.category === 'society_cooperative' ? societyItems : otherItems,
         items: vendor?.category === "cooperative_rent_mill" || vendor?.category === "own_distribution_rent_mill" || vendor?.category === "own_distribution_own_mill" ?
           societyItems : vendor?.category === 'branch' ? branchItem : vendor?.category === 'head_office' ? headItems : vendor?.category === "miller" ?
-            millerItems : vendor?.category === "distributor" ? distributeItems :vendor.category === "miller_distributor" ? Miller_DistributorItems : otherItems,
+            millerItems : vendor?.category === "distributor" ? distributeItems : vendor.category === "miller_distributor" ? Miller_DistributorItems : otherItems,
       },
     ],
     [t],
