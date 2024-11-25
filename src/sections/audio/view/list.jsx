@@ -1,5 +1,5 @@
 import isEqual from 'lodash/isEqual';
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -14,26 +14,26 @@ import {
   GridToolbarColumnsButton,
 } from '@mui/x-data-grid';
 
-import {paths} from 'src/routes/paths';
-import {useRouter} from 'src/routes/hooks';
-import {RouterLink} from 'src/routes/components';
+import { paths } from 'src/routes/paths';
+import { useRouter } from 'src/routes/hooks';
+import { RouterLink } from 'src/routes/components';
 
-import {useBoolean} from 'src/hooks/use-boolean';
+import { useBoolean } from 'src/hooks/use-boolean';
 
-import {_roles} from 'src/_mock';
+import { _roles } from 'src/_mock';
 
 import Iconify from 'src/components/iconify';
-import {useSnackbar} from 'src/components/snackbar';
+import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
-import {ConfirmDialog} from 'src/components/custom-dialog';
-import {useSettingsContext} from 'src/components/settings';
+import { ConfirmDialog } from 'src/components/custom-dialog';
+import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import axios from 'axios';
-import {useAuthContext} from '../../../auth/hooks';
+import { useAuthContext } from '../../../auth/hooks';
 import AudioTableFiltersResult from '../audio-table-filters-result';
 import AudioTableToolbar from '../audio-table-toolbar';
-import {useGetArticles} from '../../../api/article';
-import {Box} from '@mui/material';
+import { useGetArticles } from '../../../api/article';
+import { Box } from '@mui/material';
 
 
 const defaultFilters = {
@@ -53,16 +53,16 @@ const HIDE_COLUMNS = {
 const HIDE_COLUMNS_TOGGLABLE = ['category', 'actions'];
 
 function AudioListView() {
-  const {enqueueSnackbar} = useSnackbar();
-  const {articles, articleLoading, mutate} = useGetArticles();
+  const { enqueueSnackbar } = useSnackbar();
+  const { articles, articleLoading, mutate } = useGetArticles();
   const confirmRows = useBoolean();
-  const {vendor} = useAuthContext();
+  const { vendor } = useAuthContext();
   const router = useRouter();
 
   const settings = useSettingsContext();
 
   const [tableData, setTableData] = useState(articles || []);
-  const [deleteId, setDeleteId] = useState(null)
+  const [deleteId, setDeleteId] = useState(null);
 
   const [filters, setFilters] = useState(defaultFilters);
 
@@ -97,9 +97,9 @@ function AudioListView() {
       axios.delete(`https://interactapiverse.com/mahadevasth/shape/articles/${id}`).then((res) => {
         if (res?.data?.status == '200') {
           enqueueSnackbar('Article deleted successfully');
-          mutate()
+          mutate();
         }
-      }).catch((err) => enqueueSnackbar('Something want wrong!', {variant: 'error'}))
+      }).catch((err) => enqueueSnackbar('Something want wrong!', { variant: 'error' }));
 
     },
     [enqueueSnackbar, tableData],
@@ -109,7 +109,7 @@ function AudioListView() {
     (id) => {
       router.push(paths.dashboard.article.edit(id));
     },
-    [router]
+    [router],
   );
 
   const columns = [
@@ -133,6 +133,18 @@ function AudioListView() {
       headerName: 'Audio',
       flex: 1,
       minWidth: 472,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            height: 'auto',
+            overflow: 'hidden', // Ensures overflow is hidden
+            textOverflow: 'ellipsis', // Adds ellipsis for overflowing text
+            whiteSpace: 'nowrap', // Prevents text from wrapping
+            width: '100%', // Ensures the element stays within its container
+          }}
+          dangerouslySetInnerHTML={{ __html: params.row.article }} // Renders HTML content
+        />
+      ),
     },
 
     {
@@ -186,22 +198,27 @@ function AudioListView() {
       filterable: false,
       disableColumnMenu: true,
       getActions: (params) => [
-
+        // <GridActionsCellItem
+        //   showInMenu
+        //   icon={<Iconify icon='mdi:eye' />}
+        //   label='View'
+        //   onClick={() => handleEditRow(params.row.id)}
+        // />,
         <GridActionsCellItem
           showInMenu
-          icon={<Iconify icon="solar:pen-bold"/>}
-          label="Edit"
+          icon={<Iconify icon='solar:pen-bold' />}
+          label='Edit'
           onClick={() => handleEditRow(params.row.id)}
         />,
         <GridActionsCellItem
           showInMenu
-          icon={<Iconify icon="solar:trash-bin-trash-bold"/>}
-          label="Delete"
+          icon={<Iconify icon='solar:trash-bin-trash-bold' />}
+          label='Delete'
           onClick={() => {
-            confirmRows.onTrue()
+            confirmRows.onTrue();
             setDeleteId(params?.row?.id);
           }}
-          sx={{color: 'error.main'}}
+          sx={{ color: 'error.main' }}
         />,
       ],
     },
@@ -233,14 +250,14 @@ function AudioListView() {
               name: 'Audio',
               href: paths.dashboard.audio.list,
             },
-            {name: 'List'},
+            { name: 'List' },
           ]}
           action={
             <Button
               component={RouterLink}
               href={paths.dashboard.audio.new}
               variant='contained'
-              startIcon={<Iconify icon='mingcute:add-line'/>}
+              startIcon={<Iconify icon='mingcute:add-line' />}
             >
               New Audio
             </Button>
@@ -256,9 +273,9 @@ function AudioListView() {
         <Card
           sx={{
             height: dataFiltered?.length > 0 ? 'unset' : 700,
-            flexGrow: {md: 1},
-            display: {md: 'flex'},
-            flexDirection: {md: 'column'},
+            flexGrow: { md: 1 },
+            display: { md: 'flex' },
+            flexDirection: { md: 'column' },
           }}
         >
 
@@ -271,7 +288,7 @@ function AudioListView() {
             pageSizeOptions={[5, 10, 25]}
             initialState={{
               pagination: {
-                paginationModel: {pageSize: 5},
+                paginationModel: { pageSize: 5 },
               },
             }}
             columnVisibilityModel={columnVisibilityModel}
@@ -291,33 +308,33 @@ function AudioListView() {
                         <Button
                           size='small'
                           color='error'
-                          startIcon={<Iconify icon='solar:trash-bin-trash-bold'/>}
+                          startIcon={<Iconify icon='solar:trash-bin-trash-bold' />}
                           onClick={confirmRows.onTrue}
                         >
                           Delete ({selectedRowIds.length})
                         </Button>
                       )}
 
-                      <GridToolbarColumnsButton/>
-                      <GridToolbarFilterButton/>
-                      <GridToolbarExport/>
+                      <GridToolbarColumnsButton />
+                      <GridToolbarFilterButton />
+                      <GridToolbarExport />
                     </Stack>
-                    <AudioTableToolbar filters={filters} onFilters={handleFilters} roleOptions={_roles}/>
+                    <AudioTableToolbar filters={filters} onFilters={handleFilters} roleOptions={_roles} />
                     {canReset && (
                       <AudioTableFiltersResult
                         filters={filters}
                         onFilters={handleFilters}
                         onResetFilters={handleResetFilters}
                         results={dataFiltered.length}
-                        sx={{p: 2.5, pt: 0}}
+                        sx={{ p: 2.5, pt: 0 }}
                       />
                     )}
 
                   </GridToolbarContainer>
                 </>
               ),
-              noRowsOverlay: () => <EmptyContent title='No Data'/>,
-              noResultsOverlay: () => <EmptyContent title='No results found'/>,
+              noRowsOverlay: () => <EmptyContent title='No Data' />,
+              noResultsOverlay: () => <EmptyContent title='No results found' />,
             }}
             slotProps={{
               columnsPanel: {
@@ -359,8 +376,8 @@ function AudioListView() {
   );
 }
 
-function applyFilter({inputData, comparator, filters}) {
-  const {name, status, type_of_firm, state, branch, district} = filters;
+function applyFilter({ inputData, comparator, filters }) {
+  const { name, status, type_of_firm, state, branch, district } = filters;
 
 
   if (name) {

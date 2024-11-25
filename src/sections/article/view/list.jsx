@@ -54,7 +54,7 @@ const HIDE_COLUMNS_TOGGLABLE = ['category', 'actions'];
 
 function ArticleListView() {
   const { enqueueSnackbar } = useSnackbar();
-  const { articles, articleLoading ,mutate} = useGetArticles();
+  const { articles, articleLoading, mutate } = useGetArticles();
   const confirmRows = useBoolean();
   const { vendor } = useAuthContext();
   const router = useRouter();
@@ -62,7 +62,7 @@ function ArticleListView() {
   const settings = useSettingsContext();
 
   const [tableData, setTableData] = useState(articles || []);
-  const [deleteId,setDeleteId] = useState(null)
+  const [deleteId, setDeleteId] = useState(null);
 
   const [filters, setFilters] = useState(defaultFilters);
 
@@ -97,9 +97,9 @@ function ArticleListView() {
       axios.delete(`https://interactapiverse.com/mahadevasth/shape/articles/${id}`).then((res) => {
         if (res?.data?.status == '200') {
           enqueueSnackbar('Article deleted successfully');
-          mutate()
+          mutate();
         }
-      }).catch((err) => enqueueSnackbar('Something want wrong!',{variant:'error'}))
+      }).catch((err) => enqueueSnackbar('Something want wrong!', { variant: 'error' }));
 
     },
     [enqueueSnackbar, tableData],
@@ -109,7 +109,13 @@ function ArticleListView() {
     (id) => {
       router.push(paths.dashboard.article.edit(id));
     },
-    [router]
+    [router],
+  );
+  const handleViewRow = useCallback(
+    (id) => {
+      router.push(paths.dashboard.article.view(id));
+    },
+    [router],
   );
 
   const columns = [
@@ -127,12 +133,23 @@ function ArticleListView() {
       flex: 1,
       minWidth: 160,
     },
-
     {
       field: 'article',
       headerName: 'Article',
       flex: 1,
       minWidth: 472,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            height: 'auto',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            width: '100%',
+          }}
+          dangerouslySetInnerHTML={{ __html: params.row.article }} // Renders HTML content
+        />
+      ),
     },
 
     {
@@ -186,23 +203,30 @@ function ArticleListView() {
       filterable: false,
       disableColumnMenu: true,
       getActions: (params) => [
-
         <GridActionsCellItem
           showInMenu
-          icon={<Iconify icon="solar:pen-bold" />}
-          label="Edit"
-          onClick={() => handleEditRow(params.row.id)}
+          icon={<Iconify icon='mdi:eye' />}
+          label='View'
+          onClick={() => handleViewRow(params.row.id)}
         />,
         <GridActionsCellItem
           showInMenu
-          icon={<Iconify icon="solar:trash-bin-trash-bold" />}
-          label="Delete"
+          icon={<Iconify icon='solar:pen-bold' />}
+          label='Edit'
+          onClick={() => handleEditRow(params.row.id)}
+        />,
+
+        <GridActionsCellItem
+          showInMenu
+          icon={<Iconify icon='solar:trash-bin-trash-bold' />}
+          label='Delete'
           onClick={() => {
-            confirmRows.onTrue()
+            confirmRows.onTrue();
             setDeleteId(params?.row?.id);
           }}
           sx={{ color: 'error.main' }}
         />,
+
       ],
     },
 

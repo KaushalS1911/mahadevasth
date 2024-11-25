@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import { useSnackbar } from 'src/components/snackbar';
-import FormProvider, { RHFTextField, RHFAutocomplete } from 'src/components/hook-form';
+import FormProvider, { RHFTextField, RHFAutocomplete, RHFEditor } from 'src/components/hook-form';
 
 import axios from 'axios';
 import { paths } from '../../routes/paths';
@@ -20,22 +20,25 @@ import { useRouter } from '../../routes/hooks';
 import { useAuthContext } from '../../auth/hooks';
 import { useResponsive } from '../../hooks/use-responsive';
 import { LoadingScreen } from '../../components/loading-screen';
-import { Upload } from '../../components/upload';
 import { Chip } from '@mui/material';
-// ----------------------------------------------------------------------
 
 export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
-  const {vendor} = useAuthContext()
+  const { vendor } = useAuthContext();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
-    category: Yup.string().required('category is required'),
+    category: Yup.string().required('Category is required'),
     article: Yup.string().required('Article is required'),
-    tags: Yup.array().required('Tags is required').max(5 ,"You can only add up to 5 tags."),
+    tags: Yup.array()
+      .required('Tags are required')
+      .max(5, 'You can only add up to 5 tags.')
+      .test('tags-length', 'Tags must be at least 4 characters', (tags) =>
+        tags.every((tag) => tag.length >= 4)
+      ),
   });
 
   const defaultValues = useMemo(() => {
@@ -45,7 +48,6 @@ export default function ArticleNewEditForm({ singleArticle }) {
       tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
     };
   }, [singleArticle]);
-
 
   const methods = useForm({
     resolver: yupResolver(NewProductSchema),
@@ -63,28 +65,31 @@ export default function ArticleNewEditForm({ singleArticle }) {
         tags: data.tags,
         counsellor_code: vendor?.counsellor_code,
       };
-     singleArticle?.id ? axios
-       .put(`https://interactapiverse.com/mahadevasth/shape/articles/${singleArticle?.id}`, payload)
-       .then((res) => {
-         if (res?.data?.status == '200') {
-           enqueueSnackbar('Article updated successfully');
-           setLoading(false);
-           router.push(paths.dashboard.article.list);
-         }
-       }) : axios
-        .post(`https://interactapiverse.com/mahadevasth/shape/articles/upload`, payload)
-        .then((res) => {
-          if (res?.data?.status == '200') {
-            enqueueSnackbar('Article added successfully');
-            setLoading(false);
-            router.push(paths.dashboard.article.list);
-          }
-        });
+      singleArticle?.id
+        ? axios
+          .put(`https://interactapiverse.com/mahadevasth/shape/articles/${singleArticle?.id}`, payload)
+          .then((res) => {
+            if (res?.data?.status === '200') {
+              enqueueSnackbar('Article updated successfully');
+              setLoading(false);
+              router.push(paths.dashboard.article.list);
+            }
+          })
+        : axios
+          .post(`https://interactapiverse.com/mahadevasth/shape/articles/upload`, payload)
+          .then((res) => {
+            if (res?.data?.status === '200') {
+              enqueueSnackbar('Article added successfully');
+              setLoading(false);
+              router.push(paths.dashboard.article.list);
+            }
+          });
     } catch (err) {
       enqueueSnackbar('Something went wrong', { variant: 'error' });
       setLoading(false);
     }
   });
+
   const handleDropMultiFile = useCallback(
     (acceptedFiles) => {
       setFiles([
@@ -92,11 +97,11 @@ export default function ArticleNewEditForm({ singleArticle }) {
         ...acceptedFiles.map((newFile) =>
           Object.assign(newFile, {
             preview: URL.createObjectURL(newFile),
-          }),
+          })
         ),
       ]);
     },
-    [files],
+    [files]
   );
 
   const handleRemoveFile = (inputFile) => {
@@ -112,12 +117,11 @@ export default function ArticleNewEditForm({ singleArticle }) {
     <>
       {mdUp && (
         <Grid md={4}>
-          <Typography variant='h6' sx={{ mb: 0.5 }}>
-            Article
-            Details
+          <Typography variant="h6" sx={{ mb: 0.5 }}>
+            Article Details
           </Typography>
-          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
-            Category,article,tags,image...
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            Category, article, tags, image...
           </Typography>
         </Grid>
       )}
@@ -127,18 +131,18 @@ export default function ArticleNewEditForm({ singleArticle }) {
             <Box
               columnGap={2}
               rowGap={3}
-              display='grid'
+              display="grid"
               gridTemplateColumns={{
                 xs: 'repeat(1, 1fr)',
                 md: 'repeat(2, 1fr)',
               }}
             >
               <RHFAutocomplete
-                name='category'
-                label='Category'
-                placeholder='Choose Category'
+                name="category"
+                label="Category"
+                placeholder="Choose Category"
                 fullWidth
-                options={['Mental Health',"Therapy"]}
+                options={['Mental Health', 'Therapy']}
                 getOptionLabel={(option) => option}
               />
 
@@ -166,29 +170,12 @@ export default function ArticleNewEditForm({ singleArticle }) {
                 }
               />
             </Box>
-
-            <RHFTextField name='article' multiline rows={4} label='Article' />
-            {/*<Typography variant='subtitle2'>Upload Your Image</Typography>*/}
-
-            {/*<Upload*/}
-            {/*  multiple={false}*/}
-            {/*  accept={{*/}
-            {/*    'image/jpeg': [],*/}
-            {/*    'image/jpg': [],*/}
-            {/*    'image/png': [],*/}
-            {/*  }}*/}
-            {/*  thumbnail={true}*/}
-            {/*  files={files}*/}
-            {/*  onDrop={handleDropMultiFile}*/}
-            {/*  onRemove={handleRemoveFile}*/}
-            {/*  onUpload={onSubmit}*/}
-            {/*/>*/}
+            <RHFEditor simple name="article" rows={4} />
           </Stack>
         </Card>
       </Grid>
     </>
   );
-
 
   return (
     <>
@@ -202,22 +189,22 @@ export default function ArticleNewEditForm({ singleArticle }) {
             backgroundColor: 'white',
           }}
         >
-
-
           <LoadingScreen sx={{ margin: 'auto' }} />
         </Box>
-      ) : (<FormProvider methods={methods} onSubmit={onSubmit}>
-        <Grid container spacing={3}>
-          {renderProperties}
-          <Grid xs={12}>
-            <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <Button variant='contained' type='submit'>Submit</Button>
-            </Box>
+      ) : (
+        <FormProvider methods={methods} onSubmit={onSubmit}>
+          <Grid container spacing={3}>
+            {renderProperties}
+            <Grid xs={12}>
+              <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                <Button variant="contained" type="submit">
+                  Submit
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-
-        </Grid>
-      </FormProvider>)}
-
+        </FormProvider>
+      )}
     </>
   );
 }

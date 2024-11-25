@@ -96,13 +96,13 @@ function VideoListView() {
     [enqueueSnackbar, tableData],
   );
 
+
   const handleEditRow = useCallback(
     (id) => {
       router.push(paths.dashboard.article.edit(id));
     },
     [router]
   );
-
   const columns = [
     {
       field: 'id',
@@ -122,6 +122,18 @@ function VideoListView() {
       headerName: 'Video',
       flex: 1,
       minWidth: 472,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            height: '20px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            width: '100%',
+          }}
+          dangerouslySetInnerHTML={{ __html: params.row.article }} // Renders HTML content
+        />
+      ),
     },
     {
       field: 'tags',
@@ -173,7 +185,12 @@ function VideoListView() {
       filterable: false,
       disableColumnMenu: true,
       getActions: (params) => [
-
+        // <GridActionsCellItem
+        //   showInMenu
+        //   icon={<Iconify icon="mdi:eye"/>}
+        //   label="View"
+        //   onClick={() => handleEditRow(params.row.id)}
+        // />,
         <GridActionsCellItem
           showInMenu
           icon={<Iconify icon="solar:pen-bold"/>}
@@ -190,6 +207,7 @@ function VideoListView() {
           }}
           sx={{color: 'error.main'}}
         />,
+
       ],
     },
   ];

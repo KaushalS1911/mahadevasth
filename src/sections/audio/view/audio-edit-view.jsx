@@ -15,7 +15,7 @@ export default function AudioEditView() {
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading={`Edit article`}
+        heading={`Edit Audio`}
         links={[
           // {
           //   name: 'Dashboard',
@@ -23,7 +23,7 @@ export default function AudioEditView() {
           // },
 
           {
-            name: `Edit Article`,
+            name: `Edit Audio`,
           },
         ]}
         sx={{

@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import {useSnackbar} from 'src/components/snackbar';
-import FormProvider, {RHFTextField, RHFAutocomplete} from 'src/components/hook-form';
+import FormProvider, { RHFTextField, RHFAutocomplete, RHFEditor } from 'src/components/hook-form';
 
 import axios from 'axios';
 import {paths} from '../../routes/paths';
@@ -166,8 +166,8 @@ export default function VideoNewEditForm({singleArticle}) {
                 }
               />
             </Box>
-
-            <RHFTextField name='article' multiline rows={4} label='Video'/>
+            <RHFEditor simple name="article" rows={4} label='Video'/>
+            {/*<RHFTextField name='article' multiline rows={4} label='Video'/>*/}
             {/*<Typography variant='subtitle2'>Upload Your Image</Typography>*/}
 
             {/*<Upload*/}

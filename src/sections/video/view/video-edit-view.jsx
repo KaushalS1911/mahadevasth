@@ -15,7 +15,7 @@ export default function VideoEditView() {
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading={`Edit article`}
+        heading={`Edit Video`}
         links={[
           // {
           //   name: 'Dashboard',
@@ -23,7 +23,7 @@ export default function VideoEditView() {
           // },
 
           {
-            name: `Edit Article`,
+            name: `Edit Video`,
           },
         ]}
         sx={{

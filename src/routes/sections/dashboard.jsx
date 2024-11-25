@@ -226,6 +226,7 @@ import AudioCreateView from "../../sections/audio/view/audio-create-view";
 import AudioEditView from "../../sections/audio/view/audio-edit-view";
 import VideoListPage from "../../pages/video/video-list-view";
 import AudioListPage from "../../pages/audio/audio-list-view";
+import ArticleDetailsView from '../../sections/article/view/article-details-view';
 
 // ----------------------------------------------------------------------
 
@@ -357,6 +358,7 @@ export const dashboardRoutes = [
           {path: 'list', element: <ArticleListPage/>},
           {path: 'new', element: <ArticleCreateView/>},
           {path: ':id/edit', element: <ArticleEditView/>},
+          {path: ':id/view', element: <ArticleDetailsView/>},
         ],
       },
       {
