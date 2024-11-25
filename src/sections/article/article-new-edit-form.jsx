@@ -21,17 +21,20 @@ import { useAuthContext } from '../../auth/hooks';
 import { useResponsive } from '../../hooks/use-responsive';
 import { LoadingScreen } from '../../components/loading-screen';
 import { Chip } from '@mui/material';
+import { useGetCategories } from '../../api/category';
 
 export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
   const { vendor } = useAuthContext();
   const router = useRouter();
+  const {categories} = useGetCategories();
   const [loading, setLoading] = useState(false);
 
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
-    category: Yup.string().required('Category is required'),
+    category: Yup.mixed().required('Category is required'),
+    title: Yup.string().required('Title is required'),
     article: Yup.string().required('Article is required'),
     tags: Yup.array()
       .required('Tags are required')
@@ -43,8 +46,9 @@ export default function ArticleNewEditForm({ singleArticle }) {
 
   const defaultValues = useMemo(() => {
     return {
-      category: singleArticle?.category || '',
+      category: singleArticle?.category || null,
       article: singleArticle?.article || '',
+      title: singleArticle?.title || '',
       tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
     };
   }, [singleArticle]);
@@ -61,8 +65,9 @@ export default function ArticleNewEditForm({ singleArticle }) {
     try {
       const payload = {
         article: data.article,
-        category: data.category,
+        category: data.category.category,
         tags: data.tags,
+        title: data.title,
         counsellor_code: vendor?.counsellor_code,
       };
       singleArticle?.id
@@ -128,6 +133,7 @@ export default function ArticleNewEditForm({ singleArticle }) {
       <Grid xs={12} md={8}>
         <Card>
           <Stack spacing={3} sx={{ p: 3 }}>
+              <RHFTextField name="title" label="Title" />
             <Box
               columnGap={2}
               rowGap={3}
@@ -142,8 +148,8 @@ export default function ArticleNewEditForm({ singleArticle }) {
                 label="Category"
                 placeholder="Choose Category"
                 fullWidth
-                options={['Mental Health', 'Therapy']}
-                getOptionLabel={(option) => option}
+                options={categories}
+                getOptionLabel={(option) => option.category}
               />
 
               <RHFAutocomplete

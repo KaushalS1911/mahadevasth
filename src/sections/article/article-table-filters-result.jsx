@@ -38,11 +38,11 @@ export default function ArticleTableFiltersResult({
     [filters.type_of_firm, onFilters]
   );
 
-  const handleRemoveState = useCallback(
+  const handleRemoveCategory = useCallback(
     (inputValue) => {
-      const newValue = filters.state.filter((item) => item !== inputValue);
+      const newValue = filters.category.filter((item) => item !== inputValue);
 
-      onFilters('state', newValue);
+      onFilters('category', newValue);
     },
     [filters.state, onFilters]
   );const handleRemoveBranch = useCallback(
@@ -84,10 +84,10 @@ export default function ArticleTableFiltersResult({
             ))}
           </Block>
         )}
-        {!!filters.state.length && (
-          <Block label="State:">
-            {filters.state.map((item) => (
-              <Chip key={item} label={item} size="small" onDelete={() => handleRemoveState(item)} />
+        {!!filters.category.length && (
+          <Block label="Category:">
+            {filters.category.map((item) => (
+              <Chip key={item} label={item} size="small" onDelete={() => handleRemoveCategory(item)} />
             ))}
           </Block>
         )}

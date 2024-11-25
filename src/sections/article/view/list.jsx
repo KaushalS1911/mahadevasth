@@ -42,6 +42,7 @@ const defaultFilters = {
   state: [],
   branch: [],
   district: [],
+  category: [],
   status: 'all',
 
 };
@@ -60,7 +61,7 @@ function ArticleListView() {
   const router = useRouter();
 
   const settings = useSettingsContext();
-
+const [category,setCategory] = useState([])
   const [tableData, setTableData] = useState(articles || []);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -117,6 +118,20 @@ function ArticleListView() {
     },
     [router],
   );
+  useEffect(() => {
+    fetchCategory()
+  },[dataFiltered])
+  function fetchCategory() {
+    dataFiltered?.map((data) => {
+      setCategory((item) => {
+        if (!item.includes(data.category)) {
+          return [...item, data.category];
+        } else {
+          return item;
+        }
+      });
+    });
+  }
 
   const columns = [
     {
@@ -127,6 +142,12 @@ function ArticleListView() {
       headerAlign: 'center',
     },
 
+    {
+      field: 'title',
+      headerName: 'Title',
+      flex: 1,
+      minWidth: 160,
+    },
     {
       field: 'category',
       headerName: 'Category',
@@ -146,8 +167,12 @@ function ArticleListView() {
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
             width: '100%',
+            '&:hover': {
+              whiteSpace: 'normal',
+              overflow: 'visible',
+            },
           }}
-          dangerouslySetInnerHTML={{ __html: params.row.article }} // Renders HTML content
+          dangerouslySetInnerHTML={{ __html: params.row.article }}
         />
       ),
     },
@@ -326,7 +351,7 @@ function ArticleListView() {
                       <GridToolbarFilterButton />
                       <GridToolbarExport />
                     </Stack>
-                    <ArticleTableToolbar filters={filters} onFilters={handleFilters} roleOptions={_roles} />
+                    <ArticleTableToolbar category={category} filters={filters} onFilters={handleFilters} roleOptions={_roles} />
                     {canReset && (
                       <ArticleTableFiltersResult
                         filters={filters}
@@ -384,7 +409,7 @@ function ArticleListView() {
 }
 
 function applyFilter({ inputData, comparator, filters }) {
-  const { name, status, type_of_firm, state, branch, district } = filters;
+  const { name, status, type_of_firm, state, branch, district,category } = filters;
 
 
   if (name) {
@@ -395,6 +420,9 @@ function applyFilter({ inputData, comparator, filters }) {
 
   if (status !== 'all') {
     inputData = inputData.filter((user) => user.doc_type === status);
+  }
+  if (category.length) {
+    inputData = inputData.filter((user) => category.includes(user.category));
   }
 
   if (type_of_firm.length) {

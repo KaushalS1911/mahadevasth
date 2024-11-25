@@ -20,6 +20,7 @@ import { GridToolbarQuickFilter } from '@mui/x-data-grid';
 export default function ArticleTableToolbar({
                                              filters,
                                              onFilters,
+                                              category,
                                              //
 
                                              roleOptions,
@@ -69,7 +70,15 @@ export default function ArticleTableToolbar({
     },
     [onFilters],
   );
-
+  const handleFilterCategory = useCallback(
+    (event) => {
+      onFilters(
+        'category',
+        typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value,
+      );
+    },
+    [onFilters],
+  );
   return (
     <>
       <Stack
@@ -100,6 +109,34 @@ export default function ArticleTableToolbar({
           {/*  }}*/}
           {/*/>*/}
           <GridToolbarQuickFilter sx={{ width: "100% !important" }}/>
+          <FormControl
+            sx={{
+              flexShrink: 0,
+              width: { xs: 1, md: 200 },
+            }}
+          >
+            <InputLabel>Category</InputLabel>
+
+            <Select
+              multiple
+              value={filters.category}
+              onChange={handleFilterCategory}
+              input={<OutlinedInput label="Category"/>}
+              renderValue={(selected) => selected.map((value) => value).join(', ')}
+              MenuProps={{
+                PaperProps: {
+                  sx: { maxHeight: 240 },
+                },
+              }}
+            >
+              {category?.map((option) => (
+                <MenuItem key={option} value={option}>
+                  <Checkbox disableRipple size="small" checked={filters.category.includes(option)}/>
+                  {option}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           {/*<IconButton onClick={popover.onOpen}>*/}
           {/*  <Iconify icon="eva:more-vertical-fill" />*/}
           {/*</IconButton>*/}
