@@ -491,14 +491,15 @@ const NewHomeView = () => {
             textAlign: 'center',
           }}
         >
-          <Typography   sx={{fontSize: { xs: '2rem', sm: '2.6rem' }}} fontWeight='bold' color='#2a2926' gutterBottom data-aos='fade-down'>
+          <Typography sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }} fontWeight='bold' color='#2a2926' gutterBottom
+                      data-aos='fade-down'>
             How to use the Good Thinking service
           </Typography>
           <Typography
             data-aos='fade-up'
             variant='subtitle1'
             color='#6c6c6c'
-            sx={{ mb: 4, maxWidth: '600px', mx: 'auto',fontSize: { xs: '1.2rem', sm: '1.4rem' }, }}
+            sx={{ mb: 4, maxWidth: '600px', mx: 'auto', fontSize: { xs: '1.2rem', sm: '1.4rem' } }}
           >
             In this short guide, we’ll take you through the various Good Thinking
             resources and suggest five ways you can access them.
@@ -525,9 +526,9 @@ const NewHomeView = () => {
                 sx={{
                   borderRadius: '30px',
                   width: { xs: '100%', sm: 'auto' },
-                  py:1.5,
+                  py: 1.5,
                   backgroundColor: activeTab === tab.id ? '#56723f' : '',
-                  border:'1px solid black',
+                  border: '1px solid black',
                   color: activeTab === tab.id ? 'white' : '#2a2926',
                   fontSize: { xs: '14px', sm: '16px' },
                   '&:hover': {
@@ -539,216 +540,313 @@ const NewHomeView = () => {
               </Button>
             ))}
           </Stack>
-          {activeTab === 'home' && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Box data-aos='fade-right'>
-                {[
-                  {
-                    title: 'Audience',
-                    description: 'Young people, Parents and carers, Employers and employees, Faith and belief communities.',
-                  },
-                  {
-                    title: 'Mental health concern',
-                    description: 'Sleep, Anxiety, Low mood, Stress.',
-                  },
-                  {
-                    title: 'Type of content',
-                    description: 'Free apps, Podcasts, blogs and videos, How to guides, Workbooks.',
-                  },
-                ].map((item, index) => (
-                  <Box key={index}>
-                    <List
-                      sx={{
-                        pl: 2,
-                        '& li': {
-                          position: 'relative',
-                          paddingLeft: '20px',
-                          '&::before': {
-                            content: '\'•\'',
-                            position: 'absolute',
-                            left: 0,
-                            color: 'orange',
-                            fontSize: '3rem',
+          <Box>
+            {activeTab === 'home' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: 4,
+                }}
+              >
+                <Box data-aos="fade-right" sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                  {[
+                    {
+                      title: 'Audience',
+                      description:
+                        'Young people, Parents and carers, Employers and employees, Faith and belief communities.',
+                    },
+                    {
+                      title: 'Mental health concern',
+                      description: 'Sleep, Anxiety, Low mood, Stress.',
+                    },
+                    {
+                      title: 'Type of content',
+                      description: 'Free apps, Podcasts, blogs and videos, How to guides, Workbooks.',
+                    },
+                  ].map((item, index) => (
+                    <Box key={index} sx={{ mb: 3 }}>
+                      <List
+                        sx={{
+                          pl: 2,
+                          '& li': {
+                            position: 'relative',
+                            paddingLeft: '20px',
+                            '&::before': {
+                              content: "'•'",
+                              position: 'absolute',
+                              left: 0,
+                              color: 'orange',
+                              fontSize: '3rem',
+                            },
                           },
-                        },
-                      }}
-                    >
-                      <ListItem>
-                        <Typography  fontWeight='bold' color='#2a2926'  sx={{fontSize: { xs: '1.5rem', sm: '2rem' }}}>
-                          {item.title}
-                        </Typography>
-                      </ListItem>
-                    </List>
-                    <Typography  color='#6c6c6c' sx={{ pl: 3, textAlign: 'start' ,fontSize: { xs: '1.1rem', sm: '1.4rem' }}}>
-                      {item.description}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-              <Box data-aos='fade-left' width={450}>
+                        }}
+                      >
+                        <ListItem>
+                          <Typography
+                            fontWeight="bold"
+                            color="#2a2926"
+                            sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
+                          >
+                            {item.title}
+                          </Typography>
+                        </ListItem>
+                      </List>
+                      <Typography
+                        color="#6c6c6c"
+                        sx={{
+                          pl: 3,
+                          textAlign: 'start',
+                          fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                        }}
+                      >
+                        {item.description}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
                 <Box
+                  data-aos="fade-left"
                   sx={{
-                    borderRadius: 4,
-                    width: '450px',
+                    width: { xs: '100%', md: 450 },
+                    maxWidth: '100%',
+                    textAlign: 'center',
                   }}
                 >
                   <img
                     src={startFromTheHomePage}
-                    alt='Mental Health Illustration'
+                    alt="Mental Health Illustration"
                     style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
                   />
                 </Box>
               </Box>
-            </Box>)}
-          {activeTab === 'expertAdvice' && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Box data-aos='fade-right'>
-                <Box>
-                  <Typography variant='h4' fontWeight='bold' color='#2a2926' sx={{fontSize: { xs: '1.5rem', sm: '2rem' }}}>
+            )}
+
+            {activeTab === 'expertAdvice' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign:'start',
+                  flexWrap: 'wrap',
+                  gap: 4,
+                }}
+              >
+                <Box
+                  data-aos="fade-right"
+                  sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}
+                >
+                  <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    color="#2a2926"
+                    sx={{ fontSize: { xs: '1.5rem', sm: '2rem' }, mb: 2 }}
+                  >
                     Get expert advice from Good Thinking
                   </Typography>
-                  <Typography  color='#6c6c6c' sx={{maxWidth: 680, mx: 'auto',fontSize: { xs: '1.1rem', sm: '1.4rem' } }}>
-                    The Good Thinking team has created a broad range of advice in collaboration
-                    with clinical and subject-area experts, designed to support Londoners with
-                    everyday mental health challenges. Explore our guides for tips and resources.
+                  <Typography
+                    color="#6c6c6c"
+                    sx={{
+                      maxWidth: 680,
+                      fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                    }}
+                  >
+                    The Good Thinking team has created a broad range of advice in collaboration with
+                    clinical and subject-area experts, designed to support Londoners with everyday mental health challenges. Explore our guides for tips and resources.
                   </Typography>
                 </Box>
-              </Box>
-              <Box data-aos='fade-left' width={450}>
                 <Box
+                  data-aos="fade-left"
                   sx={{
-                    borderRadius: 4,
-                    width: '450px',
+                    width: { xs: '100%', md: 450 },
+                    maxWidth: '100%',
+                    textAlign: 'center',
                   }}
                 >
                   <img
                     src={GetExpertAdvice}
-                    alt='Mental Health Illustration'
+                    alt="Mental Health Illustration"
                     style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
                   />
                 </Box>
               </Box>
-            </Box>)}
-          {activeTab === 'selfAssessment' && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Box data-aos='fade-right'>
-                <Grid container spacing={4} alignItems='center'>
-                  <Grid item xs={12} md={6} mt={3}>
-                    <Typography
-                      variant='h4'
-                      sx={{
-                        fontWeight: 'bold',
-                        mb: 2,
-                        fontSize: { xs: '1.5rem', sm: '2rem' } // Responsive typography
-                      }}
-                    >
-                      Use the Good Thinking self-assessment tool
-                    </Typography>
-                    <Typography sx={{fontSize: { xs: '1.2rem', sm: '1.4rem' }}}>
-                      Our in-depth, clinically validated self-assessments are a thorough
-                      assessment of both your mental and physical wellbeing. They may
-                      seem quite ‘medical’ because they are based on the types of
-                      questions a doctor or a psychologist might ask you.
-                    </Typography>
-                    <List>
-                      {[
-                        'Each self-assessment takes around 20 minutes to complete',
-                        'Answer questions about yourself or someone you may be concerned about',
-                        'You’ll get a personalised list of recommended actions to take forward',
-                      ].map((text, index) => (
-                        <ListItem key={index} sx={{ alignItems: 'flex-start' }}>
-                          <ListItemIcon>
-                            <CircleIcon sx={{ color: '#FF9800', fontSize: { xs: '1rem', sm: '1.1rem' }, mt: 0.5 }} />
-                          </ListItemIcon>
-                          {text}
-                        </ListItem>
-                      ))}
-                    </List>
-                    <Button
-                      variant='contained'
-                      size='large'
-                      sx={{
-                        borderRadius:'30px',
-                        backgroundColor: '#3e582b',
-                        color: '#fff',
-                        mt: 2,
-                        width: { xs: '100%', sm: 'auto' }, // Full width on small screens
-                      }}
-                    >
-                      Take a self-assessment
-                    </Button>
+            )}
+
+            {activeTab === 'selfAssessment' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: 4,
+                }}
+              >
+                <Box data-aos="fade-right" sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                  <Grid container spacing={4} alignItems="start" textAlign="start">
+                    <Grid item xs={12} md={6} mt={3}>
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          fontWeight: 'bold',
+                          mb: 2,
+                          fontSize: { xs: '1.5rem', sm: '2rem' },
+                        }}
+                      >
+                        Use the Good Thinking self-assessment tool
+                      </Typography>
+                      <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
+                        Our in-depth, clinically validated self-assessments are a thorough assessment of both your mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the types of questions a doctor or a psychologist might ask you.
+                      </Typography>
+                      <List>
+                        {[
+                          'Each self-assessment takes around 20 minutes to complete',
+                          'Answer questions about yourself or someone you may be concerned about',
+                          'You’ll get a personalised list of recommended actions to take forward',
+                        ].map((text, index) => (
+                          <ListItem
+                            key={index}
+                            sx={{
+                              alignItems: 'flex-start',
+                            }}
+                          >
+                            <ListItemIcon>
+                              <CircleIcon
+                                sx={{
+                                  color: '#FF9800',
+                                  fontSize: { xs: '1rem', sm: '1.1rem' },
+                                  mt: 0.5,
+                                }}
+                              />
+                            </ListItemIcon>
+                            {text}
+                          </ListItem>
+                        ))}
+                      </List>
+                      <Button
+                        variant="contained"
+                        size="large"
+                        sx={{
+                          borderRadius: '30px',
+                          backgroundColor: '#3e582b',
+                          color: '#fff',
+                          mt: 2,
+                          width: { xs: '100%', sm: 'auto' },
+                        }}
+                      >
+                        Take a self-assessment
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Box
+                        data-aos="fade-left"
+                        width="100%"
+                        sx={{ display: 'flex', justifyContent: 'center' }}
+                      >
+                        <Box
+                          sx={{
+                            borderRadius: 4,
+                            width: '450px',
+                          }}
+                        >
+                          <img
+                            src={takeselfassessment}
+                            alt="Mental Health Illustration"
+                            style={{
+                              height: 'auto',
+                              width: '100%',
+                              borderRadius: '8px',
+                            }}
+                          />
+                        </Box>
+                      </Box>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Box data-aos='fade-left' width='100%' sx={{ display: 'flex', justifyContent: 'center' }}>
+                </Box>
+              </Box>
+            )}
+
+            {activeTab === 'Findtherighthelpforyou' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: 4,
+                  px: { xs: 2, md: 4 },
+                }}
+              >
+                <Grid container spacing={4} alignItems="center" textAlign="start">
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Box data-aos="fade-right">
+                      <Typography
+                        sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
+                        fontWeight="bold"
+                        gutterBottom
+                      >
+                        Find the right help for you
+                      </Typography>
+                      <Typography
+                        color="textSecondary"
+                        paragraph
+                        sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
+                      >
+                        Tell us what you're looking for help with and who you're looking for help for and you’ll then receive personalised recommendations for apps and other resources to meet your needs.
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        size="large"
+                        sx={{
+                          borderRadius: 8,
+                          textTransform: 'none',
+                          backgroundColor: '#3E582B',
+                          mt: 2,
+                          '&:hover': { backgroundColor: '#6F8A6E' },
+                          width: '100%',
+                          maxWidth: 300,
+                        }}
+                      >
+                        Find the right help for you
+                      </Button>
+                    </Box>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Box
+                      data-aos="fade-left"
+                      sx={{
+                        width: '100%',
+                      }}
+                    >
                       <Box
                         sx={{
-                          borderRadius: 4,
-                          width: '450px',
+                          maxWidth: '450px',
                         }}
                       >
                         <img
-                          src={takeselfassessment}
-                          alt='Mental Health Illustration'
-                          style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                          src={findtherighthelpforyou}
+                          alt="Mental Health Illustration"
+                          style={{
+                            height: 'auto',
+                            width: '100%',
+                            borderRadius: '8px',
+                          }}
                         />
                       </Box>
                     </Box>
                   </Grid>
                 </Grid>
               </Box>
-            </Box>
-          )}
-          {activeTab === 'Findtherighthelpforyou' && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Grid container spacing={4} alignItems='center'>
-                <Grid item xs={12} sm={12} md={6}>
-                  <Box data-aos='fade-right'>
-                    <Typography sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} fontWeight='bold' gutterBottom>
-                      Find the right help for you
-                    </Typography>
-                    <Typography  color='textSecondary' paragraph  sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' }}}>
-                      Tell us what you're looking for help with and who you're looking for
-                      help for and you’ll then receive personalised recommendations for
-                      apps and other resources to meet your needs.
-                    </Typography>
-                    <Button
-                      variant='contained'
-                      size='large'
-                      sx={{
-                        borderRadius: 8,
-                        textTransform: 'none',
-                        backgroundColor: '#3E582B',
-                        mt: 2,
-                        '&:hover': { backgroundColor: '#6F8A6E' },                        width: '100%',
-                        maxWidth: 300,
-                      }}
-                    >
-                      Find the right help for you
-                    </Button>
-                  </Box>
-                </Grid>
+            )}
+          </Box>
 
-                <Grid item xs={12} sm={12} md={6}>
-                  <Box data-aos='fade-left' sx={{ width: '100%' }}>
-                    <Box
-                      sx={{
-                        width: '450px',
-                      }}
-                    >
-                      <img
-                        src={findtherighthelpforyou}
-                        alt='Mental Health Illustration'
-                        style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
-                      />
-                    </Box>
-                  </Box>
-                </Grid>
-              </Grid>
-            </Box>
-          )}
         </Box>
         <Box sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4,fontSize: { xs: '2rem', sm: '3rem' }, }}>
+          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4, fontSize: { xs: '2rem', sm: '3rem' } }}>
             Choose self-assessment
           </Typography>
           <Grid container spacing={4}>
@@ -768,7 +866,7 @@ const NewHomeView = () => {
                 >
                   <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
                     <Typography
-                      variant="overline"
+                      variant='overline'
                       sx={{
                         display: 'block',
                         color: '#6C757D',
@@ -794,10 +892,11 @@ const NewHomeView = () => {
                   />
                   <CardContent sx={{ textAlign: 'center' }}>
 
-                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.5rem', sm: '2rem' }}}>
+                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
                       {assessment.title}
                     </Typography>
-                    <Typography variant='body2' sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' } }} color='text.secondary'>
+                    <Typography variant='body2' sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
+                                color='text.secondary'>
                       {assessment.description}
                     </Typography>
                   </CardContent>
@@ -835,10 +934,12 @@ const NewHomeView = () => {
                py: 2,
              }}
         />
-        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'  sx={{fontSize: { xs: '2rem', sm: '2.6rem' }}}>
+        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'
+                    sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }}>
           Subscribe to our newsletter
         </Typography>
-        <Typography data-aos='fade-up' variant='body1' color='textSecondary'   sx={{fontSize: { xs: '1.1rem', sm: '1.4rem' },mb: 3,px:2}}>
+        <Typography data-aos='fade-up' variant='body1' color='textSecondary'
+                    sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' }, mb: 3, px: 2 }}>
           Stay tuned and subscribe to our newsletter. Get the latest tips and
           resources for Londoners.
         </Typography>
