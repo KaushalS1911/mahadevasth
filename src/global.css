@@ -234,11 +234,25 @@ img {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+/* For vertical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-/*::-webkit-scrollbar {*/
-/*  display: none;*/
-/*}*/
+/* For horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 6px;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: rgba(136, 136, 136,0.7);
+  border-radius: 10px; /* Optional: rounded thumb */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+  border-radius: 10px; /* Optional: rounded track */
+}
 
 
 
