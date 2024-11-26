@@ -123,7 +123,24 @@ export default function ArticleViewDetails({ singleArticle }) {
     )}
     <Grid xs={12} md={8}>
       <Card>
+
         <Stack spacing={3} sx={{ p: 3 }}>
+          <Box>
+            <Typography mb={1} variant={'body1'} fontWeight={700}
+            >
+              Title
+            </Typography>
+            {singleArticle.title ?
+              <Typography mb={1} variant={'body1'} fontWeight={700}
+              >
+                singleArticle.title
+              </Typography>:
+              <Typography mb={1} variant={'caption'}
+              >
+                No title available...
+              </Typography>
+            }
+          </Box>
           <Box
             columnGap={2}
             rowGap={3}
@@ -136,7 +153,7 @@ export default function ArticleViewDetails({ singleArticle }) {
             <Box>
               <Typography mb={1} variant={'body1'} fontWeight={700}
               >
-                category
+                Category
               </Typography>
               {singleArticle.category}
             </Box>
