@@ -130,19 +130,19 @@ function AudioListView() {
 
     {
       field: 'article',
-      headerName: 'Audio',
+      headerName: 'Article',
       flex: 1,
       minWidth: 472,
       renderCell: (params) => (
         <Box
           sx={{
-            height: 'auto',
-            overflow: 'hidden', // Ensures overflow is hidden
-            textOverflow: 'ellipsis', // Adds ellipsis for overflowing text
-            whiteSpace: 'nowrap', // Prevents text from wrapping
-            width: '100%', // Ensures the element stays within its container
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 3,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
           }}
-          dangerouslySetInnerHTML={{ __html: params.row.article }} // Renders HTML content
+          dangerouslySetInnerHTML={{ __html: params.row.article }}
         />
       ),
     },
