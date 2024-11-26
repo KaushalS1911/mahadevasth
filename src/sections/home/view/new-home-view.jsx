@@ -150,7 +150,7 @@ const NewHomeView = () => {
     >
       <Container sx={{ mt: 5 }} maxWidth={'xl'}>
         <Grid container>
-          <Swiper navigation={isMdUp} modules={[Navigation]} className='mySwiper'>
+          <Swiper navigation={isMdUp} loop={true}  modules={[Navigation]} className='mySwiper'>
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <Grid
@@ -638,19 +638,7 @@ const NewHomeView = () => {
                           </ListItem>
                         ))}
                       </List>
-                      <Button
-                        variant='contained'
-                        size='large'
-                        sx={{
-                          borderRadius: '30px',
-                          backgroundColor: '#3e582b',
-                          color: '#fff',
-                          mt: 2,
-                          width: { xs: '100%', sm: 'auto' },
-                        }}
-                      >
-                        Take a self-assessment
-                      </Button>
+
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Box
@@ -710,21 +698,6 @@ const NewHomeView = () => {
                         Tell us what you're looking for help with and who you're looking for help for and you’ll then
                         receive personalised recommendations for apps and other resources to meet your needs.
                       </Typography>
-                      <Button
-                        variant='contained'
-                        size='large'
-                        sx={{
-                          borderRadius: 8,
-                          textTransform: 'none',
-                          backgroundColor: '#3E582B',
-                          mt: 2,
-                          '&:hover': { backgroundColor: '#6F8A6E' },
-                          width: '100%',
-                          maxWidth: 300,
-                        }}
-                      >
-                        Find the right help for you
-                      </Button>
                     </Box>
                   </Grid>
 
@@ -779,17 +752,17 @@ const NewHomeView = () => {
                 >
                   <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
                     <Typography
-                      variant='overline'
                       sx={{
                         display: 'block',
                         color: '#6C757D',
                         fontSize: 14,
+                        fontWeight:600,
                         mb: 1,
                         backgroundColor: 'rgba(255, 255, 255, 0.5)',
                         p: 1,
                       }}
                     >
-                      SELF-ASSESSMENT
+                      Self Assessment
                     </Typography>
                   </Box>
                   <Box
@@ -797,7 +770,7 @@ const NewHomeView = () => {
                     src={assessment.image}
                     alt={assessment.title}
                     sx={{
-                      width: '50%', // Adjust image size
+                      width: '50%',
                       maxHeight: '120px',
                       objectFit: 'contain',
                       mb: 2,

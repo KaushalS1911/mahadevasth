@@ -58,7 +58,9 @@
 
 
 
-
+.swiper-slide{
+  display: flex !important;
+}
 .MuiDataGrid-columnHeaders MuiDataGrid-withBorderColor css-f4fkqn-MuiDataGrid-columnHeaders{
   max-height: 0 !important;
 }
