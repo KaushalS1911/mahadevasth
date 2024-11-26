@@ -89,27 +89,27 @@ const NewHomeView = () => {
   ];
   const slides = [
     {
-      title: 'Mental Health in London',
+      title: 'Mental Health',
       description:
-        'Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than half a million people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
+        'Mahadevasth supports Individuals to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than half a million people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
       image: sliderimg1,
     },
     {
-      title: 'Good Thinking marks 7 years',
+      title: 'Mahadevasth marks 7 years',
       description:
-        '1 November marked 7 years since the launch of Good Thinking. Since going live in 2017, the service has supported over 800,000 Londoners to manage their mental health and wellbeing.',
+        '1 November marked 7 years since the launch of Mahadevasth. Since going live in 2017, the service has supported over 800,000 Individuals to manage their mental health and wellbeing.',
       image: sliderimg2,
     },
     {
       title: 'Support your employees',
       description:
-        'We know it can be time-consuming to find good quality free resources that support your employee wellbeing strategy. Good Thinking have created a toolkit to help employers create a safe and supportive workplace in these challenging times.',
+        'We know it can be time-consuming to find good quality free resources that support your employee wellbeing strategy. Mahadevasth have created a toolkit to help employers create a safe and supportive workplace in these challenging times.',
       image: sliderimg3,
     },
     {
-      title: 'Digital mental wellbeing for London',
+      title: 'Digital mental wellbeing',
       description:
-        'Good Thinking supports Londoners to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
+        'Mahadevasth supports Individuals to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
       image: sliderimg4,
     },
   ];
@@ -288,8 +288,8 @@ const NewHomeView = () => {
                 width: { xs: '100%', md: '50%' },
               }}
             >
-              Good Thinking supports Londoners to look after their mental health and
-              wellbeing in a way that works for them. Good Thinking supports Londoners
+              Mahadevasth supports Individuals to look after their mental health and
+              wellbeing in a way that works for them. Mahadevasth supports Individuals
               to look after their...
             </Typography>
           </Box>
@@ -493,7 +493,7 @@ const NewHomeView = () => {
         >
           <Typography sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }} fontWeight='bold' color='#2a2926' gutterBottom
                       data-aos='fade-down'>
-            How to use the Good Thinking service
+            How to use the Mahadevasth service
           </Typography>
           <Typography
             data-aos='fade-up'
@@ -501,7 +501,7 @@ const NewHomeView = () => {
             color='#6c6c6c'
             sx={{ mb: 4, maxWidth: '600px', mx: 'auto', fontSize: { xs: '1.2rem', sm: '1.4rem' } }}
           >
-            In this short guide, we’ll take you through the various Good Thinking
+            In this short guide, we’ll take you through the various Mahadevasth
             resources and suggest five ways you can access them.
           </Typography>
           <Stack
@@ -645,7 +645,7 @@ const NewHomeView = () => {
                     color="#2a2926"
                     sx={{ fontSize: { xs: '1.5rem', sm: '2rem' }, mb: 2 }}
                   >
-                    Get expert advice from Good Thinking
+                    Get expert advice from Mahadevasth
                   </Typography>
                   <Typography
                     color="#6c6c6c"
@@ -654,8 +654,8 @@ const NewHomeView = () => {
                       fontSize: { xs: '1.1rem', sm: '1.4rem' },
                     }}
                   >
-                    The Good Thinking team has created a broad range of advice in collaboration with
-                    clinical and subject-area experts, designed to support Londoners with everyday mental health challenges. Explore our guides for tips and resources.
+                    The Mahadevasth team has created a broad range of advice in collaboration with
+                    clinical and subject-area experts, designed to support Individuals with everyday mental health challenges. Explore our guides for tips and resources.
                   </Typography>
                 </Box>
                 <Box
@@ -696,7 +696,7 @@ const NewHomeView = () => {
                           fontSize: { xs: '1.5rem', sm: '2rem' },
                         }}
                       >
-                        Use the Good Thinking self-assessment tool
+                        Use the Mahadevasth self-assessment tool
                       </Typography>
                       <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
                         Our in-depth, clinically validated self-assessments are a thorough assessment of both your mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the types of questions a doctor or a psychologist might ask you.
@@ -941,7 +941,7 @@ const NewHomeView = () => {
         <Typography data-aos='fade-up' variant='body1' color='textSecondary'
                     sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' }, mb: 3, px: 2 }}>
           Stay tuned and subscribe to our newsletter. Get the latest tips and
-          resources for Londoners.
+          resources for Individuals.
         </Typography>
         <Button
           variant='contained'
