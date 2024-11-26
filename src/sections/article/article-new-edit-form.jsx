@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -23,25 +23,31 @@ import { LoadingScreen } from '../../components/loading-screen';
 import { Chip } from '@mui/material';
 import { useGetCategories } from '../../api/category';
 
-  export default function ArticleNewEditForm({ singleArticle }) {
+export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
   const { vendor } = useAuthContext();
   const router = useRouter();
   const { categories } = useGetCategories();
-  const categoryList = categories?.map((data) => data.category)
+  useEffect(() => {
+    if(categories){
+    setCategoryList(categories?.map((data) => data.category))
+
+    }
+  }, [categories]);
   const [loading, setLoading] = useState(false);
 
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
-    category: Yup.mixed().required('Category is required'),
+    category: Yup.string().required('Category is required'),
     title: Yup.string().required('Title is required'),
     article: Yup.string().required('Article is required'),
     tags: Yup.array()
-      .required('Tags are required')
+      .min(1, 'Tags is required')
       .max(5, 'You can only add up to 5 tags.')
-      .test('tags-length', 'Tags must be at least 4 characters', (tags) =>
-        tags.every((tag) => tag.length >= 4),
+      .test('tags-length', 'Each tag must be at least 4 characters long', (tags) =>
+        Array.isArray(tags) ? tags.every((tag) => tag.length >= 4) : false
       ),
   });
 
@@ -177,7 +183,7 @@ import { useGetCategories } from '../../api/category';
                 }
               />
             </Box>
-            <RHFEditor simple name='article' rows={4} />
+            <RHFEditor simple name='article'/>
           </Stack>
         </Card>
       </Grid>

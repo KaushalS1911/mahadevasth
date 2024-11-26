@@ -33,7 +33,7 @@ import { useAuthContext } from '../../../auth/hooks';
 import ArticleTableFiltersResult from '../article-table-filters-result';
 import ArticleTableToolbar from '../article-table-toolbar';
 import { useGetArticles } from '../../../api/article';
-import { Box } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 
 
 const defaultFilters = {
@@ -61,7 +61,7 @@ function ArticleListView() {
   const router = useRouter();
 
   const settings = useSettingsContext();
-const [category,setCategory] = useState([])
+  const [category, setCategory] = useState([]);
   const [tableData, setTableData] = useState(articles || []);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -119,8 +119,9 @@ const [category,setCategory] = useState([])
     [router],
   );
   useEffect(() => {
-    fetchCategory()
-  },[dataFiltered])
+    fetchCategory();
+  }, [dataFiltered]);
+
   function fetchCategory() {
     dataFiltered?.map((data) => {
       setCategory((item) => {
@@ -154,22 +155,55 @@ const [category,setCategory] = useState([])
       flex: 1,
       minWidth: 160,
     },
+
     {
       field: 'article',
       headerName: 'Article',
       flex: 1,
       minWidth: 472,
       renderCell: (params) => (
-        <Box
-          sx={{
-            display: '-webkit-box',
-            WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 3,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
+        <Tooltip
+          componentsProps={{
+            tooltip: {
+              sx: {
+                backgroundColor: '#ffff', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+
+              },
+
+            },
+            arrow: {
+              sx: {
+                color: 'rgb(128, 128, 128)',
+
+              },
+            },
           }}
-          dangerouslySetInnerHTML={{ __html: params.row.article }}
-        />
+          title={
+            <Box
+              sx={{
+                maxHeight: '350px',
+                whiteSpace: 'pre-line',
+                maxWidth: '300px',
+                overflowY: 'auto',
+                backgoundColor: '#ffff',
+                color: 'black',
+              }}
+              dangerouslySetInnerHTML={{ __html: params.row.article }}
+            />
+          }
+          arrow
+        >
+          <Box
+            sx={{
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 3,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+            dangerouslySetInnerHTML={{ __html: params.row.article }}
+          />
+        </Tooltip>
       ),
     },
 
@@ -347,7 +381,8 @@ const [category,setCategory] = useState([])
                       <GridToolbarFilterButton />
                       <GridToolbarExport />
                     </Stack>
-                    <ArticleTableToolbar category={category} filters={filters} onFilters={handleFilters} roleOptions={_roles} />
+                    <ArticleTableToolbar category={category} filters={filters} onFilters={handleFilters}
+                                         roleOptions={_roles} />
                     {canReset && (
                       <ArticleTableFiltersResult
                         filters={filters}
@@ -405,7 +440,7 @@ const [category,setCategory] = useState([])
 }
 
 function applyFilter({ inputData, comparator, filters }) {
-  const { name, status, type_of_firm, state, branch, district,category } = filters;
+  const { name, status, type_of_firm, state, branch, district, category } = filters;
 
 
   if (name) {
