@@ -23,12 +23,13 @@ import { LoadingScreen } from '../../components/loading-screen';
 import { Chip } from '@mui/material';
 import { useGetCategories } from '../../api/category';
 
-export default function ArticleNewEditForm({ singleArticle }) {
+  export default function ArticleNewEditForm({ singleArticle }) {
   const { enqueueSnackbar } = useSnackbar();
   const [files, setFiles] = useState([]);
   const { vendor } = useAuthContext();
   const router = useRouter();
-  const {categories} = useGetCategories();
+  const { categories } = useGetCategories();
+  const categoryList = categories?.map((data) => data.category)
   const [loading, setLoading] = useState(false);
 
   const mdUp = useResponsive('up', 'md');
@@ -40,13 +41,13 @@ export default function ArticleNewEditForm({ singleArticle }) {
       .required('Tags are required')
       .max(5, 'You can only add up to 5 tags.')
       .test('tags-length', 'Tags must be at least 4 characters', (tags) =>
-        tags.every((tag) => tag.length >= 4)
+        tags.every((tag) => tag.length >= 4),
       ),
   });
 
   const defaultValues = useMemo(() => {
     return {
-      category: singleArticle?.category || null,
+      category: singleArticle?.category || '',
       article: singleArticle?.article || '',
       title: singleArticle?.title || '',
       tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
@@ -65,7 +66,7 @@ export default function ArticleNewEditForm({ singleArticle }) {
     try {
       const payload = {
         article: data.article,
-        category: data.category.category,
+        category: data.category,
         tags: data.tags,
         title: data.title,
         counsellor_code: vendor?.counsellor_code,
@@ -102,11 +103,11 @@ export default function ArticleNewEditForm({ singleArticle }) {
         ...acceptedFiles.map((newFile) =>
           Object.assign(newFile, {
             preview: URL.createObjectURL(newFile),
-          })
+          }),
         ),
       ]);
     },
-    [files]
+    [files],
   );
 
   const handleRemoveFile = (inputFile) => {
@@ -122,10 +123,10 @@ export default function ArticleNewEditForm({ singleArticle }) {
     <>
       {mdUp && (
         <Grid md={4}>
-          <Typography variant="h6" sx={{ mb: 0.5 }}>
+          <Typography variant='h6' sx={{ mb: 0.5 }}>
             Article Details
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
             Category, article, tags, image...
           </Typography>
         </Grid>
@@ -133,50 +134,50 @@ export default function ArticleNewEditForm({ singleArticle }) {
       <Grid xs={12} md={8}>
         <Card>
           <Stack spacing={3} sx={{ p: 3 }}>
-              <RHFTextField name="title" label="Title" />
+            <RHFTextField name='title' label='Title' />
             <Box
               columnGap={2}
               rowGap={3}
-              display="grid"
+              display='grid'
               gridTemplateColumns={{
                 xs: 'repeat(1, 1fr)',
                 md: 'repeat(2, 1fr)',
               }}
             >
               <RHFAutocomplete
-                name="category"
-                label="Category"
-                placeholder="Choose Category"
+                name='category'
+                label='Category'
+                placeholder='Choose Category'
                 fullWidth
-                options={categories}
-                getOptionLabel={(option) => option.category}
+                options={categoryList}
+                getOptionLabel={(option) => option}
               />
 
               <RHFAutocomplete
-                name="tags"
-                label="Tags"
-                placeholder="Add tags and press Enter"
+                name='tags'
+                label='Tags'
+                placeholder='Add tags and press Enter'
                 multiple
                 freeSolo
                 options={[]}
                 getOptionLabel={(option) => option}
                 renderTags={(selected = [], getTagProps) =>
                   Array.isArray(selected)
-                    ? selected.map((option, index) => (
+                    ? selected?.map((option, index) => (
                       <Chip
                         {...getTagProps({ index })}
                         key={option}
                         label={option}
-                        size="small"
-                        color="info"
-                        variant="soft"
+                        size='small'
+                        color='info'
+                        variant='soft'
                       />
                     ))
                     : null
                 }
               />
             </Box>
-            <RHFEditor simple name="article" rows={4} />
+            <RHFEditor simple name='article' rows={4} />
           </Stack>
         </Card>
       </Grid>
@@ -203,7 +204,7 @@ export default function ArticleNewEditForm({ singleArticle }) {
             {renderProperties}
             <Grid xs={12}>
               <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-                <Button variant="contained" type="submit">
+                <Button variant='contained' type='submit'>
                   Submit
                 </Button>
               </Box>

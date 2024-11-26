@@ -162,15 +162,11 @@ const [category,setCategory] = useState([])
       renderCell: (params) => (
         <Box
           sx={{
-            height: 'auto',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 3,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            width: '100%',
-            '&:hover': {
-              whiteSpace: 'normal',
-              overflow: 'visible',
-            },
           }}
           dangerouslySetInnerHTML={{ __html: params.row.article }}
         />
