@@ -26,9 +26,12 @@ import assessments2 from '../../../assets/home/Person_sleeping_on_sofa_fdaab4ea7
 import assessments3 from '../../../assets/home/Low_mood_tile_Person_sat_on_armchair_making_phone_call_79b1155315.webp';
 import assessments4 from '../../../assets/home/Stress_tile_image_person_in_yoga_pose_0a21572392.webp';
 import img1 from 'src/assets/home/Person_on_beanbag_using_tablet_and_wearing_headphones_ed8a9026bb.webp';
-import img2 from 'src/assets/home/Multi_faith_image_9011784dec.webp';
-import img3 from 'src/assets/home/Parents_or_carers_and_child_798c433a8d.webp';
-import img4 from 'src/assets/home/Employees_553d7f4384.webp';
+import img2 from 'src/assets/home/Bereavemment_0b2bd9d7da.webp';
+import img3 from 'src/assets/home/Students_in_lecture_theatre_9962f8ae4c.webp';
+import img4 from 'src/assets/home/Different_faiths_9957f47dab.webp';
+import img5 from 'src/assets/home/Employees_553d7f4384.webp';
+import img6 from 'src/assets/home/Children_and_teacher_in_classroom_380b93f178.webp';
+
 import sliderimg1 from '../../../assets/home/Person_sitting_on_sofa_with_london_skyline_in_window_c9f23641f7 (1).webp';
 import sliderimg2 from 'src/assets/home/Faith_home_page_aac3fc6171.webp';
 import sliderimg3 from 'src/assets/home/Employees_553d7f4384.webp';
@@ -43,6 +46,7 @@ import 'swiper/css/navigation';
 
 import { Navigation } from 'swiper/modules';
 import { useTheme } from '@mui/system';
+import { card } from '../../../theme/overrides/components/card';
 
 const NewHomeView = () => {
 
@@ -64,7 +68,7 @@ const NewHomeView = () => {
   const assessments = [
     {
       title: 'Anxiety',
-      description: 'Feeling anxious, can\'t switch off or your thoughts are racing?',
+      description: 'Feeling anxious, cant switch off or your thoughts are racing?',
       bgColor: '#F3EBFA',
       image: assessments1,
     },
@@ -111,6 +115,27 @@ const NewHomeView = () => {
       description:
         'Mahadevasth supports Individuals to look after their mental health and wellbeing in a way that works for them. Since its launch in 2017, more than 750,000 people have used our digital service to tackle anxiety, stress, low mood, sleep problems, and other concerns.',
       image: sliderimg4,
+    },
+  ];
+  const cards = [
+    {
+      title: 'Young people',
+      image: img1,
+    }, {
+      title: 'Someone who is grieving',
+      image: img2,
+    }, {
+      title: 'Students',
+      image: img3,
+    }, {
+      title: 'Faith & belief communities',
+      image: img4,
+    }, {
+      title: 'Employers and employees',
+      image: img5,
+    }, {
+      title: 'Education professionals',
+      image: img6,
     },
   ];
   const theme = useTheme();
@@ -169,26 +194,6 @@ const NewHomeView = () => {
                     >
                       {slide.description}
                     </Typography>
-                    <Box sx={{ pl: { lg: 10 } }}>
-                      <Button
-                        variant='contained'
-                        sx={{
-                          backgroundColor: '#667C53',
-                          color: '#fff',
-                          width: { xs: '100%', sm: '210px' },
-                          mb: { xs: 2, md: 0 },
-                          padding: '14px 16px',
-                          borderRadius: '56px',
-                          fontSize: '17px',
-                          textTransform: 'capitalize',
-                          '&:hover': {
-                            backgroundColor: '#5A6D48',
-                          },
-                        }}
-                      >
-                        Read more
-                      </Button>
-                    </Box>
                   </Grid>
                   <Grid
                     item
@@ -258,10 +263,7 @@ const NewHomeView = () => {
         >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
+
               marginBottom: 6,
             }}
           >
@@ -271,219 +273,126 @@ const NewHomeView = () => {
               sx={{
                 fontWeight: 'bold',
                 color: '#3E2723',
-                width: { xs: '100%', md: '45%' },
                 marginBottom: { xs: 2, md: 0 },
                 fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
+                textAlign: 'center',
               }}
             >
               I'm looking for support for…
             </Typography>
 
-            <Typography
-              data-aos='fade-left'
-              sx={{
-                color: '#5C4935',
-                fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },
-                lineHeight: 1.8,
-                width: { xs: '100%', md: '50%' },
-              }}
-            >
-              Mahadevasth supports Individuals to look after their mental health and
-              wellbeing in a way that works for them. Mahadevasth supports Individuals
-              to look after their...
-            </Typography>
           </Box>
 
-          <Box
-            data-aos='fade-up'
-            sx={{
-              backgroundColor: '#F6EDD6',
-              padding: 4,
-              marginBottom: 6,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              borderRadius: '20px',
-            }}
-          >
-            <Box
-              sx={{
-                width: { xs: '100%', md: '60%' },
-                marginBottom: { xs: 2, md: 0 },
-              }}
-            >
-              <Typography
-                variant='h5'
-                sx={{
-                  fontWeight: 'bold',
-                  color: '#3E2723',
-                  marginBottom: 2,
-                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.6rem' },
-                }}
-              >
-                Young people
-              </Typography>
-              <Typography
-                variant='body1'
-                sx={{
-                  color: '#5C4935',
-                  fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },
-                }}
-              >
-                We invite young people to guide and review our content – so you can be
-                sure we'll help with the issues that really matter to you...
-              </Typography>
-            </Box>
+          {/*<Box*/}
+          {/*  data-aos='fade-up'*/}
+          {/*  sx={{*/}
+          {/*    backgroundColor: '#F6EDD6',*/}
+          {/*    padding: 4,*/}
+          {/*    marginBottom: 6,*/}
+          {/*    display: 'flex',*/}
+          {/*    justifyContent: 'space-between',*/}
+          {/*    alignItems: 'center',*/}
+          {/*    flexWrap: 'wrap',*/}
+          {/*    borderRadius: '20px',*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <Box*/}
+          {/*    sx={{*/}
+          {/*      width: { xs: '100%', md: '60%' },*/}
+          {/*      marginBottom: { xs: 2, md: 0 },*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    <Typography*/}
+          {/*      variant='h5'*/}
+          {/*      sx={{*/}
+          {/*        fontWeight: 'bold',*/}
+          {/*        color: '#3E2723',*/}
+          {/*        marginBottom: 2,*/}
+          {/*        fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.6rem' },*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      Young people*/}
+          {/*    </Typography>*/}
+          {/*    <Typography*/}
+          {/*      variant='body1'*/}
+          {/*      sx={{*/}
+          {/*        color: '#5C4935',*/}
+          {/*        fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      We invite young people to guide and review our content – so you can be*/}
+          {/*      sure we'll help with the issues that really matter to you...*/}
+          {/*    </Typography>*/}
+          {/*  </Box>*/}
 
-            <Box
-              component='img'
-              src={img1}
-              alt='Young person illustration'
-              sx={{
-                width: { xs: '100%', md: '35%' },
-                maxHeight: '200px',
-                objectFit: 'contain',
-                borderRadius: '12px',
-              }}
-            />
+          {/*  <Box*/}
+          {/*    component='img'*/}
+          {/*    src={img1}*/}
+          {/*    alt='Young person illustration'*/}
+          {/*    sx={{*/}
+          {/*      width: { xs: '100%', md: '35%' },*/}
+          {/*      maxHeight: '200px',*/}
+          {/*      objectFit: 'contain',*/}
+          {/*      borderRadius: '12px',*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*</Box>*/}
+          <Box>
+            <Grid container spacing={4} justifyContent={'center'}>
+              {
+                cards.map((item) => (
+                  <Grid item data-aos='fade-up'>
+                    <Card
+                      sx={{
+                        backgroundColor: '#F6EDD6',
+                        borderRadius: '35px',
+                        height: '370px',
+                        width: '360px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        padding: 3,
+                        '&:hover': {
+                          backgroundColor: '#F7EAC6',
+                          border: '1px solid #D4C49E',
+                        },
+                      }}
+                    >
+                      <Typography
+                        variant='h5'
+                        sx={{
+                          fontWeight: 'bold',
+                          color: '#3E2723',
+                          marginBottom: 2,
+                          fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.6rem' },
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                      <Box
+                        component='img'
+                        src={item.image}
+                        alt='Faith communities illustration'
+                        sx={{
+                          mb: 0,
+                          height: '225px',
+                          objectFit: 'contain',
+                          marginBottom: 2,
+                          borderRadius: '8px',
+                          width: '268px',
+                          mt: 0,
+                        }}
+                      />
+                    </Card>
+                  </Grid>
+                ))
+              }
+
+
+            </Grid>
           </Box>
-
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={4} data-aos='fade-up'>
-              <Card
-                sx={{
-                  backgroundColor: '#F6EDD6',
-                  borderRadius: '12px',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  padding: 3,
-                  '&:hover': {
-                    backgroundColor: '#F7EAC6',
-                    border: '1px solid #D4C49E',
-                  },
-                }}
-              >
-                <Typography
-                  variant='h5'
-                  sx={{
-                    fontWeight: 'bold',
-                    color: '#3E2723',
-                    marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
-                  }}
-                >
-                  Faith & belief communities
-                </Typography>
-                <Box
-                  component='img'
-                  src={img2}
-                  alt='Faith communities illustration'
-                  sx={{
-                    width: '100%',
-                    height: '100px',
-                    maxWidth: '120px',
-                    objectFit: 'cover',
-                    marginBottom: 2,
-                    borderRadius: '8px',
-                  }}
-                />
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4} data-aos='fade-up'>
-              <Card
-                sx={{
-                  backgroundColor: '#F6EDD6',
-                  borderRadius: '12px',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  padding: 3,
-                  '&:hover': {
-                    backgroundColor: '#F7EAC6',
-                    border: '1px solid #D4C49E',
-                  },
-                }}
-              >
-                <Typography
-                  variant='h5'
-                  sx={{
-                    fontWeight: 'bold',
-                    color: '#3E2723',
-                    marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
-                  }}
-                >
-                  Parents & carers
-                </Typography>
-                <Box
-                  component='img'
-                  src={img3}
-                  alt='Parents and carers illustration'
-                  sx={{
-                    width: '100%',
-                    height: '100px',
-                    maxWidth: '120px',
-                    objectFit: 'cover',
-                    marginBottom: 2,
-                    borderRadius: '8px',
-                  }}
-                />
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} md={4} data-aos='fade-up'>
-              <Card
-                sx={{
-                  backgroundColor: '#F6EDD6',
-                  borderRadius: '12px',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  padding: 3,
-                  '&:hover': {
-                    backgroundColor: '#F7EAC6',
-                    border: '1px solid #D4C49E',
-                  },
-                }}
-              >
-                <Typography
-                  variant='h5'
-                  sx={{
-                    fontWeight: 'bold',
-                    color: '#3E2723',
-                    marginBottom: 2,
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2' },
-                  }}
-                >
-                  Employers & employees
-                </Typography>
-                <Box
-                  component='img'
-                  src={img4}
-                  alt='Employers and employees illustration'
-                  sx={{
-                    width: '100%',
-                    height: '100px',
-                    maxWidth: '120px',
-                    objectFit: 'cover',
-                    marginBottom: 2,
-                    borderRadius: '8px',
-                  }}
-                />
-              </Card>
-            </Grid>
-          </Grid>
         </Box>
         <Box
           sx={{
@@ -551,7 +460,7 @@ const NewHomeView = () => {
                   gap: 4,
                 }}
               >
-                <Box data-aos="fade-right" sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
                   {[
                     {
                       title: 'Audience',
@@ -575,7 +484,7 @@ const NewHomeView = () => {
                             position: 'relative',
                             paddingLeft: '20px',
                             '&::before': {
-                              content: "'•'",
+                              content: '\'•\'',
                               position: 'absolute',
                               left: 0,
                               color: 'orange',
@@ -586,8 +495,8 @@ const NewHomeView = () => {
                       >
                         <ListItem>
                           <Typography
-                            fontWeight="bold"
-                            color="#2a2926"
+                            fontWeight='bold'
+                            color='#2a2926'
                             sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
                           >
                             {item.title}
@@ -595,7 +504,7 @@ const NewHomeView = () => {
                         </ListItem>
                       </List>
                       <Typography
-                        color="#6c6c6c"
+                        color='#6c6c6c'
                         sx={{
                           pl: 3,
                           textAlign: 'start',
@@ -608,7 +517,7 @@ const NewHomeView = () => {
                   ))}
                 </Box>
                 <Box
-                  data-aos="fade-left"
+                  data-aos='fade-left'
                   sx={{
                     width: { xs: '100%', md: 450 },
                     maxWidth: '100%',
@@ -617,7 +526,7 @@ const NewHomeView = () => {
                 >
                   <img
                     src={startFromTheHomePage}
-                    alt="Mental Health Illustration"
+                    alt='Mental Health Illustration'
                     style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
                   />
                 </Box>
@@ -630,36 +539,37 @@ const NewHomeView = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  textAlign:'start',
+                  textAlign: 'start',
                   flexWrap: 'wrap',
                   gap: 4,
                 }}
               >
                 <Box
-                  data-aos="fade-right"
+                  data-aos='fade-right'
                   sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}
                 >
                   <Typography
-                    variant="h4"
-                    fontWeight="bold"
-                    color="#2a2926"
+                    variant='h4'
+                    fontWeight='bold'
+                    color='#2a2926'
                     sx={{ fontSize: { xs: '1.5rem', sm: '2rem' }, mb: 2 }}
                   >
                     Get expert advice from Mahadevasth
                   </Typography>
                   <Typography
-                    color="#6c6c6c"
+                    color='#6c6c6c'
                     sx={{
                       maxWidth: 680,
                       fontSize: { xs: '1.1rem', sm: '1.4rem' },
                     }}
                   >
                     The Mahadevasth team has created a broad range of advice in collaboration with
-                    clinical and subject-area experts, designed to support Individuals with everyday mental health challenges. Explore our guides for tips and resources.
+                    clinical and subject-area experts, designed to support Individuals with everyday mental health
+                    challenges. Explore our guides for tips and resources.
                   </Typography>
                 </Box>
                 <Box
-                  data-aos="fade-left"
+                  data-aos='fade-left'
                   sx={{
                     width: { xs: '100%', md: 450 },
                     maxWidth: '100%',
@@ -668,7 +578,7 @@ const NewHomeView = () => {
                 >
                   <img
                     src={GetExpertAdvice}
-                    alt="Mental Health Illustration"
+                    alt='Mental Health Illustration'
                     style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
                   />
                 </Box>
@@ -685,11 +595,11 @@ const NewHomeView = () => {
                   gap: 4,
                 }}
               >
-                <Box data-aos="fade-right" sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
-                  <Grid container spacing={4} alignItems="start" textAlign="start">
+                <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                  <Grid container spacing={4} alignItems='start' textAlign='start'>
                     <Grid item xs={12} md={6} mt={3}>
                       <Typography
-                        variant="h4"
+                        variant='h4'
                         sx={{
                           fontWeight: 'bold',
                           mb: 2,
@@ -699,7 +609,9 @@ const NewHomeView = () => {
                         Use the Mahadevasth self-assessment tool
                       </Typography>
                       <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
-                        Our in-depth, clinically validated self-assessments are a thorough assessment of both your mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the types of questions a doctor or a psychologist might ask you.
+                        Our in-depth, clinically validated self-assessments are a thorough assessment of both your
+                        mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the types
+                        of questions a doctor or a psychologist might ask you.
                       </Typography>
                       <List>
                         {[
@@ -727,8 +639,8 @@ const NewHomeView = () => {
                         ))}
                       </List>
                       <Button
-                        variant="contained"
-                        size="large"
+                        variant='contained'
+                        size='large'
                         sx={{
                           borderRadius: '30px',
                           backgroundColor: '#3e582b',
@@ -742,8 +654,8 @@ const NewHomeView = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Box
-                        data-aos="fade-left"
-                        width="100%"
+                        data-aos='fade-left'
+                        width='100%'
                         sx={{ display: 'flex', justifyContent: 'center' }}
                       >
                         <Box
@@ -754,7 +666,7 @@ const NewHomeView = () => {
                         >
                           <img
                             src={takeselfassessment}
-                            alt="Mental Health Illustration"
+                            alt='Mental Health Illustration'
                             style={{
                               height: 'auto',
                               width: '100%',
@@ -780,26 +692,27 @@ const NewHomeView = () => {
                   px: { xs: 2, md: 4 },
                 }}
               >
-                <Grid container spacing={4} alignItems="center" textAlign="start">
+                <Grid container spacing={4} alignItems='center' textAlign='start'>
                   <Grid item xs={12} sm={12} md={6}>
-                    <Box data-aos="fade-right">
+                    <Box data-aos='fade-right'>
                       <Typography
                         sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                        fontWeight="bold"
+                        fontWeight='bold'
                         gutterBottom
                       >
                         Find the right help for you
                       </Typography>
                       <Typography
-                        color="textSecondary"
+                        color='textSecondary'
                         paragraph
                         sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
                       >
-                        Tell us what you're looking for help with and who you're looking for help for and you’ll then receive personalised recommendations for apps and other resources to meet your needs.
+                        Tell us what you're looking for help with and who you're looking for help for and you’ll then
+                        receive personalised recommendations for apps and other resources to meet your needs.
                       </Typography>
                       <Button
-                        variant="contained"
-                        size="large"
+                        variant='contained'
+                        size='large'
                         sx={{
                           borderRadius: 8,
                           textTransform: 'none',
@@ -817,7 +730,7 @@ const NewHomeView = () => {
 
                   <Grid item xs={12} sm={12} md={6}>
                     <Box
-                      data-aos="fade-left"
+                      data-aos='fade-left'
                       sx={{
                         width: '100%',
                       }}
@@ -829,7 +742,7 @@ const NewHomeView = () => {
                       >
                         <img
                           src={findtherighthelpforyou}
-                          alt="Mental Health Illustration"
+                          alt='Mental Health Illustration'
                           style={{
                             height: 'auto',
                             width: '100%',
