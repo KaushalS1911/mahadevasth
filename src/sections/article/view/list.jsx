@@ -150,7 +150,7 @@ function ArticleListView() {
       minWidth: 160,
     },
     {
-      field: 'category',
+      field: 'category_name',
       headerName: 'Category',
       flex: 1,
       minWidth: 160,
