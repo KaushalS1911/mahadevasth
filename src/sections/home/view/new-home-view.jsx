@@ -47,6 +47,8 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { useTheme } from '@mui/system';
 import { card } from '../../../theme/overrides/components/card';
+import { useRouter } from '../../../routes/hooks';
+import { paths } from '../../../routes/paths';
 
 const NewHomeView = () => {
 
@@ -64,6 +66,7 @@ const NewHomeView = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  const router = useRouter();
 
   const assessments = [
     {
@@ -119,21 +122,27 @@ const NewHomeView = () => {
   ];
   const cards = [
     {
+      name: 'young-people',
       title: 'Young people',
       image: img1,
     }, {
+        name: 'Someone-who-is-grieving',
       title: 'Someone who is grieving',
       image: img2,
     }, {
+      name: 'students',
       title: 'Students',
       image: img3,
     }, {
+      name: 'faith&belief-communities',
       title: 'Faith & belief communities',
       image: img4,
     }, {
-      title: 'Employers and employees',
+      name: 'employers-and-employees',
+        title: 'Employers and employees',
       image: img5,
     }, {
+      name: 'education-professionals',
       title: 'Education professionals',
       image: img6,
     },
@@ -150,7 +159,7 @@ const NewHomeView = () => {
     >
       <Container sx={{ mt: 5 }} maxWidth={'xl'}>
         <Grid container>
-          <Swiper navigation={isMdUp} loop={true}  modules={[Navigation]} className='mySwiper'>
+          <Swiper navigation={isMdUp} loop={true} modules={[Navigation]} className='mySwiper'>
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <Grid
@@ -343,8 +352,11 @@ const NewHomeView = () => {
                 cards.map((item) => (
                   <Grid item data-aos='fade-up'>
                     <Card
+                      onClick={()=>router.push(`${item.name}/details`)}
                       sx={{
+                        cursor:'pointer',
                         backgroundColor: '#F6EDD6',
+                        border: '1px solid #F5E6BF',
                         borderRadius: '35px',
                         height: '370px',
                         width: '360px',
@@ -357,16 +369,21 @@ const NewHomeView = () => {
                         '&:hover': {
                           backgroundColor: '#F7EAC6',
                           border: '1px solid #D4C49E',
+                          transition: '0.4s',
                         },
                       }}
                     >
+
                       <Typography
-                        variant='h5'
                         sx={{
+                          width: '100%',
+                          height: '100%',
                           fontWeight: 'bold',
                           color: '#3E2723',
                           marginBottom: 2,
                           fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.6rem' },
+                          textAlign: 'left',
+                          px: 2,
                         }}
                       >
                         {item.title}
@@ -756,7 +773,7 @@ const NewHomeView = () => {
                         display: 'block',
                         color: '#6C757D',
                         fontSize: 14,
-                        fontWeight:600,
+                        fontWeight: 600,
                         mb: 1,
                         backgroundColor: 'rgba(255, 255, 255, 0.5)',
                         p: 1,
@@ -792,68 +809,7 @@ const NewHomeView = () => {
           </Grid>
         </Box>
       </Container>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          mt: 4,
-          borderRadius: 4,
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Cloud Decorations */}
-        <Box data-aos='fade-down'
-             component='img'
-             src={clouds}
-             alt='clouds'
-             sx={{
-               position: 'absolute',
-               top: 0,
-               left: 0,
-               width: '100%',
-               height: 'auto',
-               opacity: 0.1,
-               py: 2,
-             }}
-        />
-        <Typography variant='h3' fontWeight='bold' gutterBottom data-aos='fade-up'
-                    sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }}>
-          Subscribe to our newsletter
-        </Typography>
-        <Typography data-aos='fade-up' variant='body1' color='textSecondary'
-                    sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' }, mb: 3, px: 2 }}>
-          Stay tuned and subscribe to our newsletter. Get the latest tips and
-          resources for Individuals.
-        </Typography>
-        <Button
-          variant='contained'
-          color='success'
-          sx={{
-            backgroundColor: '#5A735A',
-            color: '#fff',
-            '&:hover': { backgroundColor: '#6F8A6E' },
-            borderRadius: '20px',
-            px: 4,
-            py: 1.5,
-          }}
-        >
-          Subscribe
-        </Button>
-        <Box
-          component='img'
-          src={footerImage}
-          alt='illustration'
-          sx={{
-            width: '100%',
-            height: 'auto',
-            mt: 4,
-          }}
-        />
-      </Box>
+
     </Box>
   );
 };

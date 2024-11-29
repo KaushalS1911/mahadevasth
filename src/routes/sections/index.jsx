@@ -7,6 +7,7 @@ import { authRoutes } from './auth';
 import { HomePage, mainRoutes } from './main';
 import { dashboardRoutes } from './dashboard';
 import { componentsRoutes } from './components';
+import SinglePage from '../../sections/single-page/single-page';
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +22,7 @@ export default function Router() {
     // ----------------------------------------------------------------------
 
     // SET INDEX PAGE WITH HOME PAGE
+
     {
       path: '/',
       element: (
@@ -29,7 +31,14 @@ export default function Router() {
         </MainLayout>
       ),
     },
-
+{
+      path: ':name/details',
+      element: (
+        <MainLayout>
+          <SinglePage/>
+        </MainLayout>
+      ),
+    },
     // Auth routes
     ...authRoutes,
 
