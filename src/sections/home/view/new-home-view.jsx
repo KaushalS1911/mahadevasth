@@ -126,7 +126,7 @@ const NewHomeView = () => {
       title: 'Young people',
       image: img1,
     }, {
-        name: 'Someone-who-is-grieving',
+      name: 'Someone-who-is-grieving',
       title: 'Someone who is grieving',
       image: img2,
     }, {
@@ -139,7 +139,7 @@ const NewHomeView = () => {
       image: img4,
     }, {
       name: 'employers-and-employees',
-        title: 'Employers and employees',
+      title: 'Employers and employees',
       image: img5,
     }, {
       name: 'education-professionals',
@@ -150,527 +150,588 @@ const NewHomeView = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up('lg'));
   return (
-    <Box
-      sx={{
-        backgroundColor: '#FAF7F2',
-        mt: { xs: '56px', sm: '64px' },
-        overflowX: 'hidden',
-      }}
-    >
-      <Container sx={{ mt: 5 }} maxWidth={'xl'}>
-        <Grid container>
-          <Swiper navigation={isMdUp} loop={true} modules={[Navigation]} className='mySwiper'>
-            {slides.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <Grid
-                  container
-                  alignItems='center'
-                  justifyContent='center'
-                  sx={{ p: 4 }}
-                >
+    <Box sx={{
+      backgroundColor: '#FAF7F2',
+      mt: { xs: '56px', sm: '64px' },
+      overflow:'hidden'
+    }}>
+      <Box>
+        <Container sx={{ mt: 5 }} maxWidth={'xl'}>
+          <Grid container>
+            <Swiper navigation={isMdUp} loop={true} modules={[Navigation]} className='mySwiper'>
+              {slides.map((slide, index) => (
+                <SwiperSlide key={index}>
                   <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    display='flex'
-                    flexDirection='column'
-                    justifyContent='center'
-                    alignItems='left'
-                    textAlign='left'
-                    data-aos='fade-right'
-                  >
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: { xs: '2rem', sm: '3rem' },
-                        lineHeight: 1.2,
-                        color: '#333',
-                        mb: 2,
-                        pl: { lg: 10 },
-                      }}
-                    >
-                      {slide.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: { xs: '1.1rem', sm: '1.4rem' },
-                        lineHeight: '1.6',
-                        mb: 3,
-                        color: '#555',
-                        maxWidth: { md: '650px' },
-                        pl: { lg: 10 },
-                      }}
-                    >
-                      {slide.description}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    display='flex'
-                    justifyContent='center'
+                    container
                     alignItems='center'
-                    data-aos='fade-left'
+                    justifyContent='center'
+                    sx={{ p: 4 }}
                   >
-                    <Box
-                      sx={{
-                        borderRadius: 4,
-                        width: '500px',
-                      }}
+                    <Grid
+                      item
+                      xs={12}
+                      md={6}
+                      display='flex'
+                      flexDirection='column'
+                      justifyContent='center'
+                      alignItems='left'
+                      textAlign='left'
+                      data-aos='fade-right'
                     >
-                      <img
-                        src={slide.image}
-                        alt='Mental Health Illustration'
-                        style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
-                      />
-                    </Box>
-                  </Grid>
-                </Grid>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <style jsx>{`
-            .swiper-button-prev,
-            .swiper-button-next {
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              background-color: #F6EBD1;
-              color: #695042;
-              border-radius: 50%;
-              padding: 20px;
-              z-index: 10;
-            }
-
-            .swiper-button-prev {
-              left: 0%;
-            }
-
-            .swiper-button-next {
-              right: 0%;
-            }
-
-            .swiper-button-prev:hover,
-            .swiper-button-next:hover {
-              border: 1px solid orange;
-            }
-
-            .swiper-button-next::after,
-            .swiper-button-prev::after {
-              font-size: 20px;
-              font-weight: bold;
-            }
-          `}</style>
-        </Grid>
-        <Box
-          sx={{
-            paddingBottom: 4,
-            mt: '100px',
-            mb: '50px',
-          }}
-        >
-          <Box
-            sx={{
-
-              marginBottom: 6,
-            }}
-          >
-            <Typography
-              data-aos='fade-right'
-              variant='h4'
-              sx={{
-                fontWeight: 'bold',
-                color: '#3E2723',
-                marginBottom: { xs: 2, md: 0 },
-                fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
-                textAlign: 'center',
-              }}
-            >
-              I'm looking for support for…
-            </Typography>
-
-          </Box>
-
-          {/*<Box*/}
-          {/*  data-aos='fade-up'*/}
-          {/*  sx={{*/}
-          {/*    backgroundColor: '#F6EDD6',*/}
-          {/*    padding: 4,*/}
-          {/*    marginBottom: 6,*/}
-          {/*    display: 'flex',*/}
-          {/*    justifyContent: 'space-between',*/}
-          {/*    alignItems: 'center',*/}
-          {/*    flexWrap: 'wrap',*/}
-          {/*    borderRadius: '20px',*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <Box*/}
-          {/*    sx={{*/}
-          {/*      width: { xs: '100%', md: '60%' },*/}
-          {/*      marginBottom: { xs: 2, md: 0 },*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    <Typography*/}
-          {/*      variant='h5'*/}
-          {/*      sx={{*/}
-          {/*        fontWeight: 'bold',*/}
-          {/*        color: '#3E2723',*/}
-          {/*        marginBottom: 2,*/}
-          {/*        fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.6rem' },*/}
-          {/*      }}*/}
-          {/*    >*/}
-          {/*      Young people*/}
-          {/*    </Typography>*/}
-          {/*    <Typography*/}
-          {/*      variant='body1'*/}
-          {/*      sx={{*/}
-          {/*        color: '#5C4935',*/}
-          {/*        fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },*/}
-          {/*      }}*/}
-          {/*    >*/}
-          {/*      We invite young people to guide and review our content – so you can be*/}
-          {/*      sure we'll help with the issues that really matter to you...*/}
-          {/*    </Typography>*/}
-          {/*  </Box>*/}
-
-          {/*  <Box*/}
-          {/*    component='img'*/}
-          {/*    src={img1}*/}
-          {/*    alt='Young person illustration'*/}
-          {/*    sx={{*/}
-          {/*      width: { xs: '100%', md: '35%' },*/}
-          {/*      maxHeight: '200px',*/}
-          {/*      objectFit: 'contain',*/}
-          {/*      borderRadius: '12px',*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*</Box>*/}
-          <Box>
-            <Grid container spacing={4} justifyContent={'center'}>
-              {
-                cards.map((item) => (
-                  <Grid item data-aos='fade-up'>
-                    <Card
-                      onClick={()=>router.push(`${item.name}/details`)}
-                      sx={{
-                        cursor:'pointer',
-                        backgroundColor: '#F6EDD6',
-                        border: '1px solid #F5E6BF',
-                        borderRadius: '35px',
-                        height: '370px',
-                        width: '360px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        textAlign: 'center',
-                        padding: 3,
-                        '&:hover': {
-                          backgroundColor: '#F7EAC6',
-                          border: '1px solid #D4C49E',
-                          transition: '0.4s',
-                        },
-                      }}
-                    >
-
                       <Typography
                         sx={{
-                          width: '100%',
-                          height: '100%',
-                          fontWeight: 'bold',
-                          color: '#3E2723',
-                          marginBottom: 2,
-                          fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.6rem' },
-                          textAlign: 'left',
-                          px: 2,
+                          fontWeight: 700,
+                          fontSize: { xs: '2rem', sm: '3rem' },
+                          lineHeight: 1.2,
+                          color: '#333',
+                          mb: 2,
+                          pl: { lg: 10 },
                         }}
                       >
-                        {item.title}
+                        {slide.title}
                       </Typography>
-                      <Box
-                        component='img'
-                        src={item.image}
-                        alt='Faith communities illustration'
+                      <Typography
                         sx={{
-                          mb: 0,
-                          height: '225px',
-                          objectFit: 'contain',
-                          marginBottom: 2,
-                          borderRadius: '8px',
-                          width: '268px',
-                          mt: 0,
+                          fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                          lineHeight: '1.6',
+                          mb: 3,
+                          color: '#555',
+                          maxWidth: { md: '650px' },
+                          pl: { lg: 10 },
                         }}
-                      />
-                    </Card>
+                      >
+                        {slide.description}
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={6}
+                      display='flex'
+                      justifyContent='center'
+                      alignItems='center'
+                      data-aos='fade-left'
+                    >
+                      <Box
+                        sx={{
+                          borderRadius: 4,
+                          width: '500px',
+                        }}
+                      >
+                        <img
+                          src={slide.image}
+                          alt='Mental Health Illustration'
+                          style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                        />
+                      </Box>
+                    </Grid>
                   </Grid>
-                ))
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <style jsx>{`
+              .swiper-button-prev,
+              .swiper-button-next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #F6EBD1;
+                color: #695042;
+                border-radius: 50%;
+                padding: 20px;
+                z-index: 10;
               }
 
+              .swiper-button-prev {
+                left: 0%;
+              }
 
-            </Grid>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            p: 4,
-            textAlign: 'center',
-          }}
-        >
-          <Typography sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }} fontWeight='bold' color='#2a2926' gutterBottom
-                      data-aos='fade-down'>
-            How to use the Mahadevasth service
-          </Typography>
-          <Typography
-            data-aos='fade-up'
-            variant='subtitle1'
-            color='#6c6c6c'
-            sx={{ mb: 4, maxWidth: '600px', mx: 'auto', fontSize: { xs: '1.2rem', sm: '1.4rem' } }}
-          >
-            In this short guide, we’ll take you through the various Mahadevasth
-            resources and suggest five ways you can access them.
-          </Typography>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }} // Column for small screens, row for larger screens
-            justifyContent='center'
-            spacing={2}
+              .swiper-button-next {
+                right: 0%;
+              }
+
+              .swiper-button-prev:hover,
+              .swiper-button-next:hover {
+                border: 1px solid orange;
+              }
+
+              .swiper-button-next::after,
+              .swiper-button-prev::after {
+                font-size: 20px;
+                font-weight: bold;
+              }
+            `}</style>
+          </Grid>
+          <Box
             sx={{
-              mb: 4,
-              alignItems: 'center', // Center align in column layout
+              paddingBottom: 4,
+              mt: '100px',
+              mb: '50px',
             }}
           >
-            {[
-              { id: 'home', label: 'Start from the home page' },
-              { id: 'expertAdvice', label: 'Get expert advice' },
-              { id: 'selfAssessment', label: 'Take a self-assessment' },
-              { id: 'Findtherighthelpforyou', label: 'Find the right help for you' },
-            ].map((tab) => (
-              <Button
-                key={tab.id}
-                onClick={() => handleTabClick(tab.id)}
-                variant={activeTab === tab.id ? 'contained' : 'outlined'}
+            <Box
+              sx={{
+
+                marginBottom: 6,
+              }}
+            >
+              <Typography
+                data-aos='fade-right'
+                variant='h4'
                 sx={{
-                  borderRadius: '30px',
-                  width: { xs: '100%', sm: 'auto' },
-                  py: 1.5,
-                  backgroundColor: activeTab === tab.id ? '#56723f' : '',
-                  border: '1px solid black',
-                  color: activeTab === tab.id ? 'white' : '#2a2926',
-                  fontSize: { xs: '14px', sm: '16px' },
-                  '&:hover': {
-                    backgroundColor: activeTab === tab.id ? '#3e582b' : '#f5f5f5',
-                  },
+                  fontWeight: 'bold',
+                  color: '#3E2723',
+                  marginBottom: { xs: 2, md: 0 },
+                  fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
+                  textAlign: 'center',
                 }}
               >
-                {tab.label}
-              </Button>
-            ))}
-          </Stack>
-          <Box>
-            {activeTab === 'home' && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: 4,
-                }}
-              >
-                <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
-                  {[
-                    {
-                      title: 'Audience',
-                      description:
-                        'Young people, Parents and carers, Employers and employees, Faith and belief communities.',
-                    },
-                    {
-                      title: 'Mental health concern',
-                      description: 'Sleep, Anxiety, Low mood, Stress.',
-                    },
-                    {
-                      title: 'Type of content',
-                      description: 'Free apps, Podcasts, blogs and videos, How to guides, Workbooks.',
-                    },
-                  ].map((item, index) => (
-                    <Box key={index} sx={{ mb: 3 }}>
-                      <List
+                I'm looking for support for…
+              </Typography>
+
+            </Box>
+
+            {/*<Box*/}
+            {/*  data-aos='fade-up'*/}
+            {/*  sx={{*/}
+            {/*    backgroundColor: '#F6EDD6',*/}
+            {/*    padding: 4,*/}
+            {/*    marginBottom: 6,*/}
+            {/*    display: 'flex',*/}
+            {/*    justifyContent: 'space-between',*/}
+            {/*    alignItems: 'center',*/}
+            {/*    flexWrap: 'wrap',*/}
+            {/*    borderRadius: '20px',*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <Box*/}
+            {/*    sx={{*/}
+            {/*      width: { xs: '100%', md: '60%' },*/}
+            {/*      marginBottom: { xs: 2, md: 0 },*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    <Typography*/}
+            {/*      variant='h5'*/}
+            {/*      sx={{*/}
+            {/*        fontWeight: 'bold',*/}
+            {/*        color: '#3E2723',*/}
+            {/*        marginBottom: 2,*/}
+            {/*        fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.6rem' },*/}
+            {/*      }}*/}
+            {/*    >*/}
+            {/*      Young people*/}
+            {/*    </Typography>*/}
+            {/*    <Typography*/}
+            {/*      variant='body1'*/}
+            {/*      sx={{*/}
+            {/*        color: '#5C4935',*/}
+            {/*        fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.4rem' },*/}
+            {/*      }}*/}
+            {/*    >*/}
+            {/*      We invite young people to guide and review our content – so you can be*/}
+            {/*      sure we'll help with the issues that really matter to you...*/}
+            {/*    </Typography>*/}
+            {/*  </Box>*/}
+
+            {/*  <Box*/}
+            {/*    component='img'*/}
+            {/*    src={img1}*/}
+            {/*    alt='Young person illustration'*/}
+            {/*    sx={{*/}
+            {/*      width: { xs: '100%', md: '35%' },*/}
+            {/*      maxHeight: '200px',*/}
+            {/*      objectFit: 'contain',*/}
+            {/*      borderRadius: '12px',*/}
+            {/*    }}*/}
+            {/*  />*/}
+            {/*</Box>*/}
+            <Box>
+              <Grid container spacing={4} justifyContent={'center'}>
+                {
+                  cards.map((item) => (
+                    <Grid item data-aos='fade-up'>
+                      <Card
+                        onClick={() => router.push(`${item.name}/details`)}
                         sx={{
-                          pl: 2,
-                          '& li': {
-                            position: 'relative',
-                            paddingLeft: '20px',
-                            '&::before': {
-                              content: '\'•\'',
-                              position: 'absolute',
-                              left: 0,
-                              color: 'orange',
-                              fontSize: '3rem',
-                            },
+                          cursor: 'pointer',
+                          backgroundColor: '#F6EDD6',
+                          border: '1px solid #F5E6BF',
+                          borderRadius: '35px',
+                          height: '370px',
+                          width: '360px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          padding: 3,
+                          '&:hover': {
+                            backgroundColor: '#F7EAC6',
+                            border: '1px solid #D4C49E',
+                            transition: '0.4s',
                           },
                         }}
                       >
-                        <ListItem>
-                          <Typography
-                            fontWeight='bold'
-                            color='#2a2926'
-                            sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                          >
-                            {item.title}
-                          </Typography>
-                        </ListItem>
-                      </List>
-                      <Typography
-                        color='#6c6c6c'
-                        sx={{
-                          pl: 3,
-                          textAlign: 'start',
-                          fontSize: { xs: '1.1rem', sm: '1.4rem' },
-                        }}
-                      >
-                        {item.description}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-                <Box
-                  data-aos='fade-left'
+
+                        <Typography
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            fontWeight: 'bold',
+                            color: '#3E2723',
+                            marginBottom: 2,
+                            fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.6rem' },
+                            textAlign: 'left',
+                            px: 2,
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Box
+                          component='img'
+                          src={item.image}
+                          alt='Faith communities illustration'
+                          sx={{
+                            mb: 0,
+                            height: '225px',
+                            objectFit: 'contain',
+                            marginBottom: 2,
+                            borderRadius: '8px',
+                            width: '268px',
+                            mt: 0,
+                          }}
+                        />
+                      </Card>
+                    </Grid>
+                  ))
+                }
+
+
+              </Grid>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              p: 4,
+              textAlign: 'center',
+            }}
+          >
+            <Typography sx={{ fontSize: { xs: '2rem', sm: '2.6rem' } }} fontWeight='bold' color='#2a2926' gutterBottom
+                        data-aos='fade-down'>
+              How to use the Mahadevasth service
+            </Typography>
+            <Typography
+              data-aos='fade-up'
+              variant='subtitle1'
+              color='#6c6c6c'
+              sx={{ mb: 4, maxWidth: '600px', mx: 'auto', fontSize: { xs: '1.2rem', sm: '1.4rem' } }}
+            >
+              In this short guide, we’ll take you through the various Mahadevasth
+              resources and suggest five ways you can access them.
+            </Typography>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }} // Column for small screens, row for larger screens
+              justifyContent='center'
+              spacing={2}
+              sx={{
+                mb: 4,
+                alignItems: 'center', // Center align in column layout
+              }}
+            >
+              {[
+                { id: 'home', label: 'Start from the home page' },
+                { id: 'expertAdvice', label: 'Get expert advice' },
+                { id: 'selfAssessment', label: 'Take a self-assessment' },
+                { id: 'Findtherighthelpforyou', label: 'Find the right help for you' },
+              ].map((tab) => (
+                <Button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  variant={activeTab === tab.id ? 'contained' : 'outlined'}
                   sx={{
-                    width: { xs: '100%', md: 450 },
-                    maxWidth: '100%',
-                    textAlign: 'center',
+                    borderRadius: '30px',
+                    width: { xs: '100%', sm: 'auto' },
+                    py: 1.5,
+                    backgroundColor: activeTab === tab.id ? '#56723f' : '',
+                    border: '1px solid black',
+                    color: activeTab === tab.id ? 'white' : '#2a2926',
+                    fontSize: { xs: '14px', sm: '16px' },
+                    '&:hover': {
+                      backgroundColor: activeTab === tab.id ? '#3e582b' : '#f5f5f5',
+                    },
                   }}
                 >
-                  <img
-                    src={startFromTheHomePage}
-                    alt='Mental Health Illustration'
-                    style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
-                  />
-                </Box>
-              </Box>
-            )}
-
-            {activeTab === 'expertAdvice' && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'start',
-                  flexWrap: 'wrap',
-                  gap: 4,
-                }}
-              >
+                  {tab.label}
+                </Button>
+              ))}
+            </Stack>
+            <Box>
+              {activeTab === 'home' && (
                 <Box
-                  data-aos='fade-right'
-                  sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: 4,
+                  }}
                 >
-                  <Typography
-                    variant='h4'
-                    fontWeight='bold'
-                    color='#2a2926'
-                    sx={{ fontSize: { xs: '1.5rem', sm: '2rem' }, mb: 2 }}
-                  >
-                    Get expert advice from Mahadevasth
-                  </Typography>
-                  <Typography
-                    color='#6c6c6c'
+                  <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                    {[
+                      {
+                        title: 'Audience',
+                        description:
+                          'Young people, Parents and carers, Employers and employees, Faith and belief communities.',
+                      },
+                      {
+                        title: 'Mental health concern',
+                        description: 'Sleep, Anxiety, Low mood, Stress.',
+                      },
+                      {
+                        title: 'Type of content',
+                        description: 'Free apps, Podcasts, blogs and videos, How to guides, Workbooks.',
+                      },
+                    ].map((item, index) => (
+                      <Box key={index} sx={{ mb: 3 }}>
+                        <List
+                          sx={{
+                            pl: 2,
+                            '& li': {
+                              position: 'relative',
+                              paddingLeft: '20px',
+                              '&::before': {
+                                content: '\'•\'',
+                                position: 'absolute',
+                                left: 0,
+                                color: 'orange',
+                                fontSize: '3rem',
+                              },
+                            },
+                          }}
+                        >
+                          <ListItem>
+                            <Typography
+                              fontWeight='bold'
+                              color='#2a2926'
+                              sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
+                            >
+                              {item.title}
+                            </Typography>
+                          </ListItem>
+                        </List>
+                        <Typography
+                          color='#6c6c6c'
+                          sx={{
+                            pl: 3,
+                            textAlign: 'start',
+                            fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box
+                    data-aos='fade-left'
                     sx={{
-                      maxWidth: 680,
-                      fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                      width: { xs: '100%', md: 450 },
+                      maxWidth: '100%',
+                      textAlign: 'center',
                     }}
                   >
-                    The Mahadevasth team has created a broad range of advice in collaboration with
-                    clinical and subject-area experts, designed to support Individuals with everyday mental health
-                    challenges. Explore our guides for tips and resources.
-                  </Typography>
+                    <img
+                      src={startFromTheHomePage}
+                      alt='Mental Health Illustration'
+                      style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                    />
+                  </Box>
                 </Box>
+              )}
+
+              {activeTab === 'expertAdvice' && (
                 <Box
-                  data-aos='fade-left'
                   sx={{
-                    width: { xs: '100%', md: 450 },
-                    maxWidth: '100%',
-                    textAlign: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'start',
+                    flexWrap: 'wrap',
+                    gap: 4,
                   }}
                 >
-                  <img
-                    src={GetExpertAdvice}
-                    alt='Mental Health Illustration'
-                    style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
-                  />
+                  <Box
+                    data-aos='fade-right'
+                    sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}
+                  >
+                    <Typography
+                      variant='h4'
+                      fontWeight='bold'
+                      color='#2a2926'
+                      sx={{ fontSize: { xs: '1.5rem', sm: '2rem' }, mb: 2 }}
+                    >
+                      Get expert advice from Mahadevasth
+                    </Typography>
+                    <Typography
+                      color='#6c6c6c'
+                      sx={{
+                        maxWidth: 680,
+                        fontSize: { xs: '1.1rem', sm: '1.4rem' },
+                      }}
+                    >
+                      The Mahadevasth team has created a broad range of advice in collaboration with
+                      clinical and subject-area experts, designed to support Individuals with everyday mental health
+                      challenges. Explore our guides for tips and resources.
+                    </Typography>
+                  </Box>
+                  <Box
+                    data-aos='fade-left'
+                    sx={{
+                      width: { xs: '100%', md: 450 },
+                      maxWidth: '100%',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <img
+                      src={GetExpertAdvice}
+                      alt='Mental Health Illustration'
+                      style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
+                    />
+                  </Box>
                 </Box>
-              </Box>
-            )}
+              )}
 
-            {activeTab === 'selfAssessment' && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: 4,
-                }}
-              >
-                <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
-                  <Grid container spacing={4} alignItems='start' textAlign='start'>
-                    <Grid item xs={12} md={6} mt={3}>
-                      <Typography
-                        variant='h4'
-                        sx={{
-                          fontWeight: 'bold',
-                          mb: 2,
-                          fontSize: { xs: '1.5rem', sm: '2rem' },
-                        }}
-                      >
-                        Use the Mahadevasth self-assessment tool
-                      </Typography>
-                      <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
-                        Our in-depth, clinically validated self-assessments are a thorough assessment of both your
-                        mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the types
-                        of questions a doctor or a psychologist might ask you.
-                      </Typography>
-                      <List>
-                        {[
-                          'Each self-assessment takes around 20 minutes to complete',
-                          'Answer questions about yourself or someone you may be concerned about',
-                          'You’ll get a personalised list of recommended actions to take forward',
-                        ].map((text, index) => (
-                          <ListItem
-                            key={index}
+              {activeTab === 'selfAssessment' && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: 4,
+                  }}
+                >
+                  <Box data-aos='fade-right' sx={{ flex: 1, minWidth: { xs: '100%', md: '50%' } }}>
+                    <Grid container spacing={4} alignItems='start' textAlign='start'>
+                      <Grid item xs={12} md={6} mt={3}>
+                        <Typography
+                          variant='h4'
+                          sx={{
+                            fontWeight: 'bold',
+                            mb: 2,
+                            fontSize: { xs: '1.5rem', sm: '2rem' },
+                          }}
+                        >
+                          Use the Mahadevasth self-assessment tool
+                        </Typography>
+                        <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
+                          Our in-depth, clinically validated self-assessments are a thorough assessment of both your
+                          mental and physical wellbeing. They may seem quite ‘medical’ because they are based on the
+                          types
+                          of questions a doctor or a psychologist might ask you.
+                        </Typography>
+                        <List>
+                          {[
+                            'Each self-assessment takes around 20 minutes to complete',
+                            'Answer questions about yourself or someone you may be concerned about',
+                            'You’ll get a personalised list of recommended actions to take forward',
+                          ].map((text, index) => (
+                            <ListItem
+                              key={index}
+                              sx={{
+                                alignItems: 'flex-start',
+                              }}
+                            >
+                              <ListItemIcon>
+                                <CircleIcon
+                                  sx={{
+                                    color: '#FF9800',
+                                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                                    mt: 0.5,
+                                  }}
+                                />
+                              </ListItemIcon>
+                              {text}
+                            </ListItem>
+                          ))}
+                        </List>
+
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Box
+                          data-aos='fade-left'
+                          width='100%'
+                          sx={{ display: 'flex', justifyContent: 'center' }}
+                        >
+                          <Box
                             sx={{
-                              alignItems: 'flex-start',
+                              borderRadius: 4,
+                              width: '450px',
                             }}
                           >
-                            <ListItemIcon>
-                              <CircleIcon
-                                sx={{
-                                  color: '#FF9800',
-                                  fontSize: { xs: '1rem', sm: '1.1rem' },
-                                  mt: 0.5,
-                                }}
-                              />
-                            </ListItemIcon>
-                            {text}
-                          </ListItem>
-                        ))}
-                      </List>
-
+                            <img
+                              src={takeselfassessment}
+                              alt='Mental Health Illustration'
+                              style={{
+                                height: 'auto',
+                                width: '100%',
+                                borderRadius: '8px',
+                              }}
+                            />
+                          </Box>
+                        </Box>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                  </Box>
+                </Box>
+              )}
+
+              {activeTab === 'Findtherighthelpforyou' && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: 4,
+                    px: { xs: 2, md: 4 },
+                  }}
+                >
+                  <Grid container spacing={4} alignItems='center' textAlign='start'>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Box data-aos='fade-right'>
+                        <Typography
+                          sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
+                          fontWeight='bold'
+                          gutterBottom
+                        >
+                          Find the right help for you
+                        </Typography>
+                        <Typography
+                          color='textSecondary'
+                          paragraph
+                          sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
+                        >
+                          Tell us what you're looking for help with and who you're looking for help for and you’ll then
+                          receive personalised recommendations for apps and other resources to meet your needs.
+                        </Typography>
+                      </Box>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={6}>
                       <Box
                         data-aos='fade-left'
-                        width='100%'
-                        sx={{ display: 'flex', justifyContent: 'center' }}
+                        sx={{
+                          width: '100%',
+                        }}
                       >
                         <Box
                           sx={{
-                            borderRadius: 4,
-                            width: '450px',
+                            maxWidth: '450px',
                           }}
                         >
                           <img
-                            src={takeselfassessment}
+                            src={findtherighthelpforyou}
                             alt='Mental Health Illustration'
                             style={{
                               height: 'auto',
@@ -683,133 +744,72 @@ const NewHomeView = () => {
                     </Grid>
                   </Grid>
                 </Box>
-              </Box>
-            )}
+              )}
+            </Box>
 
-            {activeTab === 'Findtherighthelpforyou' && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: 4,
-                  px: { xs: 2, md: 4 },
-                }}
-              >
-                <Grid container spacing={4} alignItems='center' textAlign='start'>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Box data-aos='fade-right'>
+          </Box>
+          <Box sx={{ p: 4, textAlign: 'center' }}>
+            <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4, fontSize: { xs: '2rem', sm: '3rem' } }}>
+              Choose self-assessment
+            </Typography>
+            <Grid container spacing={4}>
+              {assessments.map((assessment, index) => (
+                <Grid item xs={12} sm={6} md={6} key={index} data-aos='fade-up'>
+                  <Card
+                    sx={{
+                      borderRadius: '16px',
+                      backgroundColor: assessment.bgColor,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: 3,
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
                       <Typography
-                        sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                        fontWeight='bold'
-                        gutterBottom
-                      >
-                        Find the right help for you
-                      </Typography>
-                      <Typography
-                        color='textSecondary'
-                        paragraph
-                        sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
-                      >
-                        Tell us what you're looking for help with and who you're looking for help for and you’ll then
-                        receive personalised recommendations for apps and other resources to meet your needs.
-                      </Typography>
-                    </Box>
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Box
-                      data-aos='fade-left'
-                      sx={{
-                        width: '100%',
-                      }}
-                    >
-                      <Box
                         sx={{
-                          maxWidth: '450px',
+                          display: 'block',
+                          color: '#6C757D',
+                          fontSize: 14,
+                          fontWeight: 600,
+                          mb: 1,
+                          backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                          p: 1,
                         }}
                       >
-                        <img
-                          src={findtherighthelpforyou}
-                          alt='Mental Health Illustration'
-                          style={{
-                            height: 'auto',
-                            width: '100%',
-                            borderRadius: '8px',
-                          }}
-                        />
-                      </Box>
+                        Self Assessment
+                      </Typography>
                     </Box>
-                  </Grid>
-                </Grid>
-              </Box>
-            )}
-          </Box>
-
-        </Box>
-        <Box sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 4, fontSize: { xs: '2rem', sm: '3rem' } }}>
-            Choose self-assessment
-          </Typography>
-          <Grid container spacing={4}>
-            {assessments.map((assessment, index) => (
-              <Grid item xs={12} sm={6} md={6} key={index} data-aos='fade-up'>
-                <Card
-                  sx={{
-                    borderRadius: '16px',
-                    backgroundColor: assessment.bgColor,
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: 3,
-                  }}
-                >
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-                    <Typography
+                    <Box
+                      component='img'
+                      src={assessment.image}
+                      alt={assessment.title}
                       sx={{
-                        display: 'block',
-                        color: '#6C757D',
-                        fontSize: 14,
-                        fontWeight: 600,
-                        mb: 1,
-                        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                        p: 1,
+                        width: '50%',
+                        maxHeight: '120px',
+                        objectFit: 'contain',
+                        mb: 2,
                       }}
-                    >
-                      Self Assessment
-                    </Typography>
-                  </Box>
-                  <Box
-                    component='img'
-                    src={assessment.image}
-                    alt={assessment.title}
-                    sx={{
-                      width: '50%',
-                      maxHeight: '120px',
-                      objectFit: 'contain',
-                      mb: 2,
-                    }}
-                  />
-                  <CardContent sx={{ textAlign: 'center' }}>
+                    />
+                    <CardContent sx={{ textAlign: 'center' }}>
 
-                    <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
-                      {assessment.title}
-                    </Typography>
-                    <Typography variant='body2' sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
-                                color='text.secondary'>
-                      {assessment.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Container>
-
+                      <Typography sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
+                        {assessment.title}
+                      </Typography>
+                      <Typography variant='body2' sx={{ fontSize: { xs: '1.1rem', sm: '1.4rem' } }}
+                                  color='text.secondary'>
+                        {assessment.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };
