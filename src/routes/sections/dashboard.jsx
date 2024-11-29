@@ -227,6 +227,7 @@ import AudioEditView from "../../sections/audio/view/audio-edit-view";
 import VideoListPage from "../../pages/video/video-list-view";
 import AudioListPage from "../../pages/audio/audio-list-view";
 import ArticleDetailsView from '../../sections/article/view/article-details-view';
+import SinglePage from '../../sections/single-page/single-page';
 
 // ----------------------------------------------------------------------
 
@@ -352,7 +353,7 @@ export const dashboardRoutes = [
         ],
       },
       {
-        path: 'article',
+        path: 'upload/article',
         children: [
           {element: <ArticleListPage/>, index: true},
           {path: 'list', element: <ArticleListPage/>},
@@ -362,7 +363,7 @@ export const dashboardRoutes = [
         ],
       },
       {
-        path: 'video',
+        path: 'upload/video',
         children: [
           {element: <VideoListPage/>, index: true},
           {path: 'list', element: <VideoListPage/>},
@@ -371,7 +372,16 @@ export const dashboardRoutes = [
         ],
       },
       {
-        path: 'audio',
+        path: 'upload',
+        children: [
+          {element: <ArticleListPage/>, index: true},
+          {path: 'article', element: <ArticleListPage/>},
+          {path: 'video', element: <VideoListPage/>},
+          {path: 'audio', element: <VideoListPage/>},
+        ],
+      },
+      {
+        path: 'upload/audio',
         children: [
           {element: <AudioListPage/>, index: true},
           {path: 'list', element: <AudioListPage/>},
@@ -501,6 +511,7 @@ export const dashboardRoutes = [
           {path: ':id/edit', element: <TourEditPage/>},
         ],
       },
+      {path: ':name/details', element: <SinglePage/>},
       {path: 'file-manager', element: <FileManagerPage/>},
       {path: 'mail', element: <MailPage/>},
       {path: 'chat', element: <ChatPage/>},

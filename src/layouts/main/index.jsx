@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import { usePathname } from 'src/routes/hooks';
 
 import Header from './header';
+import Footer from './footer';
+import MainFooter from './main-footer';
 
 // ----------------------------------------------------------------------
 
@@ -29,7 +31,7 @@ export default function MainLayout({ children }) {
         {children}
       </Box>
 
-      {/*<Footer />*/}
+      <MainFooter/>
     </Box>
   );
 }

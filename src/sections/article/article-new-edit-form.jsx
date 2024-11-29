@@ -51,14 +51,16 @@ export default function ArticleNewEditForm({ singleArticle }) {
       ),
   });
 
+    const a = categories?.find((tem) => tem?.id == singleArticle?.category)
   const defaultValues = useMemo(() => {
+    console.log(a?.category,"a");
     return {
-      category: singleArticle?.category || '',
+      category: `${a?.category}` || 'Fall Asleep',
       article: singleArticle?.article || '',
       title: singleArticle?.title || '',
       tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
     };
-  }, [singleArticle]);
+  }, [singleArticle,a]);
 
   const methods = useForm({
     resolver: yupResolver(NewProductSchema),
@@ -70,9 +72,10 @@ export default function ArticleNewEditForm({ singleArticle }) {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
+      const a = categories.find((tem) => tem?.category == data.category)
       const payload = {
         article: data.article,
-        category: data.category,
+        category: a.id,
         tags: data.tags,
         title: data.title,
         counsellor_code: vendor?.counsellor_code,

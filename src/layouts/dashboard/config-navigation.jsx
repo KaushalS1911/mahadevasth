@@ -157,36 +157,42 @@ export function useNavData() {
     //   icon: ICONS.dashboard,
     // },
 
-    {
-      title: t('Article'),
-      path: paths.dashboard.article.list,
-      icon: <Iconify icon="material-symbols:article" sx={{width: 1, height: 1}}/>,
-    }, {
-      title: t('Audio'),
-      path: paths.dashboard.audio.list,
-      icon: <Iconify icon="ant-design:audio-filled"/>,
-    },
-    {
-      title: t('Video'),
-      path: paths.dashboard.video.list,
-      icon: <Iconify icon="mdi:video-outline"/>,
-    },
+    // {
+    //   title: t('Article'),
+    //   path: paths.dashboard.article.list,
+    // }, {
+    //   title: t('Audio'),
+    //   path: paths.dashboard.audio.list,
+    // },
+    // {
+    //   title: t('Video'),
+    //   path: paths.dashboard.video.list,
+    // },
     // {
     //   title: t('Intents'),
     //   path: paths.dashboard.orders,
     //   icon: ICONS.product,
     // },
-    // {
-    //   title: t('Stats Overview'),
-    //   path: paths.dashboard.statsOverview.root,
-    //   icon: ICONS.mail,
-    //   children: [
-    //     // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
-    //     { title: t('Branch'), path: paths.dashboard.statsOverview.branch },
-    //     { title: t('Vendor Type'), path: paths.dashboard.statsOverview.vendor_type },
-    //
-    //   ],
-    // },
+    {
+      title: t('Upload'),
+      path: paths.dashboard.upload.root,
+      icon: ICONS.mail,
+      children: [
+        // { title: t('Document Overview'), path: paths.dashboard.document.document_overview },
+        {
+          title: t('Article'),
+          path: paths.dashboard.upload.article,
+        }, {
+          title: t('Audio'),
+          path: paths.dashboard.upload.audio,
+        },
+        {
+          title: t('Video'),
+          path: paths.dashboard.upload.video,
+        },
+
+      ],
+    },
     // {
     //   title: t('Basic Info'),
     //   path: paths.dashboard.basic_info,

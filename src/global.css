@@ -61,6 +61,10 @@
 .swiper-slide{
   display: flex !important;
 }
+.css-1b36da6{
+  padding-top: 0px !important;
+}
+
 .MuiDataGrid-columnHeaders MuiDataGrid-withBorderColor css-f4fkqn-MuiDataGrid-columnHeaders{
   max-height: 0 !important;
 }

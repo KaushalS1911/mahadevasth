@@ -26,13 +26,13 @@ export function useGetSingleArticles(id) {
   const { data, isLoading, error, isValidating } = useSWR(URL, fetcher);
   const memoizedValue = useMemo(
     () => ({
-      singleArticle: data?.data ,
+      singleArticle: data?.data[0] ,
       singleArticleLoading: isLoading,
       singleArticleError: error,
       singleArticleValidating: isValidating,
       singleArticleEmpty: !isLoading && !data?.data?.length,
     }),
-    [data?.data, error, isLoading, isValidating]
+    [data?.data[0], error, isLoading, isValidating]
   );
 
   return memoizedValue;
