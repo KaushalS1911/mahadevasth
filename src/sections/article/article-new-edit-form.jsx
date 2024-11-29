@@ -37,7 +37,6 @@ export default function ArticleNewEditForm({ singleArticle }) {
     }
   }, [categories]);
   const [loading, setLoading] = useState(false);
-
   const mdUp = useResponsive('up', 'md');
   const NewProductSchema = Yup.object().shape({
     category: Yup.string().required('Category is required'),
@@ -51,11 +50,11 @@ export default function ArticleNewEditForm({ singleArticle }) {
       ),
   });
 
-    const a = categories?.find((tem) => tem?.id == singleArticle?.category)
+    const a = singleArticle && categories?.find((tem) => tem?.id == singleArticle?.category)
+  console.log(a,"lllllllllllllllllllllllllllllllllllll");
   const defaultValues = useMemo(() => {
-    console.log(a?.category,"a");
     return {
-      category: `${a?.category}` || 'Fall Asleep',
+      category:singleArticle ? `${a?.category}` : '',
       article: singleArticle?.article || '',
       title: singleArticle?.title || '',
       tags: typeof singleArticle?.tags === 'string' ? JSON.parse(singleArticle?.tags) : [] || [],
